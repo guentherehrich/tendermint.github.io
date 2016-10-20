@@ -1,0 +1,27 @@
+{{ partial "header.html" . }}
+
+<body id="body-jobs">
+  {{ partial "site-header.html" . }}
+
+  <section id="section-top">
+    <div class="section-container">
+      <h1>{{ .Title }}</h1>
+      <p>{{ .Date.Format "January 2, 2006" }}</p>
+    </div>
+  </section>
+
+  <section class="section-default">
+    <div class="section-container">
+      <div class="section-content">
+        <div class="article-body">
+          {{ .Content }}
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+        {{ partial "prev_next.html" . }}
+      </div>
+    </div>
+
+  </section>
+
+{{ partial "site-footer.html" }}

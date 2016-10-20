@@ -1,0 +1,23 @@
+{{ partial "header.html" . }}
+
+<body id="body-guide">
+  {{ partial "site-header.html" . }}
+
+  <section id="section-top">
+    <div class="section-container">
+      <h1><i class="fa fa-book"></i> Available Positions</h1>
+      <p>Tendermint is hiring.</p>
+    </div>
+  </section>
+
+  <section class="section-default section-flush">
+    <div class="section-container">
+      <div class="section-content">
+        {{ range .Data.Pages }}
+        {{ .Render "summary"}}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+{{ partial "site-footer.html" }}
