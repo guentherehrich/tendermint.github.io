@@ -1,6 +1,7 @@
 ---
 title: "Software Engineer: Networking and Consensus"
 description: "Golang, P2P, Distributed Consensus"
+weight: 2
 date: "2016-10-20"
 categories: 
     - "positions"

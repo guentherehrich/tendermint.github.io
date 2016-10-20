@@ -1,6 +1,7 @@
 ---
 title: "Software Engineer: Application Developer and Dev Outreach"
 description: "Javascript, Docker"
+weight: 3
 date: "2016-10-20"
 categories: 
     - "positions"

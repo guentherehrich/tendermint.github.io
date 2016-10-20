@@ -1,6 +1,7 @@
 ---
 title: "Software Engineer: Bitcoin"
 description: "C++, Bitcoin Core"
+weight: 10
 date: "2016-10-20"
 categories: 
     - "positions"

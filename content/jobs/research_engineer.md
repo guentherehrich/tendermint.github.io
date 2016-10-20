@@ -1,6 +1,7 @@
 ---
 title: "Research Scientist"
 description: "Cryptography, Distributed Consensus, Economics, Formal Verification"
+weight: 5
 date: "2016-10-20"
 categories: 
     - "positions"

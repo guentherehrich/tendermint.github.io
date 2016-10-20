@@ -1,6 +1,7 @@
 ---
 title: "Software Engineer: Developer Tooling"
 description: "Golang, APIs"
+weight: 2
 date: "2016-10-20"
 categories: 
     - "positions"
