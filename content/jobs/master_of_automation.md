@@ -1,6 +1,6 @@
 ---
 title: "Master of Automation"
-description: "Golang, CircleCI, Docker, Cloud"
+description: "Continuous Integration, Docker, Cloud, Golang"
 date: "2016-10-20"
 categories: 
     - "positions"
