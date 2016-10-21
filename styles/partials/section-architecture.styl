@@ -1,0 +1,48 @@
+#section-architecture
+  .section-content
+    display flex
+    flex-flow column
+
+    a.anchor-img
+      text-align center
+      display block
+      margin 0 auto
+      img
+        display block
+        max-height 360px
+        margin 0 auto
+
+    .text
+      border 1px solid dbc
+      background hsla(0,0,0,0.15)
+      p
+        border-bottom 1px dotted dbc
+        padding 0.666*x x
+        &:last-of-type
+          border-bottom none
+
+@media screen and (min-width: 640px)
+  #section-architecture
+    .section-container
+      .section-content
+        flex-flow row
+
+        a.anchor-img
+          margin-right x
+        .text
+          flex 1
+
+@media screen and (min-width: 960px)
+  #section-architecture
+    .section-container
+
+      .section-content
+        max-width 960px
+        display flex
+
+        a.anchor-img
+          padding-right 1.5*x
+
+        .text
+          p
+            padding x 1.5*x

@@ -1,0 +1,112 @@
+.session-logo
+  position absolute
+  top 0
+  left x*3
+  z-index 301
+  border-bottom 4px solid darken(acolor,20%)
+  padding x*0.5 x*0.5 x*0.25
+  background acolor
+  box-shadow darken(mcolor,50%) 0 2px 4px
+  img
+    width x*5
+    height x*5
+
+.session-overlay
+  width 100vw
+  height 100vh
+  position absolute
+  top 0
+  left 0
+  z-index 300
+
+  background darken(mcolor,20%)
+
+  display flex
+  justify-content center
+  align-items center
+  flex-flow column
+
+.session-header
+  color #fff
+  text-align center
+  margin 0 0 x*3
+
+  h1
+    font-weight bold
+    font-size x*5
+    line-height 1.25em
+    color lighten(mcolor,90%)
+    letter-spacing -1px
+  p
+    color lighten(mcolor,40%)
+    font-size x*2.5
+    font-weight 200
+    line-height 1.25em
+
+.session-form, .form-links
+  width x*32
+
+.session-form
+  background mcolor
+  padding x*2 x*2 x*0.5
+  border 1px solid lighten(mcolor,10%)
+  margin 0 0 x*3
+  box-shadow darken(mcolor,50%) 0 2px 4px
+
+  .form-group
+    margin-bottom x*1.5
+
+  input[type=text]
+  input[type=password]
+  input[type=email]
+  input[type=submit]
+    width 100%
+    font-size 1.25*x
+    height x*3
+
+  input[type=text]
+  input[type=password]
+  input[type=email]
+    background darken(mcolor,10%)
+    box-shadow inset 1px 1px 1px darken(mcolor,50%)
+    border-color lighten(mcolor,10%)
+    color lighten(mcolor,85%)
+
+  input[type=submit]
+    display block
+
+  /* WebKit, Blink, Edge */
+  ::-webkit-input-placeholder
+    color link
+
+  /* Mozilla Firefox 4 to 18 */
+  :-moz-placeholder
+    color link
+    opacity 1
+
+  /* Mozilla Firefox 19+ */
+  ::-moz-placeholder
+    color link
+    opacity 1
+
+  /* Internet Explorer 10-11 */
+  :-ms-input-placeholder
+    color link
+
+  /* Standard (https//drafts.csswg.org/selectors-4/#placeholder) */
+  :placeholder-shown
+    color link
+
+.form-links
+  background darken(mcolor,33%)
+  li
+    border-bottom 1px solid mcolor
+    &:last-of-type
+      border-bottom none
+    a
+      display block
+      line-height x*3
+      padding 0 x*2
+      &:hover
+        background darken(mcolor,29%)
+        color lighten(anchor,33%)

@@ -1,0 +1,107 @@
+.input
+input[type=text]
+input[type=password]
+input[type=url]
+input[type=email]
+input[type=search]
+input[type=tel]
+input[type=number]
+input[type=datetime-local]
+textarea
+select
+  border 1px solid bc
+  vertical-align top
+  padding x*0.25 - 1px 0.5em
+
+  line-height x*1.5
+  color txt
+
+  box-shadow inset 1px 1px 1px #eee
+  display block
+
+  // turn off border radius for ios
+  border-radius 0
+
+  &:disabled
+    background hsl(0,0,98%)
+    color light
+    user-select none
+
+.input:focus
+input[type=text]:focus,
+textarea:focus
+  box-shadow 0 0 x*0.5 lighten(mcolor,75%)
+  border-color link
+
+input[type=text]
+input[type=password]
+input[type=url]
+input[type=email]
+input[type=search]
+input[type=tel]
+input[type=number]
+input[type=datetime-local]
+  height 2em
+
+textarea
+  height 12em
+
+/*==============================================================================*/
+// Select
+
+.select-wrapper
+  position relative
+  width 100%
+  &:after
+    display block
+    box-sizing border-box
+    width x*2
+    height x*2
+
+    position absolute
+    top 0
+    right 0
+
+    border 1px solid bc
+    background subtle-gradient
+
+    content '▼'
+    text-align center
+    line-height x*2 - 2px
+    color dim
+
+    pointer-events none
+
+select
+  appearance none
+  border-radius 0
+  width 100%
+  background #fff
+
+
+/*==============================================================================*/
+// Placeholder Text
+
+placeholder-color = #999
+
+/* WebKit, Blink, Edge */
+::-webkit-input-placeholder
+  color placeholder-color
+
+/* Mozilla Firefox 4 to 18 */
+:-moz-placeholder
+  color placeholder-color
+  opacity 1
+
+/* Mozilla Firefox 19+ */
+::-moz-placeholder
+  color placeholder-color
+  opacity 1
+
+/* Internet Explorer 10-11 */
+:-ms-input-placeholder
+  color placeholder-color
+
+/* Standard (https//drafts.csswg.org/selectors-4/#placeholder) */
+:placeholder-shown
+  color placeholder-color

@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TMSP: The Tendermint Socket Protocol &ndash; Tendermint</title>
+  <base href="http://tendermint.com">
+<link rel="canonical" href="http://tendermint.com/blog/tendermint-socket-protocol/">
+<link href="" rel="alternate" type="application/rss+xml" title="Tendermint">
+
+<meta content="on" http-equiv="cleartype" />
+<meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/images/favicon/manifest.json">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" media="screen" href="/styles/screen.css">
+
+
+
+</head>
+
+
+<body id="body-blog">
+  <header id="site-header">
+<a href="/" id="nav-home">
+  <img src="/images/home/tendermint-logo-88-green.jpg" alt="Tendermint logo"/>
+</a>
+<nav>
+  <a id="nav-blog" href="/blog">Blog</a>
+  <a id="nav-media" href="/media">Media</a>
+  <a id="nav-code" href="/code">Code</a>
+  <a id="nav-guide" href="/guide">Guide</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
+  <a id="nav-about" href="/about">About</a>
+</nav>
+</header>
+
+
+  <section id="section-top">
+    <div class="section-container">
+      <h1>TMSP: The Tendermint Socket Protocol</h1>
+      
+      <p>December 19, 2015</p>
+      
+    </div>
+  </section>
+
+  <section class="section-default">
+    <div class="section-container">
+      <div class="section-content">
+        <div class="article-body">
+          
+
+<blockquote>
+<p>After you read this post, don't forget to check out our tutorials!  They also appear at the end of this page.</p>
+
+<ol>
+<li><a href="/tutorials/run-your-first-tmsp-application/">Run your first TMSP application</a></li>
+<li><a href="/tutorials/launch-a-tmsp-testnet/">Launch a TMSP testnet</a></li>
+</ol>
+</blockquote>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>Thus far, all blockchains &ldquo;stacks&rdquo; (such as <a href="https://github.com/bitcoin/bitcoin">Bitcoin</a>) have had a monolithic design.  That is, each blockchain stack is a single program that handles all the concerns of a decentralized ledger; this includes P2P connectivity, the &ldquo;mempool&rdquo; broadcasting of transactions, consensus on the most recent block, account balances, Turing-complete contracts, user-level permissions, etc.</p>
+
+<p>This approach to blockchain development has several problems.  First, creating a new blockchain requires forking an existing blockchain stack, and this comes with the cost of complexity.  First you need to understand all the components of a blockchain stack, even those that aren&rsquo;t directly relevant to the logic of your application.  This is especially true when the codebase is not modular in design and suffers from &ldquo;spaghetti code&rdquo;.</p>
+
+<p>Another problem with this approach is that it limits you to the language of the blockchain stack (or vice versa).  In the case of Ethereum which supports a Turing-complete bytecode virtual-machine, it limits you to languages that compile down to that bytecode; today, those are Serpent and Solidity.</p>
+
+<p>In contrast, our approach is to decouple the consensus engine and P2P layers from the details of the application state of the particular blockchain application.</p>
+
+<h2 id="intro-to-tmsp">Intro to TMSP</h2>
+
+<p><a href="https://github.com/tendermint/tendermint">Tendermint Core</a> (the &ldquo;consensus engine&rdquo;) speaks to the application via a socket protocol called <a href="https://github.com/tendermint/tmsp">TMSP</a>.</p>
+
+<p>To draw an analogy, lets talk about a well-known cryptocurrency, Bitcoin.  Bitcoin is a cryptocurrency blockchain where each node maintains a fully audited Unspent Transaction Output (UTXO) database. If one wanted to create a Bitcoin-like system on top of TMSP, Tendermint Core would be responsible for</p>
+
+<ul>
+<li>Sharing blocks and transactions between nodes</li>
+<li>Establishing a canonical/immutable order of transactions (the blockchain)</li>
+</ul>
+
+<p>The application will be responsible for</p>
+
+<ul>
+<li>Maintaining the UTXO database</li>
+<li>Validating cryptographic signatures of transactions</li>
+<li>Preventing transactions from spending non-existent transactions</li>
+<li>Allowing clients to query the UTXO database.</li>
+</ul>
+
+<p>Tendermint is able to decompose the blockchain design by offering a very simple API between the application process and consensus process.</p>
+
+<p>The API consists of 3 primary message types that get delivered from the core to the application.  The application replies with corresponding response messages.</p>
+
+<p>The messages are specified here: <a href="https://github.com/tendermint/tmsp#message-types">https://github.com/tendermint/tmsp#message-types</a></p>
+
+<p>The <code>AppendTx</code> message is the work horse of the application.  Each transaction in the blockchain is delivered with this message. The application needs to validate each transactions received with the <code>AppendTx</code> message against the current state, application protocol, and the cryptographic credentials of the transaction. A validated transaction then needs to update the application state — by binding a value into a key values store, or by updating the UTXO database.</p>
+
+<p>The <code>CheckTx</code> message is similar to <code>AppendTx</code>, but it&rsquo;s only for validating transactions.  Tendermint Core&rsquo;s mempool first checks the validity of a transaction with <code>CheckTx</code>, and only relays valid transactions to its peers.  Applications may check an incrementing nonce in the transaction and return an error upon <code>CheckTx</code> if the nonce is old.</p>
+
+<p>The <code>Commit</code> message is used to compute a cryptographic commitment to the current application state, to be placed into the next block header. This has some handy properties. Inconsistencies in updating that state will now appear as blockchain forks which catches a whole class of programming errors. This also simplifies the development of secure lightweight clients, as Merkle-hash proofs can be verified by checking against the block hash, and the block hash is signed by a quorum of validators.</p>
+
+<p>There can be multiple TMSP socket connections to an application.  Tendermint Core creates two TMSP connections to the application; one for the validation of transactions when broadcasting in the mempool, and another for the consensus engine to run block proposals.</p>
+
+<p>It&rsquo;s probably evident that applications designers need to very carefully design their message handlers to create a blockchain that does anything useful but this architecture provides a place to start.</p>
+
+<h2 id="a-note-on-determinism">A Note on Determinism</h2>
+
+<p>The logic for blockchain transaction processing must be deterministic.  If the application logic weren&rsquo;t deterministic, consensus would not be reached among the Tendermint Core replica nodes.</p>
+
+<p>Solidity on Ethereum is a great language of choice for blockchain applications because, among other reasons, it is a completely deterministic programming language.  However, it&rsquo;s also possible to create deterministic applications using existing popular languages like Java, C++, Python, or Go.  Game programmers and blockchain developers are already familiar with creating deterministic programs by avoiding sources of non-determinism such as:</p>
+
+<ul>
+<li>random number generators (without deterministic seeding)</li>
+<li>race conditions on threads (or avoiding threads altogether)</li>
+<li>the system clock</li>
+<li>uninitialized memory (in unsafe programming languages like C or C++)</li>
+<li><a href="http://gafferongames.com/networking-for-game-programmers/floating-point-determinism/">floating point arithmetic</a></li>
+<li>language features that are random (e.g. map iteration in Go)</li>
+</ul>
+
+<p>While programmers can avoid non-determinism by being careful, it is also possible to create a special linter or static analyzer for each language to check for determinism.  In the future we may work with partners to create such tools.</p>
+
+<h2 id="tutorials">Tutorials</h2>
+
+<p>Follow these tutorials to quickly get started developing your TMSP application.</p>
+
+<ul>
+<li><a href="/tutorials/run-your-first-tmsp-application/">Run your first TMSP application</a></li>
+<li><a href="/tutorials/launch-a-tmsp-testnet/">Launch a TMSP testnet</a></li>
+</ul>
+
+<h2 id="contributions">Contributions</h2>
+
+<p><em>Many thanks to Zaki Manian for providing the &ldquo;Intro to TMSP&rdquo; section</em></p>
+
+        </div>
+
+        <div class="disqus">
+          <div id="disqus_thread"></div>
+<script>
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+
+s.src = '//tendermint.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a
+href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by
+Disqus.</a></noscript>
+
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+        <div id="article-prev-next">
+  <div class="article-prev-next article-prev">
+    
+      <a  href="http://tendermint.com/blog/tendermint-for-fast-settlement/">
+        <div class="label"><i class="fa fa-angle-left"></i> Prev</div>
+        <div class="title">Tendermint for Fast Settlement</div>
+      </a>
+    
+  </div>
+
+  <div class="article-prev-next article-next">
+    
+      <a href="http://tendermint.com/blog/critique-merkle-dao-democracy/">
+        <div class="label">Next <i class="fa fa-angle-right"></i></div>
+        <div class="title">A Critique of Merkle&#39;s DAO Democracy: Making it Reliable</div>
+      </a>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+  </section>
+
+<section id="section-connections" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Learn more by joining the&nbsp;discussion</h2>
+    </header>
+    <div class="section-content">
+      <ul class="ul-connections">
+        <li>
+          <a href="http://forum.tendermint.com:3000">
+            <h3><i class="fa fa-slick"></i> Slack</h3>
+            <div class="content">
+              <p>Get an invitation to join the discussion on our Slack.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/tendermint_team">
+            <h3><i class="fa fa-twatter"></i> Twitter</h3>
+            <div class="content">
+              <p>Follow <strong>@tendermint_team</strong> on Twitter for our latest updates.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/tendermint/">
+            <h3><i class="fa fa-footbook"></i> Facebook</h3>
+            <div class="content">
+              <p>Like and follow Tendermint on Facebook.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/tendermint">
+            <h3><i class="fa fa-linkedout"></i> LinkedIn</h3>
+            <div class="content">
+              <p>View our profile and connect with us on LinkedIn.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="section-cta" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Stay updated on Tendermint&nbsp;news</h2>
+    </header>
+    <div class="section-content">
+      
+<form action="http://tendermint.us8.list-manage1.com/subscribe/post?u=89d5a312be95ee3f0c9cf7ecd&amp;id=4af1217bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+  <div class="input-group">
+    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email">
+  </div>
+
+  <div class="input-group">
+    <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+      <i class="fa fa-newspaper-o"></i> Subscribe
+    </button>
+  </div>
+
+  
+  <div style="position: absolute; left: -5000px;"><input type="text" name="b_89d5a312be95ee3f0c9cf7ecd_4af1217bca" tabindex="-1" value=""></div>
+</form>
+
+  </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <p class="left">&copy; 2016 Tendermint</p>
+  <p class="right">
+    <a href="mailto:hello@tendermint.com">
+      <i class="fa fa-envelope-o"></i>
+      Contact
+    </a>
+  </p>
+</footer>
+
+<script src="scripts/bundle.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51029217-1', 'tendermint.com');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
+

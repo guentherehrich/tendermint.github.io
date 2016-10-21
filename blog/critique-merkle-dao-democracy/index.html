@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>A Critique of Merkle&#39;s DAO Democracy: Making it Reliable &ndash; Tendermint</title>
+  <base href="http://tendermint.com">
+<link rel="canonical" href="http://tendermint.com/blog/critique-merkle-dao-democracy/">
+<link href="" rel="alternate" type="application/rss+xml" title="Tendermint">
+
+<meta content="on" http-equiv="cleartype" />
+<meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/images/favicon/manifest.json">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" media="screen" href="/styles/screen.css">
+
+
+
+</head>
+
+
+<body id="body-blog">
+  <header id="site-header">
+<a href="/" id="nav-home">
+  <img src="/images/home/tendermint-logo-88-green.jpg" alt="Tendermint logo"/>
+</a>
+<nav>
+  <a id="nav-blog" href="/blog">Blog</a>
+  <a id="nav-media" href="/media">Media</a>
+  <a id="nav-code" href="/code">Code</a>
+  <a id="nav-guide" href="/guide">Guide</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
+  <a id="nav-about" href="/about">About</a>
+</nav>
+</header>
+
+
+  <section id="section-top">
+    <div class="section-container">
+      <h1>A Critique of Merkle&#39;s DAO Democracy: Making it Reliable</h1>
+      
+      <p>June 6, 2016</p>
+      
+    </div>
+  </section>
+
+  <section class="section-default">
+    <div class="section-container">
+      <div class="section-content">
+        <div class="article-body">
+          
+
+<h2 id="merkle-s-new-dao-paper">Merkle&rsquo;s New DAO Paper</h2>
+
+<p>I&rsquo;ve been looking for a paper that criticizes futarchy that specifically
+addresses the thin-market and corresponding manipulation and feedback problems
+that my gut tells me there is.  I haven&rsquo;t found it yet, but I did stumble upon
+what may be a solution to it.</p>
+
+<p><a href="http://merkle.com/papers/DAOdemocracyDraft.pdf">Link to the paper</a></p>
+
+<p>While giving it a proper read, I noticed part way through that it includes a
+section that attempts to address the problem of securing a blockchain ledger
+using prediction markets.</p>
+
+<p>I predict that a general prediction market will find that a PoS system on
+Tendermint will be favored over the BFT validator-set selection system as
+proposed by Merkle.</p>
+
+<blockquote>
+<p>
+Breaking the system requires sneaking past a fully functioning and well financed
+prediction market that is actively looking for any attack and which is running
+as a distributed algorithm on a set of core servers that are fully protected
+from any attack. Any slightest hint of any attack that might actually be
+successful on any core server <b>will result in its immediate removal from the
+pool of core servers</b>, and its replacement with any one of a large number of
+constantly running alternate servers. Any strategy for better protecting the
+core servers, or for better detecting an attack, will be immediately adopted
+(thanks to a prediction market specifically aimed at improving security which is
+constantly evaluating new and better strategies). It will be hard to corrupt
+even a few core servers, let alone half of them. Yet half of them (and possibly
+more) would have to be corrupted before it would even be possible to gain
+control of the system and corrupt the prediction market.
+</p>
+<footer>- Merkle in "DAOs, Democracy and Governance"</footer>
+</blockquote>
+
+<p>The problem with futarchy, which is not the same problem with prediction
+markets, is that in a futarchy, the prediction market is used to make a decision
+that can have arbitrary impact.  In other words, <b>a futarchy is a prediction
+market plus feedback</b>.  In order to have futarchy be a good method of
+governance, not only do <b>you need a good prediction market free of noise by
+virtue of being sufficiently capitalized</b>, <b>you also need to ensure the
+prediction market cannot be manipulated to make a decision that yields an
+undesirable result</b> (but still creates a positive ROI for the manipulator).</p>
+
+<p><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a
+href="https://twitter.com/paulg">@paulg</a> Noise in thin markets?</p>&mdash;
+Bram Cohen (@bramcohen) <a
+href="https://twitter.com/bramcohen/status/739261628303081472">June 5,
+2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>I think the first part of Merkle&rsquo;s paper addresses this problem by giving each
+person a vote of 0 to 1, assuming that bribing attacks can be mitigated.  But
+the section entitled &ldquo;Making it Reliable&rdquo; which uses the prediction market to
+decide on the validator set, does not prevent manipulation.</p>
+
+<p>First, Merkle&rsquo;s proposal makes it impossible to determine the true outcome of
+the fitness of a validator, because the outcome of the prediction market that
+assesses the fitness of the validator makes a decision to remove that validator
+from the validator set if it is deemed insecure.  <b>Once you make a decision to
+remove a validator, you&rsquo;ve removed the incentive for that validator to perform
+correctly at all</b> &ndash; at least if you want financially sustainable blockchain
+security.  To secure a validator requires investment in internet/power/compute
+infrastructure, to invest in good op-sec, to pay the bills and salaries, etc.  A
+financially sustainable blockchain should only compensate those validators that
+have a reasonable expectation of being secure, and if the prediction market says
+otherwise, it should not be compensated.</p>
+
+<p>Well, if you dis-incentivize a validator, it will fail, so letting the
+prediction market dictate whether a validator should be allowed membership in
+the validator-set of a blockchain opens it up to arbitrary feedback, and thus
+manipulation.</p>
+
+<p>Second, a secure validator shouldn&rsquo;t be leaking much information about its
+weaknesses for the prediction market to make judgements on.  Security in
+validating is about operational-security of human resources, of source-code, of
+compute hardware, and of internet/power reliability.  The best judge of one&rsquo;s
+ability should be oneself &ndash; if a validator has resources to invest in either
+improving its operational-security or bonding more stake, it should be able to
+make the best judgement about where to allocate capital.  Meanwhile, it should
+invest in preventing any information leaks about its weaknesses to the public!</p>
+
+<p>Likely, any vulnerability in a mature validator-set will be ones that were
+difficult to detect, like a needle in a haystack.  The validators are their own
+best predictors of their own vulnerabilities, if additional stake can be
+purchased in the market.</p>
+
+<p>Fortunately, I think we can use the prediction market to help make blockchains
+reliable.  You can make a prediction market based on the high-level
+operational-security strategy choices made by validators (such as the
+operating-system used, etc), if any such information can be compelled to be
+truthfully published, and use the outcome of the prediction market to tweak the
+relative sizes of quorums of the disparate strategies &ndash; and otherwise let the
+strategies play out unless proven inferior.  This minimizes the effect of the
+decision swaying the measured outcome.</p>
+
+<p>Could you also use the prediction market to practically decide on the overall
+consensus strategy?  Maybe, if the prediction were about the security of the
+blockchain as a whole, and that prediction weren&rsquo;t used to make any decisions
+that might impact the incentive structure of the blockchain once the consensus
+strategy is chosen. In other words, I think we just need to experiment with
+self-incentivized blockchains.</p>
+
+        </div>
+
+        <div class="disqus">
+          <div id="disqus_thread"></div>
+<script>
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+
+s.src = '//tendermint.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a
+href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by
+Disqus.</a></noscript>
+
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+        <div id="article-prev-next">
+  <div class="article-prev-next article-prev">
+    
+      <a  href="http://tendermint.com/blog/tendermint-socket-protocol/">
+        <div class="label"><i class="fa fa-angle-left"></i> Prev</div>
+        <div class="title">TMSP: The Tendermint Socket Protocol</div>
+      </a>
+    
+  </div>
+
+  <div class="article-prev-next article-next">
+    
+      <a href="http://tendermint.com/blog/on-thedao-and-blockchain-governance/">
+        <div class="label">Next <i class="fa fa-angle-right"></i></div>
+        <div class="title">On TheDAO and Proof-of-Stake Governance</div>
+      </a>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+  </section>
+
+<section id="section-connections" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Learn more by joining the&nbsp;discussion</h2>
+    </header>
+    <div class="section-content">
+      <ul class="ul-connections">
+        <li>
+          <a href="http://forum.tendermint.com:3000">
+            <h3><i class="fa fa-slick"></i> Slack</h3>
+            <div class="content">
+              <p>Get an invitation to join the discussion on our Slack.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/tendermint_team">
+            <h3><i class="fa fa-twatter"></i> Twitter</h3>
+            <div class="content">
+              <p>Follow <strong>@tendermint_team</strong> on Twitter for our latest updates.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/tendermint/">
+            <h3><i class="fa fa-footbook"></i> Facebook</h3>
+            <div class="content">
+              <p>Like and follow Tendermint on Facebook.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/tendermint">
+            <h3><i class="fa fa-linkedout"></i> LinkedIn</h3>
+            <div class="content">
+              <p>View our profile and connect with us on LinkedIn.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="section-cta" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Stay updated on Tendermint&nbsp;news</h2>
+    </header>
+    <div class="section-content">
+      
+<form action="http://tendermint.us8.list-manage1.com/subscribe/post?u=89d5a312be95ee3f0c9cf7ecd&amp;id=4af1217bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+  <div class="input-group">
+    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email">
+  </div>
+
+  <div class="input-group">
+    <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+      <i class="fa fa-newspaper-o"></i> Subscribe
+    </button>
+  </div>
+
+  
+  <div style="position: absolute; left: -5000px;"><input type="text" name="b_89d5a312be95ee3f0c9cf7ecd_4af1217bca" tabindex="-1" value=""></div>
+</form>
+
+  </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <p class="left">&copy; 2016 Tendermint</p>
+  <p class="right">
+    <a href="mailto:hello@tendermint.com">
+      <i class="fa fa-envelope-o"></i>
+      Contact
+    </a>
+  </p>
+</footer>
+
+<script src="scripts/bundle.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51029217-1', 'tendermint.com');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
+

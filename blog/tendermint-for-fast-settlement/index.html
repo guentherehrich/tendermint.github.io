@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tendermint for Fast Settlement &ndash; Tendermint</title>
+  <base href="http://tendermint.com">
+<link rel="canonical" href="http://tendermint.com/blog/tendermint-for-fast-settlement/">
+<link href="" rel="alternate" type="application/rss+xml" title="Tendermint">
+
+<meta content="on" http-equiv="cleartype" />
+<meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/images/favicon/manifest.json">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" media="screen" href="/styles/screen.css">
+
+
+
+</head>
+
+
+<body id="body-blog">
+  <header id="site-header">
+<a href="/" id="nav-home">
+  <img src="/images/home/tendermint-logo-88-green.jpg" alt="Tendermint logo"/>
+</a>
+<nav>
+  <a id="nav-blog" href="/blog">Blog</a>
+  <a id="nav-media" href="/media">Media</a>
+  <a id="nav-code" href="/code">Code</a>
+  <a id="nav-guide" href="/guide">Guide</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
+  <a id="nav-about" href="/about">About</a>
+</nav>
+</header>
+
+
+  <section id="section-top">
+    <div class="section-container">
+      <h1>Tendermint for Fast Settlement</h1>
+      
+      <p>October 3, 2015</p>
+      
+    </div>
+  </section>
+
+  <section class="section-default">
+    <div class="section-container">
+      <div class="section-content">
+        <div class="article-body">
+          
+
+<p>Some experts in the nascent blockchain industry have said the following:</p>
+
+<ul>
+<li>The blockchain is just a database_</li>
+<li><em>Blockchains don’t help with fast settlement</em></li>
+<li><em>The future of finance on the blockchain may not involve consensus</em></li>
+<li><em>You can build on top of the Bitcoin blockchain for fast settlement</em></li>
+</ul>
+
+<p>This short post will address these statements and paint a different picture.</p>
+
+<h3 id="clearing-and-settlement-woes">Clearing and settlement woes</h3>
+
+<p>Clearing and settlement are separate but related terms.  The source of the differences stems from the significant duration of time (on the order of days) for the delivery of assets (e.g. paper certificates used to take over a week to deliver by courier).  A clearinghouse provides faster settlement between two trading parties by acting as the counterparty for both.</p>
+
+<p>So, it isn&rsquo;t the clearing that is slow. Part of the purpose of clearing is to mitigate the slowness of settlement.  The reason why we don&rsquo;t have fast settlement is because &ldquo;Current banking databases are disparate and therefore require reconciliation between each other.&rdquo;, and, &ldquo;the existence of [3rd party] consortia &hellip; prevented banking systems from evolving, because there was no incentive for a single bank to create a better system outside of the consortia&rdquo;  (<a href="https://medium.com/design-matters-4/blockchains-and-banks-cef72f0fcf29">source</a>).  To solve the problem of reconciliation, we need a common ledger and platform.</p>
+
+<p>Once we have a common ledger, we can think about tradeoffs between security and settlement speed.  When settlement becomes fast on the order of seconds, human intermediation becomes difficult, which in turn means that we need the system to be as fault tolerant as possible.</p>
+
+<h3 id="the-source-of-bitcoin-s-security">The source of Bitcoin’s security</h3>
+
+<p>Bitcoin and Bitcoin’s proof-of-work (PoW) mining, or Nakamoto consensus, provides something that until 2008 had never existed before.  Bitcoin was the first open decentralized application to provide Byzantine fault-tolerant (BFT) consensus on a global currency ledger.  Nakamoto consensus is a novel BFT consensus algorithm that utilizes computational power as a proxy for membership.</p>
+
+<p>The security of Nakamoto consensus depends on extrinsic factors such as the availability of energy and access to semiconductor fabs.  Ignoring these factors, the security of Nakamoto consensus can be modeled by the makeup and diversity of the mining network.  The more diverse the mining participants, the more difficult it is to coordinate a sufficiently large coalition to successfully attack the network and cause double-spends. If we discount the difficulty of coordination (which may be prudent considering that major mining pools communicate with each other routinely), what’s left is the opportunity cost of producing blockchain forks&ndash;just 25 bitcoins per block at today’s inflationary reward schedule.</p>
+
+<p>The Bitcoin blockchain does help with settlement in that it provides a BFT ledger.  The problem is that Nakamoto consensus is slow and expensive, as its security is only proportional to the cumulative sum of energy burned over time.</p>
+
+<h3 id="classical-bft-enables-additive-security">Classical BFT enables additive security</h3>
+
+<p>Classical BFT consensus algorithms don’t rely on the opportunity cost of energy expenditure for security.  They use pseudonymous identities and cryptographic signatures to ensure that a sufficient quorum of participants approve of new transactions before they are committed.  These algorithms had been around since the 70’s and 80’s, and culminated in 1999 with the renowned PBFT algorithm.  Existing PBFT solutions are difficult to use or incomplete (<a href="http://arxiv.org/abs/1110.4854">source</a>), so there is a need for a new free and open-source implementation.  Tendermint is such an open-source implementation of the PBFT consensus protocol (see <a href="http://tendermint.com/posts/tendermint-vs-pbft/">explanation</a>).  Tendermint can commit blocks to finality on a global ledger with hundreds of validators on the order of seconds.</p>
+
+<p>Unlike Nakamoto consensus, there is no extrinsic opportunity cost for signing conflicting blocks on the blockchain, since cryptographic signatures are practically free. Instead, we can design classical BFT consensus protocols to be <em>accountable</em>; that is, <strong>when the blockchain is forked, we can review the signatures and determine which participants caused the fork to happen</strong>.  If we combine this BFT accountability with the concept of collateral, we get something that I’m calling <em>additive-security</em>.  Each individual participant of the BFT consensus process might only post a small amount of collateral (limited by their confidence in ability to secure their hardware and software), but <strong>the total effective collateral can be large</strong>.  For example, if there are 1000 validators that each post $1M worth of collateral, a double-spend attack would cost attackers at minimum $333M dollars ($1M × 1000 × ⅓).  By the way, we can increase the minimum fraction of collateral at stake (beyond ⅓) by requiring a larger quorum of validators to commit each block.</p>
+
+<p>A consortium of banks could run a Tendermint blockchain where the validators are publicly identified.  Each validator can post collateral secured by legal contracts with real assets held in escrow by each other, and/or with tokens intrinsic to the blockchain.  Each validator on such a blockchain network would secure their public/private key to the best of their ability.  To mitigate the risk of accidents and hacks, each validator keypair can be derived from multiple keypairs that produce signatures jointly using a cryptographic threshold signature scheme;  in effect, each validator node would be running a BGA consensus network recursively for additional security.  Tendermint validators uses the Ed25519 Schnorr signature scheme because it supports cryptographic threshold signatures (<a href="http://cacr.uwaterloo.ca/techreports/2001/corr2001-13.ps">source</a>).  I&rsquo;ll write more about this in a future post, but for now lets just say that, under this scheme, a single bank with a single effective public key on the main ledger could reasonably post billions of dollars in collateral.</p>
+
+<p>For public permissionless blockchains, Nielsen&rsquo;s law of internet bandwidth is at play.  If we naively assume that doubling the number of validators requires four times the bandwidth, and that bandwidth doubles every two years, every four years a public blockchain can support twice as many validators (thus naively twice as much collateral) and still commit blocks at the same speed.  I bet we can do better.</p>
+
+<h2 id="fin">Fin</h2>
+
+<p>With publicly identified Tendermint validators with collateral at risk, we can have a shared decentralized ledger that offers fast settlement.  This is a novel concept and one that has the potential to change the nature of banking itself.</p>
+
+        </div>
+
+        <div class="disqus">
+          <div id="disqus_thread"></div>
+<script>
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+
+s.src = '//tendermint.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a
+href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by
+Disqus.</a></noscript>
+
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+        <div id="article-prev-next">
+  <div class="article-prev-next article-prev">
+    
+      <a  href="http://tendermint.com/blog/tendermint-vs-pbft/">
+        <div class="label"><i class="fa fa-angle-left"></i> Prev</div>
+        <div class="title">Tendermint vs PBFT</div>
+      </a>
+    
+  </div>
+
+  <div class="article-prev-next article-next">
+    
+      <a href="http://tendermint.com/blog/tendermint-socket-protocol/">
+        <div class="label">Next <i class="fa fa-angle-right"></i></div>
+        <div class="title">TMSP: The Tendermint Socket Protocol</div>
+      </a>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+  </section>
+
+<section id="section-connections" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Learn more by joining the&nbsp;discussion</h2>
+    </header>
+    <div class="section-content">
+      <ul class="ul-connections">
+        <li>
+          <a href="http://forum.tendermint.com:3000">
+            <h3><i class="fa fa-slick"></i> Slack</h3>
+            <div class="content">
+              <p>Get an invitation to join the discussion on our Slack.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/tendermint_team">
+            <h3><i class="fa fa-twatter"></i> Twitter</h3>
+            <div class="content">
+              <p>Follow <strong>@tendermint_team</strong> on Twitter for our latest updates.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/tendermint/">
+            <h3><i class="fa fa-footbook"></i> Facebook</h3>
+            <div class="content">
+              <p>Like and follow Tendermint on Facebook.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/tendermint">
+            <h3><i class="fa fa-linkedout"></i> LinkedIn</h3>
+            <div class="content">
+              <p>View our profile and connect with us on LinkedIn.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="section-cta" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Stay updated on Tendermint&nbsp;news</h2>
+    </header>
+    <div class="section-content">
+      
+<form action="http://tendermint.us8.list-manage1.com/subscribe/post?u=89d5a312be95ee3f0c9cf7ecd&amp;id=4af1217bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+  <div class="input-group">
+    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email">
+  </div>
+
+  <div class="input-group">
+    <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+      <i class="fa fa-newspaper-o"></i> Subscribe
+    </button>
+  </div>
+
+  
+  <div style="position: absolute; left: -5000px;"><input type="text" name="b_89d5a312be95ee3f0c9cf7ecd_4af1217bca" tabindex="-1" value=""></div>
+</form>
+
+  </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <p class="left">&copy; 2016 Tendermint</p>
+  <p class="right">
+    <a href="mailto:hello@tendermint.com">
+      <i class="fa fa-envelope-o"></i>
+      Contact
+    </a>
+  </p>
+</footer>
+
+<script src="scripts/bundle.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51029217-1', 'tendermint.com');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
+

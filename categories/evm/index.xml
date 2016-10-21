@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/evm/index.xml</link>
+    <description>Recent content on Tendermint</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://tendermint.com/categories/evm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Cases for Tendermint</title>
+      <link>http://tendermint.com/blog/cases-for-tendermint/</link>
+      <pubDate>Sun, 13 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/blog/cases-for-tendermint/</guid>
+      <description>
+
+&lt;p&gt;You may have an application that benefits from blockchain technology, and you may be trying to figure out whether to build that on Bitcoin, some meta-coin protocol like Counterparty, with Solidity/Serpent on the Ethereum virtual machine, or on a new blockchain stack altogether.  Actually, you should seriously consider building on Tendermint.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-little-background-on-tendermint&#34;&gt;A little background on Tendermint&lt;/h2&gt;
+
+&lt;p&gt;Tendermint is not a fork of Bitcoin, NXT, Ripple, or Ethereum.  Tendermint is its own blockchain stack written from the ground up.  It was built to be the base blockchain stack from which to fork off of for a wide variety of decentralized applications.  It started back in 2014 as an ambitious project to solve the Bitcoin mining problem and bring real Byzantine fault-tolerant consensus to cryptocurrencies.  First we adapted an existing BGA consensus algorithm to make it suitable for blockchains.  For the actual implementation we considered forking Bitcoin, NXT, BitShares, and other projects, but none could easily accommodate the desired project architecture.  So, a brand spanking new blockchain stack was born.&lt;/p&gt;
+
+&lt;p&gt;Tendermint offers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Byzantine fault-tolerant consensus with unparalleled speed and security guarantees &amp;ndash; without mining. &lt;a href=&#34;https://github.com/tendermint/tendermint/wiki/Byzantine-Consensus-Algorithm&#34;&gt;(see spec)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A very clean codebase with clear separation of concerns &amp;ndash; no spaghetti, thanks Golang!&lt;/li&gt;
+&lt;li&gt;Throttled/fair P2P stack to handle multiplexed channels of communication.&lt;/li&gt;
+&lt;li&gt;Clear P2P logic with the &lt;a href=&#34;https://en.wikipedia.org/wiki/Reactor_pattern&#34;&gt;reactor pattern&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On top of this foundation, we&amp;rsquo;ve built more advanced blockchain features.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A compatible and efficient Ethereum VM implementation&lt;/li&gt;
+&lt;li&gt;A permissions system that works across accounts and VM contracts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We&amp;rsquo;re going to build more exciting features going forward, except this time we&amp;rsquo;ll blog about it while we do it, so hang on to your metaphorical horses.&lt;/p&gt;
+
+&lt;h2 id=&#34;on-tendermint-consensus&#34;&gt;On Tendermint consensus&lt;/h2&gt;
+
+&lt;p&gt;The consensus system is the foundational layer of any blockchain stack. It is the process by which all of the transaction validators (equivalent to miners in Bitcoin) agree on the state of the network.  Improvements in speed, security, and cost of a consensus system ripple up and improve the performance of any network or application built on top of it.  Let&amp;rsquo;s dive into some examples to get a sense of how it works.&lt;/p&gt;
+
+&lt;h3 id=&#34;case-1-payment-verification&#34;&gt;Case 1: Payment verification&lt;/h3&gt;
+
+&lt;p&gt;Say that your mobile phone is connected to untrusted wifi, and you&amp;rsquo;re making a business deal with Satoshi.  Satoshi just sent you a large payment, and you need to verify that this payment was committed onto the blockchain network irreversibly.&lt;/p&gt;
+
+&lt;p&gt;With Bitcoin, you generally need to wait up to 6 confirmation blocks (about 1 hour, sometimes longer) to consider a transaction fully committed.  For very large payment transactions you should wait even longer, because the security afforded by the blockchain miners is no greater than the cost of double-spending that transaction, which is today only about 25 Bitcoins per reverted block, and soon to be half of that.&lt;/p&gt;
+
+&lt;p&gt;With Tendermint, a global network of 1000 independent validators can commit a transaction in less than 60 seconds.  The time required to commit only gets shorter with increased bandwidth and computational capacity of the nodes of the network.  In the near future we&amp;rsquo;ll be able to commit transactions on a global Tendermint blockchain with more than 1000 validators in a matter of seconds &amp;ndash; the only real limitation is the time it takes for light to travel around the globe.&lt;/p&gt;
+
+&lt;h3 id=&#34;case-2-name-registry-lookup&#34;&gt;Case 2: Name registry lookup&lt;/h3&gt;
+
+&lt;p&gt;Similar to case 1, but instead of verifying a payment, you need to verify Satoshi&amp;rsquo;s public key as registered under the name &amp;ldquo;@satoshi&amp;rdquo; on a name-registry blockchain.  The difference here as compared to case 1 is that instead of verifying a new transaction, you&amp;rsquo;re verifying the current value of a pre-registered key that may have been changed by other transactions.&lt;/p&gt;
+
+&lt;p&gt;With Bitcoin (and Namecoin), you can verify that &amp;ldquo;@satoshi&amp;rdquo; was registered with a particular public key at some point in the past, but you wouldn&amp;rsquo;t know whether the public key had since been updated without downloading the whole blockchain.  This is because the presence of a name-registration transaction in the blockchain does not imply that later transactions hadn&amp;rsquo;t updated the value for that key.  In order for you to efficiently check for the current value of a name, the blockchain should support a balanced Merkle tree on the most recent name-registry state.  Even if Bitcoin/Namecoin did support such a data structure, you would still have to download and verify all the blockchain hashes and headers, and if the value might have been updated recently you&amp;rsquo;re still vulnerable to a fork-censorship attack.&lt;/p&gt;
+
+&lt;p&gt;With Tendermint, all you need is the most recent blockhash signed by more than &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;3&lt;/sub&gt; of the validators, and a Merkle proof that proves the current value associated with the name &amp;ldquo;@satoshi&amp;rdquo;.  You don&amp;rsquo;t even need to wait for a single commit.  If you&amp;rsquo;re interested, see &lt;a href=&#34;https://github.com/tendermint/tendermint/wiki/Merkle-Trees#iavl-tree&#34;&gt;this link&lt;/a&gt; for more information on our balanced binary Merkle tree implementation.&lt;/p&gt;
+
+&lt;p&gt;In future posts I&amp;rsquo;ll go into detail about the consensus algorithm and how it can provide these unique speed &amp;amp; security guarantees without proof-of-work mining.  For now, you can check the most recent Tendermint spec on the github wiki &lt;a href=&#34;https://github.com/tendermint/tendermint/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;tendermint-architecture&#34;&gt;Tendermint architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tendermint.com/images/tm_architecture.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The diagram above is meant to show that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the consensus and transaction-execution (aka state-transition) modules are separate except for the shared (immutable/Merkle-ized) state.&lt;/li&gt;
+&lt;li&gt;the consensus module takes a block, a commit for the block, and the last state, and uses the transaction-execution module to produce the next state.&lt;/li&gt;
+&lt;li&gt;the VM call transaction is one of many transaction types offered by the transaction-execution module.&lt;/li&gt;
+&lt;li&gt;the Ethereum VM (EVM) is only one of potentially many supported virtual machines.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have a blockchain application in mind, on Tendermint there are two options to consider &amp;ndash; a smart contract on the Ethereum VM (and in the future, other VMs as well), or, a native transaction type (like SendTx or NameTx above).&lt;/p&gt;
+
+&lt;h2 id=&#34;whether-to-develop-a-vm-smart-contract-or-develop-a-native-tendermint-contract&#34;&gt;Whether to develop a VM smart contract or develop a native Tendermint contract&lt;/h2&gt;
+
+&lt;p&gt;The main benefit of a Turing-complete VM on a blockchain is that anyone can upload new contract logic onto the blockchain.  This is especially true on big-bad-public-blockchains (BBPB) like Bitcoin or Ethereum which were designed to allow anyone to upload new contract logic.  On the other hand, private blockchains and consortium blockchains that are more tightly managed may not need or even want arbitrary user-defined logic.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, writing an EVM contract is the right answer.  Use the EVM if you need to deploy the contract on a public blockchain such as Ethereum.  Use the EVM if you don&amp;rsquo;t have systems programming experience, and you find that writing a solidity contract is easier than writing in Golang.  Use the EVM if your contract-logic is simple enough that you wouldn&amp;rsquo;t mind stepping over bytecode execution to debug your contract.&lt;/p&gt;
+
+&lt;p&gt;For other applications where the former exceptions don&amp;rsquo;t apply, you probably want to write native code on Tendermint for a variety of reasons &amp;ndash; Golang&amp;rsquo;s language tooling is better so debugging is easier, it&amp;rsquo;s computationally more efficient by far, and it removes two complex layers (one for the bytecode compiled language, and one for the VM itself).  If you want full control over your Merkle-ized data structures (e.g. without the 32-by-32-byte restriction of the EVM&amp;rsquo;s Patricia-trie) then you have to write your contract logic at the native level.  Tendermint provides you with the right tools to make this as easy as possible.&lt;/p&gt;
+
+&lt;h2 id=&#34;fin&#34;&gt;Fin&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go to &lt;a href=&#34;http://tendermint.com&#34;&gt;http://tendermint.com&lt;/a&gt; and sign up for the newsletter.&lt;/li&gt;
+&lt;li&gt;Check out the &lt;a href=&#34;https://github.com/tendermint/tendermint/wiki&#34;&gt;Tendermint wiki&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Develop on Tendermint.&lt;/li&gt;
+&lt;li&gt;Email us at hello@tendermint.com with your full name to join our Slack channel.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

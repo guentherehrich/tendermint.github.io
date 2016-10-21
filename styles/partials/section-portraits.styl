@@ -1,0 +1,85 @@
+.section-portraits
+  .section-container
+    padding-left 0
+    padding-right 0
+
+  .section-content
+    max-width 60*x
+    padding 0 0.5*x
+
+    display flex
+    flex-flow wrap
+    justify-content center
+
+  .portrait
+    flex 0 0 50%
+    padding 0.5*x 0.5*x x
+    max-width 14*x
+
+  img
+    width 100%
+    border 1px solid bc
+    padding 0.25*x
+    vertical-align top
+    display block
+
+  .label
+    text-align center
+
+  a.twitter
+    display block
+    padding 0.333*x 0
+    border 1px solid #fff
+
+    .name
+      font-weight 600
+      color txt
+
+    .handle
+      color light
+      font-size 0.75*x
+
+
+    &:hover
+      .name
+        color link
+      .handle
+        color lighten(link,50%)
+
+  .title
+    border-top 1px dotted bc
+    padding-top 0.333*x
+    font-size 0.75*x
+
+
+@media screen and (min-width: 360px)
+  .section-portraits
+    a.twitter
+      padding 0.5*x 0
+
+    .title
+      padding-top 0.5*x
+
+@media screen and (min-width: 720px)
+  .section-portraits
+    .portrait
+      flex 0 0 25%
+      max-width 18*x
+
+    a.twitter
+      margin 0.25*x 0
+      &:hover
+        background lighten(mcolor,95%)
+        border-color lighten(link,50%)
+
+@media screen and (min-width: 1024px)
+  .section-portraits
+    a.twitter
+      padding 0.666*x 0
+      .name
+        font-size 1.125*x
+      .handle
+        font-size 0.85*x
+    .title
+      padding-top 0.666*x
+      font-size 0.85*x

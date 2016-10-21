@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tendermint vs PBFT &ndash; Tendermint</title>
+  <base href="http://tendermint.com">
+<link rel="canonical" href="http://tendermint.com/blog/tendermint-vs-pbft/">
+<link href="" rel="alternate" type="application/rss+xml" title="Tendermint">
+
+<meta content="on" http-equiv="cleartype" />
+<meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/images/favicon/manifest.json">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" media="screen" href="/styles/screen.css">
+
+
+
+</head>
+
+
+<body id="body-blog">
+  <header id="site-header">
+<a href="/" id="nav-home">
+  <img src="/images/home/tendermint-logo-88-green.jpg" alt="Tendermint logo"/>
+</a>
+<nav>
+  <a id="nav-blog" href="/blog">Blog</a>
+  <a id="nav-media" href="/media">Media</a>
+  <a id="nav-code" href="/code">Code</a>
+  <a id="nav-guide" href="/guide">Guide</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
+  <a id="nav-about" href="/about">About</a>
+</nav>
+</header>
+
+
+  <section id="section-top">
+    <div class="section-container">
+      <h1>Tendermint vs PBFT</h1>
+      
+      <p>October 3, 2015</p>
+      
+    </div>
+  </section>
+
+  <section class="section-default">
+    <div class="section-container">
+      <div class="section-content">
+        <div class="article-body">
+          
+
+<p>Tendermint was originally inspired by the DLS algorithm (<a href="http://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf">link</a>).  After several iterations to improve efficiency, (namely, making it more asynchronous), it has become quite similar to the PBFT algorithm (<a href="http://www.pmg.lcs.mit.edu/papers/osdi99.pdf">link</a>).  This document serves to illustrate the similarities and differences between Tendermint and PBFT.</p>
+
+<table>
+<thead>
+<tr>
+<th>Tendermint</th>
+<th>PBFT</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>proposer</td>
+<td>primary</td>
+</tr>
+
+<tr>
+<td>validator</td>
+<td>replica</td>
+</tr>
+
+<tr>
+<td>propose step</td>
+<td>pre-prepare phase</td>
+</tr>
+
+<tr>
+<td>prevote step</td>
+<td>prepare phase</td>
+</tr>
+
+<tr>
+<td>precommit step</td>
+<td>commit phase</td>
+</tr>
+
+<tr>
+<td>round change</td>
+<td>view change</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>terminology comparison between Tendermint and PBFT</em></p>
+
+<h2 id="byzantine-fault-tolerance">Byzantine fault tolerance</h2>
+
+<p>Both PBFT and Tendermint are Byzantine fault-tolerant transaction systems.  Both can handle up to ⅓ of malicious Byzantine validators/replicas.  Both require three steps/phases;  the first for broadcasting the block, and the last two for broadcasting signatures.  Finally, both require two quorums of signatures to commit a block.</p>
+
+<p>Where the two differ is in what happens when more than ⅓ of validators are Byzantine.  In PBFT, when there are between ⅓ and ⅔ of Byzantine validators, no guarantees are provided whatsoever; the attackers can return arbitrary results to the client (<a href="https://www.usenix.org/conference/nsdi-07/beyond-one-third-faulty-replicas-byzantine-fault-tolerant-systems">source</a>).  Tendermint’s consensus model considers a block to be committed when there are more than ⅔ of precommit signatures for the blockhash, which mitigates this issue.   Thus if ½ of the validators are Byzantine they can prevent future blocks from being committed; however, they cannot commit new blocks like they can in PBFT.</p>
+
+<h2 id="round-robin-vs-sticky-leaders">Round-robin vs sticky leaders</h2>
+
+<p>PBFT&rsquo;s whitepaper, which was the inspiration for Hyperledger, illustrates a &ldquo;sticky&rdquo; leader (a.k.a. primary/proposer) system.  Tendermint&rsquo;s specification describes a round-robin scheme for selecting new leaders for every block.</p>
+
+<p>In some scenarios, the sticky-leader approach has an advantage over the round-robin approach; the throughput in transactions-per-second is higher with sticky-leaders because the leader doesn&rsquo;t have to wait for block confirmations before proposing the next block.  On the other hand, the round-robin approach has the benefit that leaders are continuously tested (preventing possible cascading failures), and the power to re-order transactions is shared equally among the participants.</p>
+
+<p>We don&rsquo;t have to pick one solution; we can combine the two approaches into a hybrid scheme.  Fortunately, making this change is straightforward in Tendermint, so it&rsquo;s easy to configure it for any purpose.</p>
+
+<h2 id="dynamic-membership">Dynamic membership</h2>
+
+<p>The PBFT algorithm assumes a fixed set of replicas/validators in the network.  This may work for internal systems, but it doesn&rsquo;t work for &ldquo;consortium&rdquo; or &ldquo;public&rdquo; blockchains where the participants are expected to change over time.  Tendermint supports dynamic membership safely by requiring a +⅔ quorum of validators to approve of membership changes.  The reference implementation allows anyone to post a bond collateral (with intrinsic coins), but other variations are possible (especially when combined with our permissions framework).  For example, Tendermint could be easily modified to reject new members by default, and only approve new members that have been whitelisted (perhaps by an independent third party).</p>
+
+<h2 id="epidemic-gossip-vs-point-to-point">Epidemic gossip vs point-to-point</h2>
+
+<p>The PBFT algorithm illustrates a point-to-point consensus algorithm, which is simpler but is less robust to disruptions in the network.  Tendermint&rsquo;s implementation uses an epidemic gossip protocol to ensure that consensus can be reached as long as the network is connected, no matter how many point-to-point edge connections have been broken.</p>
+
+<h2 id="block-propagation-optimizations">Block propagation optimizations</h2>
+
+<p>Tendermint goes a step further than PBFT and implements a BitTorrent/LibSwift-inspired algorithm to quickly broadcast transaction blocks.  This makes the most out of limited available bandwidth to commit transactions sooner.</p>
+
+<p>See <a href="http://www.ict.kth.se/courses/ID2210/presentation-papers/2012%20-%20Performance%20Analysis%20of%20Libswift.pdf"><em>Performance Analysis of the Libswift P2P Streaming Protocol</em></a> for details on how LibSwift fares in “flashcrowd” scenarios, which is similar to new block propagations in Tendermint.</p>
+
+<h2 id="self-balancing-merkle-trees">Self-balancing Merkle trees</h2>
+
+<p>PBFT and its implementation (the BFS filesystem) doesn&rsquo;t provide much by way of useful data structures.  Tendermint ships with a self-balancing Merkle tree library which can be used to keep track of application data (e.g. account balances) and prove any part of the application state to a client (with a Merkle proof and quorum of signatures).  Of course, it&rsquo;s not necessary to use such a data structure if you need to build a blockchain that can handle a million transactions per second &ndash; for that, you should combine Tendermint with an LMAX &ldquo;disruptor&rdquo; (<a href="http://martinfowler.com/articles/lmax.html">source</a>) to process all transactions in memory.</p>
+
+<p>The self-balancing Merkle tree data structure also comes in handy when implementing a parallel-blockchain architecture.  Since the logic for light-client verification of application state is so cheap, efficient, and safe<sup>*</sup>, the same logic can be used for nodes and validators to keep track of the application state in foreign blockchains.</p>
+
+<h2 id="fin">Fin</h2>
+
+<p>Though Tendermint was developed independently from PBFT, both algorithms share more than a few similarities. Both algorithms attempt to approach optimality in fault tolerance and performance.  Given the similarities, developers wishing to build BFT systems should consider building on Tendermint, which is furthest ahead at meeting the requirements laid out in this paper about PBFT:</p>
+
+<blockquote>
+“Interestingly, we may find that the current BFT debate may evolve to resemble the microkernel debate, with one camp advocating that the BFT concept is ultimately impractical for real-world applications and the other camp advocating that it is not the concept that is impractical/faulty, but it is the implementation that is impractical/faulty. Building a complete implementation that supports a real application for a long duration rather than for the length of time it takes to build and test a prototype implementation, that does not cut corners, that is not missing features, that does not make optimizations that break down in corner cases, that can be applied to more than one application, and that has good performance will go a long way to settling the debate. A tall order, for sure.”
+</blockquote>
+
+<p><cite><a href="http://arxiv.org/pdf/1110.4854.pdf"><em>On the Practicality of Byzantine Fault Tolerance</em></a>, 2011</cite></p>
+
+<p><sup>*</sup> <em>This isn’t completely implemented yet.  The Merkle proof logic is implemented, but we still need to implement a data structure to communicate validator set changes to clients, and ideally client code in Javascript as a demo.</em></p>
+
+        </div>
+
+        <div class="disqus">
+          <div id="disqus_thread"></div>
+<script>
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+
+s.src = '//tendermint.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a
+href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by
+Disqus.</a></noscript>
+
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+        <div id="article-prev-next">
+  <div class="article-prev-next article-prev">
+    
+      <a  href="http://tendermint.com/blog/cases-for-tendermint/">
+        <div class="label"><i class="fa fa-angle-left"></i> Prev</div>
+        <div class="title">Cases for Tendermint</div>
+      </a>
+    
+  </div>
+
+  <div class="article-prev-next article-next">
+    
+      <a href="http://tendermint.com/blog/tendermint-for-fast-settlement/">
+        <div class="label">Next <i class="fa fa-angle-right"></i></div>
+        <div class="title">Tendermint for Fast Settlement</div>
+      </a>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+  </section>
+
+<section id="section-connections" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Learn more by joining the&nbsp;discussion</h2>
+    </header>
+    <div class="section-content">
+      <ul class="ul-connections">
+        <li>
+          <a href="http://forum.tendermint.com:3000">
+            <h3><i class="fa fa-slick"></i> Slack</h3>
+            <div class="content">
+              <p>Get an invitation to join the discussion on our Slack.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/tendermint_team">
+            <h3><i class="fa fa-twatter"></i> Twitter</h3>
+            <div class="content">
+              <p>Follow <strong>@tendermint_team</strong> on Twitter for our latest updates.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/tendermint/">
+            <h3><i class="fa fa-footbook"></i> Facebook</h3>
+            <div class="content">
+              <p>Like and follow Tendermint on Facebook.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/tendermint">
+            <h3><i class="fa fa-linkedout"></i> LinkedIn</h3>
+            <div class="content">
+              <p>View our profile and connect with us on LinkedIn.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="section-cta" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Stay updated on Tendermint&nbsp;news</h2>
+    </header>
+    <div class="section-content">
+      
+<form action="http://tendermint.us8.list-manage1.com/subscribe/post?u=89d5a312be95ee3f0c9cf7ecd&amp;id=4af1217bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+  <div class="input-group">
+    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email">
+  </div>
+
+  <div class="input-group">
+    <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+      <i class="fa fa-newspaper-o"></i> Subscribe
+    </button>
+  </div>
+
+  
+  <div style="position: absolute; left: -5000px;"><input type="text" name="b_89d5a312be95ee3f0c9cf7ecd_4af1217bca" tabindex="-1" value=""></div>
+</form>
+
+  </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <p class="left">&copy; 2016 Tendermint</p>
+  <p class="right">
+    <a href="mailto:hello@tendermint.com">
+      <i class="fa fa-envelope-o"></i>
+      Contact
+    </a>
+  </p>
+</footer>
+
+<script src="scripts/bundle.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51029217-1', 'tendermint.com');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
+

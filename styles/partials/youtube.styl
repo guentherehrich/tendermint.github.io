@@ -1,0 +1,72 @@
+.youtube
+  display block
+  width 100vw
+  height (100/16*9)vw
+  max-width 48 * x // 768px
+  max-height 27 * x // 432px
+  margin-left -1*x
+  margin-right -1*x
+
+div.youtube 
+  position relative
+  cursor pointer
+  background #000 no-repeat center center
+  background-size cover
+  box-shadow inset bc 0 0 0 1px
+  clear both
+
+/* play bubble */
+div.youtube:before
+  content ''
+  background hsla(0,0,0,0.7)
+  height 4*x
+  width 6*x
+  display block
+  margin -2*x 0 0 -3*x
+  border-radius x
+  position absolute
+  top 50%
+  left 50%
+  transition all 100ms ease
+  z-index 1
+
+// play bubble hover
+div.youtube:hover:before
+  background hsla(0,0,0,0.85)
+
+// Play Triangle 
+div.youtube:after
+  display block
+  position absolute
+  top 50%
+  left 50%
+  z-index 2
+
+  margin-left -1*x
+  margin-top -1*x
+
+  width 2*x
+  line-height 2*x
+
+  content '\f04b'
+  font-size 2*x
+  font-family FontAwesome
+  text-align center
+  color #fff
+
+// youtube embed (responsive) 
+div.youtube iframe
+  width 100%
+  height 100%
+  position absolute
+  top 0
+  left 0
+  z-index 3
+
+@media screen and (min-width: 768px)
+  .youtube
+    margin-bottom 1.5em
+    margin-left auto
+    margin-right auto
+  div.youtube
+    margin-bottom 0

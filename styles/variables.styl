@@ -1,0 +1,62 @@
+//==============================================================================
+// colors
+//==============================================================================
+
+mhue = 210
+msat = 80%
+mlit = 20%
+mcolor = hsl(mhue,msat,mlit)
+
+mborder = lighten(mcolor,85%)
+bc = #ddd
+bc2 = #eee
+dbc = lighten(mcolor, 20%)
+
+ahue = 140
+asat = 100%
+alit = 40%
+acolor = hsl(ahue,asat,alit)
+lcolor = hsl(mhue,msat,45%)
+link = lcolor
+anchor = lcolor
+
+// type colors
+txt = #333
+dim = #666
+light = #999
+subtle = lighten(light,50%)
+faint = lighten(bc,75%)
+placeholder-color = light
+
+alert-color = hsl(330,100%,45%)
+
+primary-gradient = linear-gradient(top, lighten(mcolor,10%), darken(mcolor,10%))
+primary-gradient-hover = linear-gradient(top, lighten(mcolor,15%), darken(mcolor,8%))
+subtle-gradient = linear-gradient(top, hsl(0,0,99%), hsl(0,0,93%))
+subtle-gradient-hover = linear-gradient(top, hsl(0,0,100%), hsl(0,0,95%))
+
+// button colors
+btn-red-color = hsl(0,100%,40%)
+btn-green-color = hsl(120,100%,40%)
+
+faint-bg()
+  background linear-gradient(top, hsl(0,0,97%), hsl(0,0,95%))
+  box-shadow inset #fff 0 1px 0
+
+//==============================================================================
+// typography
+//==============================================================================
+
+x = 16px
+sans = -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif
+mono = Consolas, 'Deja Vu Sans Mono', 'Andale Sans Mono', monospace
+
+df()
+  font-size x
+  line-height 1.5
+  font-family sans
+  color txt
+
+mono()
+  font-family Consolas, Monaco, monospace
+  font-weight normal

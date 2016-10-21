@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Launch a TMSP testnet using mintnet &ndash; Tendermint</title>
+  <base href="http://tendermint.com">
+<link rel="canonical" href="http://tendermint.com/guide/launch-a-tmsp-testnet/">
+<link href="" rel="alternate" type="application/rss+xml" title="Tendermint">
+
+<meta content="on" http-equiv="cleartype" />
+<meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/images/favicon/manifest.json">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" media="screen" href="/styles/screen.css">
+
+
+
+</head>
+
+
+<body id="body-guide">
+  <header id="site-header">
+<a href="/" id="nav-home">
+  <img src="/images/home/tendermint-logo-88-green.jpg" alt="Tendermint logo"/>
+</a>
+<nav>
+  <a id="nav-blog" href="/blog">Blog</a>
+  <a id="nav-media" href="/media">Media</a>
+  <a id="nav-code" href="/code">Code</a>
+  <a id="nav-guide" href="/guide">Guide</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
+  <a id="nav-about" href="/about">About</a>
+</nav>
+</header>
+
+
+  <section id="section-top">
+    <div class="section-container">
+      <h1>Launch a TMSP testnet using mintnet</h1>
+      <p>December 16, 2015</p>
+      
+    </div>
+  </section>
+
+  <section class="section-default">
+    <div class="section-container">
+      <div class="section-content">
+        <div class="article-body">
+          
+
+<blockquote>
+<p>This tutorial is second in a series.  See <a href="/posts/tendermint-socket-protocol/">this post</a> for links to all the tutorials in this series.</p>
+</blockquote>
+
+<h2 id="tendermint-core">Tendermint Core</h2>
+
+<p>Now that we&rsquo;ve seen how TMSP works, and even played with a few applications using the <code>tmsp-cli</code> tool,
+let&rsquo;s run an actual Tendermint node.</p>
+
+<p>When running a live application, a Tendermint node takes the place of the <code>tmsp-cli</code> tool by sending TMSP requests
+to the application: many <code>append_tx</code> msgs to run transactions followed by a <code>commit</code> to get the application Merkle root hash, and so on.</p>
+
+<p>Installing Tendermint is easy:</p>
+
+<pre><code>go get github.com/tendermint/tendermint/cmd/tendermint
+</code></pre>
+
+<p>If you already have Tendermint installed, then you can either set a new <code>$GOPATH</code> and run the previous command,
+or else fetch and checkout the latest master branch in <code>$GOPATH/src/github.com/tendermint/tendermint</code>,
+and from that directory run</p>
+
+<pre><code>go get ./cmd/tendermint
+go install ./cmd/tendermint
+</code></pre>
+
+<p>To initialize a genesis and validator key in <code>~/.tendermint</code>, run</p>
+
+<pre><code>tendermint init
+</code></pre>
+
+<p>You can change the directory by setting the <code>$TMROOT</code> environment variable.</p>
+
+<p>Now,</p>
+
+<pre><code>tendermint node
+</code></pre>
+
+<p>You should see <code>Failed to connect to proxy for mempool: dial tcp 127.0.0.1:46658: getsockopt: connection refused</code></p>
+
+<p>That&rsquo;s because we don&rsquo;t have an application process running, and Tendermint will only run if there&rsquo;s an application it can speak TMSP with.</p>
+
+<p>So lets start the <code>dummy</code> app,</p>
+
+<pre><code>dummy
+</code></pre>
+
+<p>and in another window, start Tendermint:</p>
+
+<pre><code>tendermint node
+</code></pre>
+
+<p>After a few seconds you should see blocks start streaming in!</p>
+
+<p>Now you can send transactions through the Tendermint RPC server with curl requests, or from your browser:</p>
+
+<pre><code>curl http://localhost:46657/broadcast_tx?tx=\&quot;abcd\&quot;
+</code></pre>
+
+<p>For handling responses, we recommend you <a href="http://jmhodges.github.io/jsonpp/">install the <code>jsonpp</code> tool</a> to pretty print the JSON</p>
+
+<p>We can see the chain&rsquo;s status at the <code>/status</code> end-point:</p>
+
+<pre><code>curl http://localhost:46657/status |  jsonpp
+</code></pre>
+
+<p>and the <code>latest_app_hash</code> in particular:</p>
+
+<pre><code>curl http://localhost:46657/status |  jsonpp | grep app_hash
+</code></pre>
+
+<p>visit <a href="http://localhost:46657">http://localhost:46657</a> in your browser to see the other endpoints.</p>
+
+<h2 id="deploy-a-tendermint-testnet">Deploy a Tendermint Testnet</h2>
+
+<p>Now that we&rsquo;ve run a single Tendermint node with one validator and a couple applications,
+let&rsquo;s deploy a testnet to run our application with four validators.</p>
+
+<p>For this part of the tutorial, we assume you have an account at digital ocean and are willing to
+pay to start some new droplets to run your nodes. You can of course stop and destroy them at any time.</p>
+
+<p>First, install <a href="https://docs.docker.com/machine/install-machine/"><code>docker-machine</code></a> and get a DigitalOcean account and access token.</p>
+
+<p>Then, install <code>mintnet</code>.</p>
+
+<pre><code>go get github.com/tendermint/mintnet
+</code></pre>
+
+<p>To provision machines on DigitalOcean:</p>
+
+<pre><code>mintnet create -- --driver=digitalocean --digitalocean-image=docker --digitalocean-access-token=YOUR_ACCCESS_TOKEN
+</code></pre>
+
+<p>You can leave out the <code>--digitalocean-access-token</code> flag if you set your <code>DIGITALOCEAN_ACCESS_TOKEN</code> environment variable.</p>
+
+<p>By default this creates 4 new machines.  Check the help messages for more info, e.g. <code>mintnet create --help</code>.</p>
+
+<p>Next, create the testnet configuration folders.</p>
+
+<pre><code>mintnet init chain mytest_dir/
+</code></pre>
+
+<p>This creates directories in <code>mytest</code> for the application.</p>
+
+<pre><code>ls mytest_dir/
+  chain_config.json # list of validator pubkeys and ip:ports
+  app   # Common configuration directory for your blockchain applicaiton
+  core  # Common configuration directory for Tendermint core
+  data  # Common configuration directory for the Merkleyes key-value store
+  mach1 # Configuration directory for the Tendermint core daemon on machine 1
+  mach2 # Configuration directory for the Tendermint core daemon on machine 2
+  mach3 # Configuration directory for the Tendermint core daemon on machine 3
+  mach4 # Configuration directory for the Tendermint core daemon on machine 4
+</code></pre>
+
+<p>You can change the files in the app folder to change which TMSP application run on your testnet.
+The default script app/init.sh gets run on each node to install the TMSP application straight from Github.
+Edit core/init.sh to change the Tendermint version being run.</p>
+
+<p>Now start the testnet service.</p>
+
+<pre><code>mintnet start mytest mytest_dir/
+</code></pre>
+
+<p>You can stop and remove the application as well.</p>
+
+<pre><code>mintnet stop mytest; mintnet rm mytest
+</code></pre>
+
+<p>Don&rsquo;t forget to destroy your provisioned machines!</p>
+
+<pre><code>mintnet destroy --machines=&quot;mach1,mach2,mach3,mach4&quot;
+</code></pre>
+
+<p>Note you can use the <code>--machines</code> flag on any command to specify machines,
+for instance <code>--machines mach[1-3],mach7</code> will apply to mach1, mach2, mach3, and mach7.</p>
+
+<p>TODO: Document tutorial on docker-machine ssh mach1, docker ps, etc, or at least link to good Docker tutorials.</p>
+
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+        <div id="article-prev-next">
+  <div class="article-prev-next article-prev">
+    
+      <a  href="http://tendermint.com/guide/run-your-first-tmsp-application/">
+        <div class="label"><i class="fa fa-angle-left"></i> Prev</div>
+        <div class="title">Run your first TMSP application</div>
+      </a>
+    
+  </div>
+
+  <div class="article-prev-next article-next">
+    
+      <div class="end">
+        <div class="label">Next <i class="fa fa-angle-right"></i></div>
+        <div class="title">No newer entries in this section.</div>
+      </div>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+  </section>
+
+<section id="section-connections" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Learn more by joining the&nbsp;discussion</h2>
+    </header>
+    <div class="section-content">
+      <ul class="ul-connections">
+        <li>
+          <a href="http://forum.tendermint.com:3000">
+            <h3><i class="fa fa-slick"></i> Slack</h3>
+            <div class="content">
+              <p>Get an invitation to join the discussion on our Slack.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/tendermint_team">
+            <h3><i class="fa fa-twatter"></i> Twitter</h3>
+            <div class="content">
+              <p>Follow <strong>@tendermint_team</strong> on Twitter for our latest updates.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/tendermint/">
+            <h3><i class="fa fa-footbook"></i> Facebook</h3>
+            <div class="content">
+              <p>Like and follow Tendermint on Facebook.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/tendermint">
+            <h3><i class="fa fa-linkedout"></i> LinkedIn</h3>
+            <div class="content">
+              <p>View our profile and connect with us on LinkedIn.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="section-cta" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Stay updated on Tendermint&nbsp;news</h2>
+    </header>
+    <div class="section-content">
+      
+<form action="http://tendermint.us8.list-manage1.com/subscribe/post?u=89d5a312be95ee3f0c9cf7ecd&amp;id=4af1217bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+  <div class="input-group">
+    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email">
+  </div>
+
+  <div class="input-group">
+    <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+      <i class="fa fa-newspaper-o"></i> Subscribe
+    </button>
+  </div>
+
+  
+  <div style="position: absolute; left: -5000px;"><input type="text" name="b_89d5a312be95ee3f0c9cf7ecd_4af1217bca" tabindex="-1" value=""></div>
+</form>
+
+  </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <p class="left">&copy; 2016 Tendermint</p>
+  <p class="right">
+    <a href="mailto:hello@tendermint.com">
+      <i class="fa fa-envelope-o"></i>
+      Contact
+    </a>
+  </p>
+</footer>
+
+<script src="scripts/bundle.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51029217-1', 'tendermint.com');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
+

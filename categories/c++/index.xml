@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/c&#43;&#43;/index.xml</link>
+    <description>Recent content on Tendermint</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://tendermint.com/categories/c&#43;&#43;/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Software Engineer: Bitcoin</title>
+      <link>http://tendermint.com/jobs/bitcoin_engineer/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/bitcoin_engineer/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maintain an implementation of TMSP and some example applications in C++&lt;/li&gt;
+&lt;li&gt;Develop and maintain Bitcoin-TMSP&lt;/li&gt;
+&lt;li&gt;Contribute to Bitcoin Core&lt;/li&gt;
+&lt;li&gt;Develop a peg to Bitcoin&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

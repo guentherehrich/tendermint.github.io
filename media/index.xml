@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Media-rsses on Tendermint</title>
+    <link>http://tendermint.com/media/index.xml</link>
+    <description>Recent content in Media-rsses on Tendermint</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 10 Feb 2016 09:00:05 +0800</lastBuildDate>
+    <atom:link href="http://tendermint.com/media/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Live Blockchain Demo</title>
+      <link>http://tendermint.com/media/live-blockchain-demo/</link>
+      <pubDate>Wed, 10 Feb 2016 09:00:05 +0800</pubDate>
+      
+      <guid>http://tendermint.com/media/live-blockchain-demo/</guid>
+      <description>&lt;iframe class=&#34;youtube&#34; width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/9krAQzN6tbc?start=1952&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Ethan Buchman demos a live Tendermint-powered blockchain, with nodes coming on and offline.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Blockchain Smart Contracts in Any Language with Tendermint TMSP</title>
+      <link>http://tendermint.com/media/tendermint-tmsp/</link>
+      <pubDate>Wed, 10 Feb 2016 08:49:40 +0800</pubDate>
+      
+      <guid>http://tendermint.com/media/tendermint-tmsp/</guid>
+      <description>&lt;iframe class=&#34;youtube&#34; width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/9krAQzN6tbc&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Jae Kwon and Ethan Buchman discussed how developers can write blockchain smart contracts in any language using TMSP (Tendermint Socket Protocol).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Blockchains = Trust-As-A-Service</title>
+      <link>http://tendermint.com/media/blockchains-trust-as-a-service/</link>
+      <pubDate>Sun, 15 Feb 2015 09:00:45 +0800</pubDate>
+      
+      <guid>http://tendermint.com/media/blockchains-trust-as-a-service/</guid>
+      <description>&lt;iframe class=&#34;youtube&#34; width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/MoacpJvCM4A&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Dustin Byington talks with Jeff Frick at the Block Chain Conference in San Francisco.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

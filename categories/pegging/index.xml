@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/pegging/index.xml</link>
+    <description>Recent content on Tendermint</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://tendermint.com/categories/pegging/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Sidechains without Pegging</title>
+      <link>http://tendermint.com/blog/sidechains-without-pegging/</link>
+      <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/blog/sidechains-without-pegging/</guid>
+      <description>&lt;p&gt;There is an interesting debate happening between Bitcoin maximalists and the rest of the cryptocurrency community.&lt;/p&gt;
+
+&lt;p&gt;First, BlockStream published Bitcoin maximalist paper on &lt;a href=&#34;http://www.blockstream.com/sidechains.pdf&#34;&gt;sidechains&lt;/a&gt;.
+Then, Dominic of Pebble responded with due &lt;a href=&#34;http://blog.pebble.io/post/100702644738/on-sidechains-bitcoin-maximalism-and-freedom&#34;&gt;criticism&lt;/a&gt;.
+Vitalik of Ethereum responded with &lt;a href=&#34;https://blog.ethereum.org/2014/11/20/bitcoin-maximalism-currency-platform-network-effects/&#34;&gt;more analysis&lt;/a&gt;.
+And finally, Joel of Union Square Ventures wrote about a very &lt;a href=&#34;http://joel.mn/post/103546215249/the-blockchain-application-stack&#34;&gt;Bitcoin maximal world&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’d like to add a few points to this conversation.&lt;/p&gt;
+
+&lt;p&gt;First, let’s get this out of the way.  Metacoins like Counterparty are a nuisance for Bitcoin, regardless of the merits of the Counterparty protocol itself.  They benefit by taking advantage of the Bitcoin consensus network.  They bloat the block-chain space with transactions that aren’t relevant to other Bitcoin users.  The security of the Counterparty system is dependent on the security of Bitcoin’s, while it’s entirely possible that the market cap of assets in Counterparty become higher than that of Bitcoin, creating a lopsided security threat.  Metacoins will phase out as it becomes easier to bootstrap a secure coin with a pre-built consensus engine (such as Tendermint) that doesn’t rely on proof-of-work.  When the valuation of Bitcoin drops enough, Counterparty will be forced to migrate to its own block-chain too.&lt;/p&gt;
+
+&lt;p&gt;The main thing I’d like to talk about is sidechains.  The term was first introduced by Bitcoin developers who were considering ways to encourage innovation in the alt-coin space while cutting down on the speculation and volatility that results from bootstrapping a new coin ex nihilo, by 1-way or 2-way pegging.  It works by having one block-chain track the consensus state of another block-chain.  It’s no wonder that the term “sidechain” refers to two distinct concepts — interchain-communication and pegging.  I like the term for its succinctness, so I’m going to try to hijack it to mean only interchain-communication — with or without pegging.&lt;/p&gt;
+
+&lt;p&gt;The beautiful thing about sidechains is that it’s more than currency pegging.  For example, it can be used to run a decentralized exchange between two currencies.  You can do this now with “cross-chain-transactions”, but it requires both parties to be online, or for both to trust a few “smart oracles” with threshold signatures to handle the trade.  But when your block-chain can track the state of another with sidechain technology, you don’t have to trust anyone except the cryptocurrency network, which you trust already.  If you trust a block-chain enough to hold coins in it, you should trust the block-chain to enforce your exchange orders for you when you want to trade with a sidechain.  So now you can bootstrap a currency &lt;em&gt;and&lt;/em&gt; provide liquidity without trusted centralized exchanges, and really incentivize the development of new currencies without pegging the valuation onto &lt;s&gt;the Euro&lt;/s&gt;Bitcoin.  It’s especially important to have sovereign unpegged market-priced block-chains if the very thing you want to experiment with is monetary policy.&lt;/p&gt;
+
+&lt;p&gt;Sidechain technology is more than 1-way or 2-way pegging to Bitcoin. It&amp;rsquo;s about contractual agreement between two communities represented by different consensus ledgers.  To pretend otherwise will only hurt the cryptocurrency movement.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/applications/index.xml</link>
+    <description>Recent content on Tendermint</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://tendermint.com/categories/applications/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Software Engineer: Application Developer</title>
+      <link>http://tendermint.com/jobs/application_developer_go/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/application_developer_go/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Develop and maintain a TMSP application to solve classic distributed systems problems
+like key-value storage, locking, leader-election, service discovery, etc (ie. a TMSP version of &lt;a href=&#34;https://www.consul.io/&#34;&gt;consul&lt;/a&gt; or &lt;a href=&#34;https://coreos.com/etcd/&#34;&gt;etcd&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Software Engineer: Application Developer and Dev Outreach</title>
+      <link>http://tendermint.com/jobs/application_developer_js/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/application_developer_js/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maintain an implementation of TMSP and some example applications in Javascript&lt;/li&gt;
+&lt;li&gt;Develop and maintain a framework for smart contracts in javascript (eg. &lt;a href=&#34;https://deterministic.js.org/&#34;&gt;https://deterministic.js.org/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Developer Outreach, tutorials, and onboarding new developers&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

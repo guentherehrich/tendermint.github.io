@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/tendermint/index.xml</link>
+    <description>Recent content on Tendermint</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://tendermint.com/categories/tendermint/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Tendermint: from Then to Now</title>
+      <link>http://tendermint.com/blog/tendermint-then-to-now/</link>
+      <pubDate>Sat, 17 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/blog/tendermint-then-to-now/</guid>
+      <description>
+
+&lt;h2 id=&#34;tendermint-from-then-to-now&#34;&gt;Tendermint: from Then to Now&lt;/h2&gt;
+
+&lt;p&gt;Some of you have asked about the history of &lt;a href=&#34;http://tendermint.com/&#34;&gt;Tendermint&lt;/a&gt;, so here it is. Back in the day, we had some serious concerns about Bitcoin as a global currency, mainly because it is incredibly &lt;a href=&#34;http://motherboard.vice.com/read/bitcoin-could-consume-as-much-electricity-as-denmark-by-2020&#34;&gt;energy intensive&lt;/a&gt;. So we started Tendermint to develop a more environmentally friendly cryptocurrency.&lt;/p&gt;
+
+&lt;p&gt;But what started as a simple cryptocurrency based on an adaptation of a &lt;a href=&#34;http://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf&#34;&gt;1980’s consensus algorithm called DLS&lt;/a&gt; eventually evolved into what it is today: a general purpose Byzantine fault tolerant (BFT) consensus algorithm for running replicated state machines over the internet in possibly adversarial conditions.&lt;/p&gt;
+
+&lt;p&gt;Replicated state machines are a staple of modern Internet technology. They permit a consistent and fault-tolerant view of some set of data. Popular open-source implementations of replicated state machines include &lt;a href=&#34;http://bookkeeper.apache.org/&#34;&gt;Apache ZooKeeper&lt;/a&gt;, &lt;a href=&#34;https://coreos.com/etcd/&#34;&gt;CoreOS&amp;rsquo; etcd&lt;/a&gt;, and &lt;a href=&#34;https://www.consul.io/&#34;&gt;Hashicorp&amp;rsquo;s Consul&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In each of these, the state machine is a simple key-value store, and the underlying consensus algorithm is either Paxos or &lt;a href=&#34;https://raft.github.io/&#34;&gt;Raft&lt;/a&gt;. Neither of these algorithms tolerate even a single malicious node in the system. You can see an animation of the Paxos algorithm &lt;a href=&#34;http://harry.me/blog/2014/12/27/neat-algorithms-paxos/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In contrast, Tendermint lets you build arbitrary state machines in any programming language, whether that is a key-value store in Go, a voting system in C++, or a cryptocurrency in OCaml. In each case, the application implements a simple interface, and Tendermint handles the rest, including connecting to peers, syncing the latest state, gossipping transactions, and maintaining a consistent log of transactions.&lt;/p&gt;
+
+&lt;h2 id=&#34;who-is-using-tendermint&#34;&gt;Who is using Tendermint?&lt;/h2&gt;
+
+&lt;p&gt;It’s been an exciting journey, and over the past few months people have been putting Tendermint to work in several applications.&lt;/p&gt;
+
+&lt;p&gt;Probably the most complicated implementation of Tendermint so far is by Eris Industries. Eris is using Tendermint to power its &lt;a href=&#34;https://erisindustries.com/components/erisdb/&#34;&gt;eris:db&lt;/a&gt; blockchain client. Eris:db includes a fully compatible Ethereum virtual machine and other features that make it a full-fledged blockchain.&lt;/p&gt;
+
+&lt;p&gt;But there are other implementations. &lt;a href=&#34;http://www.cloudsoft.io/&#34;&gt;CloudSoft&lt;/a&gt; published a &lt;a href=&#34;http://www.cloudsoft.io/tendermint-and-clocker/&#34;&gt;deployment strategy&lt;/a&gt; for Apache Brooklyn that uses Tendermint and Clocker. Martin Dyring wrote an &lt;a href=&#34;https://github.com/mdyring/cpp-tmsp&#34;&gt;implementation of Tendermint TMSP in C++&lt;/a&gt;, and wolfposd wrote a &lt;a href=&#34;https://github.com/wolfposd/TMChat&#34;&gt;chatroom app in Java&lt;/a&gt; that uses Tendermint to broadcast messages from one user to another. Yes, that’s right, a chatroom.&lt;/p&gt;
+
+&lt;p&gt;While it might sound crazy to run a chat application on a blockchain, this is simply an example of the flexibility of Tendermint. This sort of implementation might even come in handy in instances where you have several actors who are malicious and maintaining the total order of the system matters, for instance, in p2p gaming.&lt;/p&gt;
+
+&lt;p&gt;Other companies building on Tendermint include &lt;a href=&#34;https://blockfreight.com/&#34;&gt;Blockfreight&lt;/a&gt;, &lt;a href=&#34;http://www.vidroll.com/&#34;&gt;Vidroll&lt;/a&gt;, and &lt;a href=&#34;https://stratumn.com/&#34;&gt;Stratumn&lt;/a&gt; to name a few. Of course, we use Tendermint too. Our first product built on Tendermint is &lt;a href=&#34;http://cosmos.network/&#34;&gt;Cosmos, the internet of blockchains&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-s-new&#34;&gt;What’s new?&lt;/h2&gt;
+
+&lt;p&gt;In August 2016, we released Tendermint v0.7.0, the first stable release of our middleware. It featured a weakly-synchronous BFT consensus algorithm, which can process thousands of transactions per second with latencies on the order of a second and cluster sizes ranging from 4 to 64 nodes.&lt;/p&gt;
+
+&lt;p&gt;Recently we released &lt;a href=&#34;https://github.com/tendermint/tendermint&#34;&gt;Tendermint v0.7.1&lt;/a&gt;, which includes a variety of fixes, as well as the ability for applications to determine what peers Tendermint can connect to and filtering either by IP address, or by public key.&lt;/p&gt;
+
+&lt;p&gt;In the next major release, Tendermint v0.8.0, which should be in October, we plan to introduce a handshake between Tendermint and whatever application is using it, ensuring the two stay synced even after crashes and restarts.&lt;/p&gt;
+
+&lt;p&gt;Additionally, we’ll include some important fixes to the BFT consensus module. While testing Tendermint in adversarial conditions, we discovered a Byzantine node could potentially halt the system in some circumstances—this fix will prevent that from happening.&lt;/p&gt;
+
+&lt;p&gt;This is critical because even though the Tendermint consensus algorithm guarantees your blockchain won&amp;rsquo;t fork, all of the subcomponents need to work perfectly to ensure liveness.&lt;/p&gt;
+
+&lt;p&gt;Stay tuned for more updates. We are continuing to test Tendermint extensively in a push to provide a production ready offering in early 2017. And, if you are using Tendermint in a project, &lt;a href=&#34;https://docs.google.com/a/tendermint.com/forms/d/e/1FAIpQLSclH87WiZrer8aUzO5oNWoSCqcbn4mwQ3sDJJX44E9rhdVJFw/viewform?c=0&amp;amp;w=1&#34;&gt;let us know&lt;/a&gt;! We want to hear how you’re using it and what your feedback is.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

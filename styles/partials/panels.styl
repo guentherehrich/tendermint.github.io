@@ -1,0 +1,129 @@
+.panels
+  display flex
+  flex-flow column
+  margin -0.5*x
+
+  .panel
+    padding 0.5*x
+    max-width 60*x
+
+    .panel-container
+      border 1px solid bc
+
+    .panel-header
+      line-height 2*x
+      padding 0 0.5*x
+      border-bottom 1px solid bc
+      background hsl(0,0,97%)
+
+      h3
+        font-size x
+        font-weight 600
+        color mcolor
+        a
+          color mcolor
+          display block
+          &:hover
+            color link
+
+    .panel-body
+      li
+        border-bottom 1px dotted bc
+        display flex
+        position relative
+        
+        &:hover
+          background lighten(mcolor,95%)
+
+        &:last-of-type
+          border-bottom none
+
+        a
+          flex 1
+          position relative
+          z-index 2
+
+          padding 0.625*x 0.75*x 0.5*x
+          margin -1px
+          border 1px solid transparent
+
+          h4
+            line-height 1.25
+            margin 0 0 0.25*x
+            font-weight 600
+            color txt
+
+          p
+            color dim
+
+          &:hover
+            border-color lighten(link,50%)
+
+            h4
+              color darken(link,33%)
+            p
+              color link
+
+    &.panel-external
+      .panel-body
+        li
+          a
+            padding-right 2.75*x
+
+        li:after
+          position absolute
+          top 0
+          right 0
+          z-index 1
+
+          width 2*x
+          height 100%
+          border-left 1px solid bc2
+          background hsl(0,0,99%)
+
+          display flex
+          justify-content center
+          align-items center
+
+          content '\f08e'
+          font-family FontAwesome
+          text-align center
+          color light
+
+        li:hover:after
+          color #fff
+          background lighten(link,50%)
+          border-color lighten(link,50%)
+        
+
+@media screen and (min-width: 720px)
+  .panels
+    flex-flow row wrap
+    justify-content center
+
+    .panel
+      flex 1 0 50%
+
+      .panel-header
+        line-height 3*x
+        padding 0 x
+        h3, h3 a
+          font-size 1.125*x
+        i.fa
+          padding-right 0.2*x
+
+      .panel-body
+        li
+          a
+            padding 1.25*x 1.5*x
+
+      &.panel-external
+        .panel-body
+          li
+            a
+              padding-right 3.5*x
+
+@media screen and (min-width: 1200px)
+  .panels
+    .panel
+      flex 1 0 33.3333%

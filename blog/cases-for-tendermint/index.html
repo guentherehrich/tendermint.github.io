@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cases for Tendermint &ndash; Tendermint</title>
+  <base href="http://tendermint.com">
+<link rel="canonical" href="http://tendermint.com/blog/cases-for-tendermint/">
+<link href="" rel="alternate" type="application/rss+xml" title="Tendermint">
+
+<meta content="on" http-equiv="cleartype" />
+<meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/images/favicon/manifest.json">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" media="screen" href="/styles/screen.css">
+
+
+
+</head>
+
+
+<body id="body-blog">
+  <header id="site-header">
+<a href="/" id="nav-home">
+  <img src="/images/home/tendermint-logo-88-green.jpg" alt="Tendermint logo"/>
+</a>
+<nav>
+  <a id="nav-blog" href="/blog">Blog</a>
+  <a id="nav-media" href="/media">Media</a>
+  <a id="nav-code" href="/code">Code</a>
+  <a id="nav-guide" href="/guide">Guide</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
+  <a id="nav-about" href="/about">About</a>
+</nav>
+</header>
+
+
+  <section id="section-top">
+    <div class="section-container">
+      <h1>Cases for Tendermint</h1>
+      
+      <p>September 13, 2015</p>
+      
+    </div>
+  </section>
+
+  <section class="section-default">
+    <div class="section-container">
+      <div class="section-content">
+        <div class="article-body">
+          
+
+<p>You may have an application that benefits from blockchain technology, and you may be trying to figure out whether to build that on Bitcoin, some meta-coin protocol like Counterparty, with Solidity/Serpent on the Ethereum virtual machine, or on a new blockchain stack altogether.  Actually, you should seriously consider building on Tendermint.</p>
+
+<h2 id="a-little-background-on-tendermint">A little background on Tendermint</h2>
+
+<p>Tendermint is not a fork of Bitcoin, NXT, Ripple, or Ethereum.  Tendermint is its own blockchain stack written from the ground up.  It was built to be the base blockchain stack from which to fork off of for a wide variety of decentralized applications.  It started back in 2014 as an ambitious project to solve the Bitcoin mining problem and bring real Byzantine fault-tolerant consensus to cryptocurrencies.  First we adapted an existing BGA consensus algorithm to make it suitable for blockchains.  For the actual implementation we considered forking Bitcoin, NXT, BitShares, and other projects, but none could easily accommodate the desired project architecture.  So, a brand spanking new blockchain stack was born.</p>
+
+<p>Tendermint offers:</p>
+
+<ul>
+<li>Byzantine fault-tolerant consensus with unparalleled speed and security guarantees &ndash; without mining. <a href="https://github.com/tendermint/tendermint/wiki/Byzantine-Consensus-Algorithm">(see spec)</a></li>
+<li>A very clean codebase with clear separation of concerns &ndash; no spaghetti, thanks Golang!</li>
+<li>Throttled/fair P2P stack to handle multiplexed channels of communication.</li>
+<li>Clear P2P logic with the <a href="https://en.wikipedia.org/wiki/Reactor_pattern">reactor pattern</a></li>
+</ul>
+
+<p>On top of this foundation, we&rsquo;ve built more advanced blockchain features.</p>
+
+<ul>
+<li>A compatible and efficient Ethereum VM implementation</li>
+<li>A permissions system that works across accounts and VM contracts</li>
+</ul>
+
+<p>We&rsquo;re going to build more exciting features going forward, except this time we&rsquo;ll blog about it while we do it, so hang on to your metaphorical horses.</p>
+
+<h2 id="on-tendermint-consensus">On Tendermint consensus</h2>
+
+<p>The consensus system is the foundational layer of any blockchain stack. It is the process by which all of the transaction validators (equivalent to miners in Bitcoin) agree on the state of the network.  Improvements in speed, security, and cost of a consensus system ripple up and improve the performance of any network or application built on top of it.  Let&rsquo;s dive into some examples to get a sense of how it works.</p>
+
+<h3 id="case-1-payment-verification">Case 1: Payment verification</h3>
+
+<p>Say that your mobile phone is connected to untrusted wifi, and you&rsquo;re making a business deal with Satoshi.  Satoshi just sent you a large payment, and you need to verify that this payment was committed onto the blockchain network irreversibly.</p>
+
+<p>With Bitcoin, you generally need to wait up to 6 confirmation blocks (about 1 hour, sometimes longer) to consider a transaction fully committed.  For very large payment transactions you should wait even longer, because the security afforded by the blockchain miners is no greater than the cost of double-spending that transaction, which is today only about 25 Bitcoins per reverted block, and soon to be half of that.</p>
+
+<p>With Tendermint, a global network of 1000 independent validators can commit a transaction in less than 60 seconds.  The time required to commit only gets shorter with increased bandwidth and computational capacity of the nodes of the network.  In the near future we&rsquo;ll be able to commit transactions on a global Tendermint blockchain with more than 1000 validators in a matter of seconds &ndash; the only real limitation is the time it takes for light to travel around the globe.</p>
+
+<h3 id="case-2-name-registry-lookup">Case 2: Name registry lookup</h3>
+
+<p>Similar to case 1, but instead of verifying a payment, you need to verify Satoshi&rsquo;s public key as registered under the name &ldquo;@satoshi&rdquo; on a name-registry blockchain.  The difference here as compared to case 1 is that instead of verifying a new transaction, you&rsquo;re verifying the current value of a pre-registered key that may have been changed by other transactions.</p>
+
+<p>With Bitcoin (and Namecoin), you can verify that &ldquo;@satoshi&rdquo; was registered with a particular public key at some point in the past, but you wouldn&rsquo;t know whether the public key had since been updated without downloading the whole blockchain.  This is because the presence of a name-registration transaction in the blockchain does not imply that later transactions hadn&rsquo;t updated the value for that key.  In order for you to efficiently check for the current value of a name, the blockchain should support a balanced Merkle tree on the most recent name-registry state.  Even if Bitcoin/Namecoin did support such a data structure, you would still have to download and verify all the blockchain hashes and headers, and if the value might have been updated recently you&rsquo;re still vulnerable to a fork-censorship attack.</p>
+
+<p>With Tendermint, all you need is the most recent blockhash signed by more than <sup>2</sup>&frasl;<sub>3</sub> of the validators, and a Merkle proof that proves the current value associated with the name &ldquo;@satoshi&rdquo;.  You don&rsquo;t even need to wait for a single commit.  If you&rsquo;re interested, see <a href="https://github.com/tendermint/tendermint/wiki/Merkle-Trees#iavl-tree">this link</a> for more information on our balanced binary Merkle tree implementation.</p>
+
+<p>In future posts I&rsquo;ll go into detail about the consensus algorithm and how it can provide these unique speed &amp; security guarantees without proof-of-work mining.  For now, you can check the most recent Tendermint spec on the github wiki <a href="https://github.com/tendermint/tendermint/">here</a>.</p>
+
+<h2 id="tendermint-architecture">Tendermint architecture</h2>
+
+<p><img src="/images/tm_architecture.png"></p>
+
+<p>The diagram above is meant to show that:</p>
+
+<ul>
+<li>the consensus and transaction-execution (aka state-transition) modules are separate except for the shared (immutable/Merkle-ized) state.</li>
+<li>the consensus module takes a block, a commit for the block, and the last state, and uses the transaction-execution module to produce the next state.</li>
+<li>the VM call transaction is one of many transaction types offered by the transaction-execution module.</li>
+<li>the Ethereum VM (EVM) is only one of potentially many supported virtual machines.</li>
+</ul>
+
+<p>If you have a blockchain application in mind, on Tendermint there are two options to consider &ndash; a smart contract on the Ethereum VM (and in the future, other VMs as well), or, a native transaction type (like SendTx or NameTx above).</p>
+
+<h2 id="whether-to-develop-a-vm-smart-contract-or-develop-a-native-tendermint-contract">Whether to develop a VM smart contract or develop a native Tendermint contract</h2>
+
+<p>The main benefit of a Turing-complete VM on a blockchain is that anyone can upload new contract logic onto the blockchain.  This is especially true on big-bad-public-blockchains (BBPB) like Bitcoin or Ethereum which were designed to allow anyone to upload new contract logic.  On the other hand, private blockchains and consortium blockchains that are more tightly managed may not need or even want arbitrary user-defined logic.</p>
+
+<p>Sometimes, writing an EVM contract is the right answer.  Use the EVM if you need to deploy the contract on a public blockchain such as Ethereum.  Use the EVM if you don&rsquo;t have systems programming experience, and you find that writing a solidity contract is easier than writing in Golang.  Use the EVM if your contract-logic is simple enough that you wouldn&rsquo;t mind stepping over bytecode execution to debug your contract.</p>
+
+<p>For other applications where the former exceptions don&rsquo;t apply, you probably want to write native code on Tendermint for a variety of reasons &ndash; Golang&rsquo;s language tooling is better so debugging is easier, it&rsquo;s computationally more efficient by far, and it removes two complex layers (one for the bytecode compiled language, and one for the VM itself).  If you want full control over your Merkle-ized data structures (e.g. without the 32-by-32-byte restriction of the EVM&rsquo;s Patricia-trie) then you have to write your contract logic at the native level.  Tendermint provides you with the right tools to make this as easy as possible.</p>
+
+<h2 id="fin">Fin</h2>
+
+<ul>
+<li>Go to <a href="http://tendermint.com">http://tendermint.com</a> and sign up for the newsletter.</li>
+<li>Check out the <a href="https://github.com/tendermint/tendermint/wiki">Tendermint wiki</a>.</li>
+<li>Develop on Tendermint.</li>
+<li>Email us at hello@tendermint.com with your full name to join our Slack channel.</li>
+</ul>
+
+        </div>
+
+        <div class="disqus">
+          <div id="disqus_thread"></div>
+<script>
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+
+s.src = '//tendermint.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a
+href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by
+Disqus.</a></noscript>
+
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+        <div id="article-prev-next">
+  <div class="article-prev-next article-prev">
+    
+      <a  href="http://tendermint.com/blog/sidechains-without-pegging/">
+        <div class="label"><i class="fa fa-angle-left"></i> Prev</div>
+        <div class="title">Sidechains without Pegging</div>
+      </a>
+    
+  </div>
+
+  <div class="article-prev-next article-next">
+    
+      <a href="http://tendermint.com/blog/tendermint-vs-pbft/">
+        <div class="label">Next <i class="fa fa-angle-right"></i></div>
+        <div class="title">Tendermint vs PBFT</div>
+      </a>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+  </section>
+
+<section id="section-connections" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Learn more by joining the&nbsp;discussion</h2>
+    </header>
+    <div class="section-content">
+      <ul class="ul-connections">
+        <li>
+          <a href="http://forum.tendermint.com:3000">
+            <h3><i class="fa fa-slick"></i> Slack</h3>
+            <div class="content">
+              <p>Get an invitation to join the discussion on our Slack.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/tendermint_team">
+            <h3><i class="fa fa-twatter"></i> Twitter</h3>
+            <div class="content">
+              <p>Follow <strong>@tendermint_team</strong> on Twitter for our latest updates.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/tendermint/">
+            <h3><i class="fa fa-footbook"></i> Facebook</h3>
+            <div class="content">
+              <p>Like and follow Tendermint on Facebook.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/tendermint">
+            <h3><i class="fa fa-linkedout"></i> LinkedIn</h3>
+            <div class="content">
+              <p>View our profile and connect with us on LinkedIn.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="section-cta" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Stay updated on Tendermint&nbsp;news</h2>
+    </header>
+    <div class="section-content">
+      
+<form action="http://tendermint.us8.list-manage1.com/subscribe/post?u=89d5a312be95ee3f0c9cf7ecd&amp;id=4af1217bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+  <div class="input-group">
+    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email">
+  </div>
+
+  <div class="input-group">
+    <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+      <i class="fa fa-newspaper-o"></i> Subscribe
+    </button>
+  </div>
+
+  
+  <div style="position: absolute; left: -5000px;"><input type="text" name="b_89d5a312be95ee3f0c9cf7ecd_4af1217bca" tabindex="-1" value=""></div>
+</form>
+
+  </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <p class="left">&copy; 2016 Tendermint</p>
+  <p class="right">
+    <a href="mailto:hello@tendermint.com">
+      <i class="fa fa-envelope-o"></i>
+      Contact
+    </a>
+  </p>
+</footer>
+
+<script src="scripts/bundle.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51029217-1', 'tendermint.com');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
+

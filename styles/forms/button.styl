@@ -1,0 +1,101 @@
+.btn
+  background subtle-gradient
+  border 1px solid #ddd
+  box-shadow inset #fff 0 0 x*0.5
+
+  margin 0
+  display inline-block
+  padding 0 1.5em
+
+  height 2em
+  line-height x*2 - 2px
+  font-weight 600
+  text-align center
+  color txt
+  text-shadow #fff 0 -1px 0
+
+  cursor pointer
+  user-select none
+  vertical-align bottom
+
+  &:hover
+    background linear-gradient(top, #fff, hsl(0,0,95%))
+    box-shadow inset #fff 0 0 x*0.75
+    color #000
+
+  i.fa
+    padding-right 0.2em
+
+.btn-primary
+  background linear-gradient(top, lighten(mcolor,10%), darken(mcolor,10%))
+  border 1px solid darken(mcolor,15%)
+  box-shadow inset 0 1px 0 lighten(mcolor,40%)
+
+  color lighten(mcolor,95%)
+  text-shadow 0 -1px 0 darken(mcolor,30%)
+
+  &:hover
+    background linear-gradient(top, lighten(mcolor,15%), darken(mcolor,8%))
+    box-shadow inset 0 1px 0 lighten(mcolor,55%)
+    color #fff
+
+.btn-alternate
+  background linear-gradient(top, acolor, darken(acolor,20%))
+  border 1px solid darken(acolor,25%)
+  box-shadow inset 0 1px 0 lighten(acolor,50%)
+
+  color lighten(acolor,95%)
+  text-shadow 0 -1px 0 darken(acolor,40%)
+
+  &:hover
+    background linear-gradient(top, lighten(acolor,5%), darken(acolor,18%))
+    box-shadow inset 0 1px 0 lighten(acolor,45%)
+    color #fff
+
+
+.btn-small
+  height x*1.5
+  font-size x*0.75
+  line-height x*1.5 - 2px
+  padding 0 x
+
+.btn-large
+  height x*3
+  line-height x*3 - 2px
+  font-size 1.25em
+  font-weight normal
+
+.btn-copy
+  width x*8
+  position relative
+  padding 0
+
+  .label-default
+  .label-active
+    width x*6
+    position absolute
+    top 0
+    left 50%
+    margin-left -3*x
+
+  .label-default
+    opacity 1
+
+  .label-active
+    opacity 0
+    color lighten(dim,50%)
+
+  &:not(:active)
+    .label-default
+    .label-active
+      transition opacity 750ms step-end
+
+  &:active
+    .label-default
+    .label-active
+
+    .label-default
+      opacity 0
+
+    .label-active
+      opacity 1

@@ -1,0 +1,76 @@
+#section-top
+  background mcolor url('../images/home/gradient.jpg') no-repeat center center
+  background-size cover
+  position relative
+  margin-top 2.4*x
+
+  .section-container
+    width 100vw
+    height 10*x
+
+    display flex
+    flex-flow column no-wrap
+    align-items center
+    justify-content center
+    padding 0 2*x
+
+  h1
+    font-size 2*x
+    color lighten(mcolor,90%)
+    line-height 1
+    margin 0 0 0.5*x
+    text-align center
+    max-width 36*x
+    letter-spacing -0.025em
+
+    display flex
+    align-items center
+
+    i.fa
+      margin-right 0.5*x
+      color lighten(mcolor,50%)
+
+
+  p
+    color lighten(mcolor,50%)
+    line-height 1.25*x
+    text-align center
+    max-width 22em
+    a
+      color lighten(mcolor,75%)
+      background hsla(0,0,0,0.2)
+      padding 0 0.25*x
+      &:hover
+        color #fff
+
+@media screen and (min-height: 400px)
+  #section-top
+    margin-top 3*x
+
+@media screen and (min-width: 400px) and (min-height: 400px)
+  #section-top
+    .section-container
+      height 12*x
+
+    h1
+      font-size 2.5*x
+      margin 0 0 0.75*x
+
+    p
+      font-size 1.125*x
+      line-height 1.375
+
+@media screen and (min-width: 720px) and (min-height: 480px)
+  #section-top
+    .section-container
+      height 16*x
+
+    h1
+      font-size 2.5*x
+      margin 0 0 0.75*x
+      i.fa
+        margin-right 0.75*x
+
+    p
+      font-size 1.25*x
+      line-height 1.5

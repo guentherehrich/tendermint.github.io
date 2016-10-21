@@ -1,0 +1,115 @@
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #0a335c url("../images/home/gradient.jpg") no-repeat top right;
+  background-size: cover;
+  width: 100vw;
+  display: flex;
+  box-shadow: rgba(3,13,23,0.15) 0 2px 2.56px;
+  height: 38.4px;
+}
+#site-header a#nav-home {
+  display: block;
+  border-top: 3px solid #07223e;
+}
+#site-header a#nav-home img {
+  width: 35.4px;
+  height: 35.4px;
+}
+#site-header a#nav-home:hover {
+  border-top-color: #093 !important;
+}
+#site-header nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 3px solid #07223e;
+  box-shadow: inset #0e4781 1px 0 0;
+  padding-right: 8px;
+}
+#site-header nav a {
+  display: block;
+  padding: 0 8px;
+  color: #a3ccf5;
+  border-top: 3px solid #07223e;
+  margin-top: -3px;
+  line-height: 35.4px;
+  font-size: 12.8px;
+}
+#site-header nav a .short {
+  display: inline;
+}
+#site-header nav a .long {
+  display: none;
+}
+#site-header nav a:hover {
+  border-top-color: #1876d5 !important;
+  color: #daebfb;
+}
+#site-header nav a#nav-media {
+  display: none;
+}
+#body-home #nav-home {
+  border-top-color: #093 !important;
+}
+#body-blog #nav-blog,
+#body-media #nav-media,
+#body-forum #nav-forum,
+#body-guide #nav-guide,
+#body-jobs #nav-jobs,
+#body-about #nav-about,
+#body-code #nav-code {
+  border-top-color: #1876d5 !important;
+}
+@media screen and (min-height: 400px) {
+  #site-header {
+    height: 48px;
+  }
+  #site-header a#nav-home {
+    border-top: 4px solid #07223e;
+  }
+  #site-header a#nav-home img {
+    width: 44px;
+    height: 44px;
+  }
+  #site-header nav {
+    border-top: 4px solid #07223e;
+  }
+  #site-header nav a {
+    border-top: 4px solid #07223e;
+    margin-top: -4px;
+    line-height: 44px;
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 360px) {
+  #site-header nav a#nav-media {
+    display: block;
+  }
+}
+@media screen and (min-width: 400px) {
+  #site-header nav {
+    padding-left: 12px;
+  }
+  #site-header nav a {
+    padding: 0 12px;
+  }
+}
+@media screen and (min-width: 640px) {
+  #site-header nav a {
+    border-left: 1px solid #082949;
+    border-left: 1px solid rgba(0,0,0,0.2);
+    padding: 0 32px;
+  }
+  #site-header nav a#nav-media {
+    display: block;
+  }
+  #site-header nav a .short {
+    display: none;
+  }
+  #site-header nav a .long {
+    display: inline;
+  }
+}

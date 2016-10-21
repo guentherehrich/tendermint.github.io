@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jobs-rsses on Tendermint</title>
+    <link>http://tendermint.com/jobs/index.xml</link>
+    <description>Recent content in Jobs-rsses on Tendermint</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 20 Oct 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://tendermint.com/jobs/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Master of Automation</title>
+      <link>http://tendermint.com/jobs/master_of_automation/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/master_of_automation/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Automate more elements of building, testing, and deploying the software via Continuous Integration&lt;/li&gt;
+&lt;li&gt;Implement infrastructure-as-code policies and manage infrastructure&lt;/li&gt;
+&lt;li&gt;Quality Assurance&lt;/li&gt;
+&lt;li&gt;Improve Go unit-test coverage across repositories&lt;/li&gt;
+&lt;li&gt;Documentation and Tutorials&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Software Engineer: Developer Tooling</title>
+      <link>http://tendermint.com/jobs/developer_tooling/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/developer_tooling/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Improve and maintain the tendermint RPC system&lt;/li&gt;
+&lt;li&gt;Improve and maintain the various CLIs and example applications&lt;/li&gt;
+&lt;li&gt;Improve and maintain common libraries&lt;/li&gt;
+&lt;li&gt;Write demos for different tendermint apps and behaviour&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Software Engineer: Networking and Consensus</title>
+      <link>http://tendermint.com/jobs/consensus_engineer/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/consensus_engineer/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Improve the implementation of the core Tendermint consensus algorithm&lt;/li&gt;
+&lt;li&gt;Develop a compatible implementation in another programming language&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Software Engineer: Application Developer</title>
+      <link>http://tendermint.com/jobs/application_developer_go/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/application_developer_go/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Develop and maintain a TMSP application to solve classic distributed systems problems
+like key-value storage, locking, leader-election, service discovery, etc (ie. a TMSP version of &lt;a href=&#34;https://www.consul.io/&#34;&gt;consul&lt;/a&gt; or &lt;a href=&#34;https://coreos.com/etcd/&#34;&gt;etcd&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Software Engineer: Application Developer and Dev Outreach</title>
+      <link>http://tendermint.com/jobs/application_developer_js/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/application_developer_js/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maintain an implementation of TMSP and some example applications in Javascript&lt;/li&gt;
+&lt;li&gt;Develop and maintain a framework for smart contracts in javascript (eg. &lt;a href=&#34;https://deterministic.js.org/&#34;&gt;https://deterministic.js.org/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Developer Outreach, tutorials, and onboarding new developers&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Security Engineer</title>
+      <link>http://tendermint.com/jobs/security_engineer/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/security_engineer/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Develop and maintain hardware-based and/or mobile-based solutions for signing Tendermint votes and application transactions&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Research Scientist</title>
+      <link>http://tendermint.com/jobs/research_engineer/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/research_engineer/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Analyze, audit, verify, and improve Tendermint protocols and implementations&lt;/li&gt;
+&lt;li&gt;General purpose research in cryptoeconomics and related fields&lt;/li&gt;
+&lt;li&gt;Publish blog posts and papers on findings&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Software Engineer: Bitcoin</title>
+      <link>http://tendermint.com/jobs/bitcoin_engineer/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/bitcoin_engineer/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maintain an implementation of TMSP and some example applications in C++&lt;/li&gt;
+&lt;li&gt;Develop and maintain Bitcoin-TMSP&lt;/li&gt;
+&lt;li&gt;Contribute to Bitcoin Core&lt;/li&gt;
+&lt;li&gt;Develop a peg to Bitcoin&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

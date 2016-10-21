@@ -1,0 +1,73 @@
+.li-article
+  max-width 50*x
+  margin 0 auto x
+
+  &:last-of-type
+    margin-bottom 0
+
+  .li-article-link
+    padding 0.625*x 0.75*x 0.75*x
+    display block
+    color txt
+    border 1px solid bc
+    &:hover
+      background lighten(mcolor,97%)
+      border-color lighten(mcolor,70%)
+
+  .li-article-header
+    margin 0 0 0.5*x
+    h2
+      line-height 1.25
+      font-weight 600
+      color darken(link,25%)
+
+  .li-article-content
+    max-width 36*x
+
+  .li-article-meta
+    background hsl(0,0,97%)
+    border 1px solid bc
+    border-top none
+    padding 0.5*x 0.75*x
+    display flex
+    flex-flow column no-wrap
+
+    font-size 0.75*x
+
+    .tags
+      .tag
+        color light
+
+@media screen and (min-width: 720px)
+  .li-article
+
+    .li-article-link
+      padding 1.25*x 1.5*x
+      &:hover
+        .li-article-header
+          h2
+            color link
+
+    .li-article-header
+      margin 0 0 0.5*x
+      h2
+        font-size 1.5*x
+        color txt
+
+    .li-article-content
+      color dim
+
+    .li-article-meta
+      flex-flow row no-wrap
+      color light
+      padding x 1.5*x
+
+      .tags
+        flex 1
+        text-align right
+
+@media screen and (min-width: 1024px)
+  .li-article
+    margin x auto
+    &:last-of-type
+      margin x auto

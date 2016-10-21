@@ -1,0 +1,62 @@
+.form-default
+  .form-group, .form-footer
+    margin 0 0 1.5*x
+
+  .form-group
+    display flex
+    max-width 50em
+
+    > label, > .label
+      flex 0 0 18*x
+      text-align right 
+      padding-right x
+      line-height 2*x
+
+    .success, .error
+      font-weight 500
+      line-height 2*x
+      padding 0 1em
+
+    .success
+      color acolor
+    .error
+      color #c00
+
+  .input-group
+    flex 1
+    display flex
+
+  .input-group-radio
+    padding-left 18*x
+    display flex
+    flex-flow column
+
+    label.btn
+      padding 0 0.5em
+      flex 1
+      margin-bottom 0.25em
+      border 1px solid bc
+      text-align left
+      span
+        margin-left 0.5em
+        padding-left 0.75em
+        border-left 1px solid bc
+
+  .input-group-addon
+    background subtle-gradient
+    color dim
+    text-align left
+    border 1px solid bc
+    line-height x*2 - 2px
+    padding 0 x*0.5
+    margin-left -1px
+    width x*6
+
+  input:not([type=submit]):not([type=file]):not([type=checkbox])
+  textarea
+    flex 1
+
+  .form-footer
+    padding-left 18*x
+    .btn
+      width 32*x

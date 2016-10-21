@@ -1,0 +1,41 @@
+.form-large
+  .form-group
+    max-width x*80
+    > label, > .label
+      font-size 1.125em
+      font-weight 500
+      line-height x*3
+
+    .btn
+      width 18*x
+
+  input:not([type=submit]):not([type=file])
+  textarea
+    font-size 1.125em
+    height x*3
+    margin-right x
+
+.form-modal
+  .form-group, .form-footer
+    margin 0
+    padding 1em
+    display flex
+
+  .form-group
+    max-width default
+
+    > label, > .label
+      flex 0 0 4*x
+
+    > label, > .label
+    input
+      font-size x*1.25
+      line-height x*3
+      height x*3
+
+  .form-footer
+    border-top 1px solid bc
+    justify-content flex-end
+    .btn
+      width x*12
+      margin-left x

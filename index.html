@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta name="generator" content="Hugo 0.17" />
+    <meta charset="utf-8">
+    <title>Blockchain app development simplified &ndash; Tendermint</title>
+    <base href="http://tendermint.com">
+<link rel="canonical" href="http://tendermint.com/">
+<link href="http://tendermint.com/index.xml" rel="alternate" type="application/rss+xml" title="Tendermint">
+
+<meta content="on" http-equiv="cleartype" />
+<meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/images/favicon/manifest.json">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" media="screen" href="/styles/screen.css">
+
+
+
+  </head>
+
+  <body id="body-home">
+    <header id="site-header">
+<a href="/" id="nav-home">
+  <img src="/images/home/tendermint-logo-88-green.jpg" alt="Tendermint logo"/>
+</a>
+<nav>
+  <a id="nav-blog" href="/blog">Blog</a>
+  <a id="nav-media" href="/media">Media</a>
+  <a id="nav-code" href="/code">Code</a>
+  <a id="nav-guide" href="/guide">Guide</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
+  <a id="nav-about" href="/about">About</a>
+</nav>
+</header>
+
+    <section id="section-hero">
+  <div class="section-container">
+
+    <h1>Tendermint</h1>
+    <p class="tagline">
+      
+      Build <i class="fa fa-angle-right"></i>
+      Deploy <i class="fa fa-angle-right"></i>
+      Manage
+    </p>
+    <p class="introduction">
+      
+      Bringing simplicity, security, and speed to the world&rsquo;s blockchains.
+    </p>
+
+    
+<form action="http://tendermint.us8.list-manage1.com/subscribe/post?u=89d5a312be95ee3f0c9cf7ecd&amp;id=4af1217bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+  <div class="input-group">
+    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email">
+  </div>
+
+  <div class="input-group">
+    <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+      <i class="fa fa-newspaper-o"></i> Subscribe
+    </button>
+  </div>
+
+  
+  <div style="position: absolute; left: -5000px;"><input type="text" name="b_89d5a312be95ee3f0c9cf7ecd_4af1217bca" tabindex="-1" value=""></div>
+</form>
+
+
+    <div class="connections">
+      <a href="http://forum.tendermint.com:3000/">
+        <i class="fa fa-slick"></i></a>
+      <a href="https://github.com/tendermint/tendermint">
+        <i class="fa fa-github"></i></a>
+      <a href="https://twitter.com/tendermint_team">
+        <i class="fa fa-twatter"></i></a>
+      <a href="https://www.facebook.com/tendermint">
+        <i class="fa fa-footbook"></i></a>
+      <a href="https://www.linkedin.com/company/tendermint">
+        <i class="fa fa-linkedout"></i></a>
+    </div>
+
+  </div>
+  <a href="#" id="home-arrow-down"><i class="fa fa-angle-down"></i></a>
+</section>
+<div id="scroll-down-here"></div>
+
+    <section class="section-default section-columns">
+  <div class="columns">
+    <div class="section-container">
+      <header class="section-header">
+        <i class="fa fa-wrench"></i>
+        <h2>Blockchain Apps</h2>
+      </header>
+      <div class="section-content">
+        <p>Whether you&rsquo;re developing an application within a Fortune 500 company or building your own cryptocurrency, Tendermint can help.</p>
+      </div>
+    </div>
+    <div class="section-container">
+      <header class="section-header">
+        <i class="fa fa-cloud-upload"></i>
+        <h2>Easy Deployment</h2>
+      </header>
+      <div class="section-content">
+        <p>Deploy your blockchain app to AWS, Google Cloud, Microsoft Azure, or Digital Ocean in <a href="http://tendermint.com/tutorials/">fewer than three minutes</a>.</p>
+      </div>
+    </div>
+    <div class="section-container">
+      <header class="section-header">
+        <i class="fa fa-code"></i>
+        <h2>Open Source</h2>
+      </header>
+      <div class="section-content">
+        <p>Our source code is available on <a
+href="https://github.com/tendermint">GitHub</a>. TendermintCore and librarires are licensed under Apache2.0.</p>
+      </div>
+    </div>
+    <div class="section-container">
+      <header class="section-header">
+        <i class="fa fa-tachometer"></i>
+        <h2>Fast</h2>
+      </header>
+      <div class="section-content">
+        <p>Over 10,000 transactions per second, per blockchain. New blocks are committed in less than 1000ms. Achievable today.</p>
+      </div>
+    </div>
+    <div class="section-container">
+      <header class="section-header">
+        <i class="fa fa-database"></i>
+        <h2>Scalable</h2>
+      </header>
+      <div class="section-content">
+        <p>Tendermint blockchain apps are infinitely scalable across commodity hardware through efficient section-container-based deployment.</p>
+      </div>
+    </div>
+    <div class="section-container">
+      <header class="section-header">
+        <i class="fa fa-lock"></i>
+        <h2>Secure</h2>
+      </header>
+      <div class="section-content">
+        <p>Tendermint is a Byzantine Fault Tolerant consensus algorithm. Our systems are designed for accountability and regulatory compliance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="section-architecture" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Next Generation Enterprise Architecture</h2>
+    </header>
+    <div class="section-content">
+      <a class="anchor-img" href="/posts/tendermint-socket-protocol"><img src="/images/home/tmsp_architecture.png"/></a>
+      <div class="text">
+        <p>Blockchains continue their journey - increasing functionality while decreasing development complexity.</p>
+        <p>First there was Bitcoin, an accounting system with limited functionality that is difficult to build on top of.</p>
+        <p>Then came Ethereum, which unlocked the potential of blockchains with a Turing-complete virtual machine that can run any smart contract written in Serpent or Solidity.</p></li> 
+        <p>Now with Tendermint <a href="http://tendermint.com/posts/tendermint-socket-protocol/">TMSP</a>, you can write smart-contracts in any programming language. Leverage existing codebases, workflows, and development ecosystems to build complex &amp; production-quality applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="section-default">
+  <div class="section-container">
+
+    <header class="section-header">
+      <h2>Tendermint Resources</h2>
+    </header>
+
+    <div class="section-content">
+
+      <div class="panels">
+        <div class="panel">
+          <div class="panel-container">
+            <div class="panel-header">
+              <h3><a href="/blog/" class="block">
+                  <i class="fa fa-rss"></i> Blog
+              </a></h3>
+            </div>
+            <div class="panel-body">
+              <ul>
+                
+                <li>
+  <a href="http://tendermint.com/blog/tendermint-then-to-now/">
+    <h4>Tendermint: from Then to Now</h4>
+    <p>The history of Tendermint, and information on the latest release and more</p>
+  </a>
+</li>
+
+                
+                <li>
+  <a href="http://tendermint.com/blog/on-thedao-and-blockchain-governance/">
+    <h4>On TheDAO and Proof-of-Stake Governance</h4>
+    <p></p>
+  </a>
+</li>
+
+                
+                <li>
+  <a href="http://tendermint.com/blog/critique-merkle-dao-democracy/">
+    <h4>A Critique of Merkle&#39;s DAO Democracy: Making it Reliable</h4>
+    <p>A critique of the subsection of the new DAO paper by Merkle, specifically of the section entitled &#39;Making it Reliable&#39;</p>
+  </a>
+</li>
+
+                
+                <li>
+  <a href="http://tendermint.com/blog/tendermint-socket-protocol/">
+    <h4>TMSP: The Tendermint Socket Protocol</h4>
+    <p>TMSP lets you create blockchain application easily in any languge.  This post describes the motivation behind TMSP and links to tutorials.</p>
+  </a>
+</li>
+
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-container">
+            <div class="panel-header">
+              <h3><a href="/media/" class="block">
+                  <i class="fa fa-video-camera"></i> Media
+              </a></h3>
+            </div>
+            <div class="panel-body">
+              <ul>
+                
+                <li>
+  <a href="http://tendermint.com/media/live-blockchain-demo/">
+    <h4>Live Blockchain Demo</h4>
+    <p>Ethan Buchman demos a live Tendermint-powered blockchain, with nodes coming on and offline.</p>
+  </a>
+</li>
+
+                
+                <li>
+  <a href="http://tendermint.com/media/tendermint-tmsp/">
+    <h4>Blockchain Smart Contracts in Any Language with Tendermint TMSP</h4>
+    <p>Jae Kwon and Ethan Buchman discussed how developers can write blockchain smart contracts in any language using TMSP (Tendermint Socket Protocol).</p>
+  </a>
+</li>
+
+                
+                <li>
+  <a href="http://tendermint.com/media/blockchains-trust-as-a-service/">
+    <h4>Blockchains = Trust-As-A-Service</h4>
+    <p>Dustin Byington talks with Jeff Frick at the Block Chain Conference in San Francisco.</p>
+  </a>
+</li>
+
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-external">
+          <div class="panel-container">
+            <div class="panel-header">
+              <h3>
+                <i class="fa fa-newspaper-o"></i> In the News
+              </h3>
+            </div>
+            <div class="panel-body">
+              <ul>
+                <li><a href="http://cointelegraph.com/news/tendermint-added-to-microsofts-azure-baas-platform">
+                  <h4>Tendermint Added to Microsoft&rsquo;s Azure BaaS Platform</h4>
+                  <p>CoinTelegraph &ndash; March 18th, 2016</p>
+                </a></li>
+                <li><a href="http://bravenewcoin.com/news/the-block-chain-conference-brings-finance-industry-and-blockchain-companies-together/">
+                  <h4>The Block Chain Conference brings finance industry and blockchain companies together</h4>
+                  <p>Brave New Coin &ndash; February 13th, 2016</p>
+                </a></li>
+                <li><a href="http://bitcoinist.net/tendermint-unveil-ui-demo-first-blockchain-apps/">
+                  <h4>Tendermint to Unveil UI, Demo First Blockchain Apps</h4>
+                  <p>Bitcoinist &ndash; February 9th, 2016</p>
+                </a></li>
+                <li><a href="http://cointelegraph.com/news/tendermints-mintnet-for-launching-blockchains-to-any-cloud-provider" target="_blank">
+                  <h4>Tendermint&rsquo;s mintnet For Launching Blockchains To Any Cloud Provider</h4>
+                  <p>The CoinTelegraph &ndash; February 6th, 2016</p>
+                </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="section-default section-columns section-dark">
+  <div class="columns">
+    <div class="section-container">
+      <header class="section-header">
+        <h2>
+          <span class="short">We&rsquo;re looking for blockchain engineers</span>
+          <span class="long">We&rsquo;re seeking talented blockchain engineers</span>
+        </h2>
+      </header>
+      <div class="section-content">
+	      <p>Are you an industry leading blockchain engineer looking to make open-source contributions to a state-of-the-art codebase on the bleeding edge of blockchain tech? If so, we’d love to <a href="mailto:hello@tendermint.com">hear from you</a>. See our <a href="/jobs">jobs page</a> for more details.</p>
+      </div>
+    </div>
+    <div class="section-container">
+      <header class="section-header">
+        <h2>
+          <span class="short">We also build custom blockchain apps</span>
+          <span class="long">We also build custom blockchain applications</span>
+        </h2>
+      </header>
+      <div class="section-content">
+        <p>We work directly with a small number of high value clients to help bring their vision to reality. <a href="mailto:hello@tendermint.com">Lets talk.</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <section class="section-default">
+      <div class="section-container">
+        <header class="section-header">
+          <h2>Watch an interview with the Tendermint team</h2>
+        </header>
+        <div class="section-content">
+          <div class="youtube" id="EfFVh1DIKds"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-connections" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Learn more by joining the&nbsp;discussion</h2>
+    </header>
+    <div class="section-content">
+      <ul class="ul-connections">
+        <li>
+          <a href="http://forum.tendermint.com:3000">
+            <h3><i class="fa fa-slick"></i> Slack</h3>
+            <div class="content">
+              <p>Get an invitation to join the discussion on our Slack.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/tendermint_team">
+            <h3><i class="fa fa-twatter"></i> Twitter</h3>
+            <div class="content">
+              <p>Follow <strong>@tendermint_team</strong> on Twitter for our latest updates.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/tendermint/">
+            <h3><i class="fa fa-footbook"></i> Facebook</h3>
+            <div class="content">
+              <p>Like and follow Tendermint on Facebook.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/tendermint">
+            <h3><i class="fa fa-linkedout"></i> LinkedIn</h3>
+            <div class="content">
+              <p>View our profile and connect with us on LinkedIn.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="section-cta" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Stay updated on Tendermint&nbsp;news</h2>
+    </header>
+    <div class="section-content">
+      
+<form action="http://tendermint.us8.list-manage1.com/subscribe/post?u=89d5a312be95ee3f0c9cf7ecd&amp;id=4af1217bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+  <div class="input-group">
+    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email">
+  </div>
+
+  <div class="input-group">
+    <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+      <i class="fa fa-newspaper-o"></i> Subscribe
+    </button>
+  </div>
+
+  
+  <div style="position: absolute; left: -5000px;"><input type="text" name="b_89d5a312be95ee3f0c9cf7ecd_4af1217bca" tabindex="-1" value=""></div>
+</form>
+
+  </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <p class="left">&copy; 2016 Tendermint</p>
+  <p class="right">
+    <a href="mailto:hello@tendermint.com">
+      <i class="fa fa-envelope-o"></i>
+      Contact
+    </a>
+  </p>
+</footer>
+
+<script src="scripts/bundle.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51029217-1', 'tendermint.com');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
+
