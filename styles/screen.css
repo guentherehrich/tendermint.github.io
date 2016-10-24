@@ -1480,7 +1480,7 @@ a.footer-large-button:hover {
 }
 #section-top .section-container {
   width: 100vw;
-  height: 160px;
+  min-height: 160px;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -1540,6 +1540,11 @@ a.footer-large-button:hover {
   line-height: 20px;
   text-align: center;
   max-width: 22em;
+  margin-bottom: 1em;
+}
+#section-top p strong {
+  font-weight: 500;
+  color: #7eb8f1;
 }
 #section-top p a {
   color: #a3ccf5;
@@ -1549,6 +1554,12 @@ a.footer-large-button:hover {
 #section-top p a:hover {
   color: #fff;
 }
+#section-top.section-top-tall {
+  padding: 3em 0 2em;
+}
+#section-top.section-top-tall p {
+  max-width: 23em;
+}
 @media screen and (min-height: 400px) {
   #section-top {
     margin-top: 48px;
@@ -1556,7 +1567,7 @@ a.footer-large-button:hover {
 }
 @media screen and (min-width: 400px) and (min-height: 400px) {
   #section-top .section-container {
-    height: 192px;
+    min-height: 192px;
   }
   #section-top h1 {
     font-size: 40px;
@@ -1569,7 +1580,7 @@ a.footer-large-button:hover {
 }
 @media screen and (min-width: 720px) and (min-height: 480px) {
   #section-top .section-container {
-    height: 256px;
+    min-height: 256px;
   }
   #section-top h1 {
     font-size: 40px;
