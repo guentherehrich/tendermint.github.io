@@ -1,3 +1,7 @@
+# 2016-10-25
+* Starting working on improving the Community page.
+* Design tweaks
+
 # Stuff done Thursday (Marketing Site)
 * Fixed and improved the site design for phones in landscape mode.
     * Reduced the height of the fixed header so the user has more vertical space.

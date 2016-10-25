@@ -47,7 +47,7 @@
   <a id="nav-media" href="/media">Media</a>
   <a id="nav-code" href="/code">Code</a>
   <a id="nav-guide" href="/guide">Guide</a>
-  <a id="nav-forum" href="http://forum.tendermint.com">Forum</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
   <a id="nav-about" href="/about">About</a>
 </nav>
 </header>
@@ -71,7 +71,7 @@
 <p>This tutorial is second in a series.  See <a href="/posts/tendermint-socket-protocol/">this post</a> for links to all the tutorials in this series.</p>
 </blockquote>
 
-<h2 id="tendermint-core:e6f6bbc740be2f7da0f93ab7574b2f68">Tendermint Core</h2>
+<h2 id="tendermint-core">Tendermint Core</h2>
 
 <p>Now that we&rsquo;ve seen how TMSP works, and even played with a few applications using the <code>tmsp-cli</code> tool,
 let&rsquo;s run an actual Tendermint node.</p>
@@ -139,7 +139,7 @@ go install ./cmd/tendermint
 
 <p>visit <a href="http://localhost:46657">http://localhost:46657</a> in your browser to see the other endpoints.</p>
 
-<h2 id="deploy-a-tendermint-testnet:e6f6bbc740be2f7da0f93ab7574b2f68">Deploy a Tendermint Testnet</h2>
+<h2 id="deploy-a-tendermint-testnet">Deploy a Tendermint Testnet</h2>
 
 <p>Now that we&rsquo;ve run a single Tendermint node with one validator and a couple applications,
 let&rsquo;s deploy a testnet to run our application with four validators.</p>
@@ -156,20 +156,25 @@ pay to start some new droplets to run your nodes. You can of course stop and des
 
 <p>To provision machines on DigitalOcean:</p>
 
-<pre><code>mintnet create -- --driver=digitalocean --digitalocean-access-token=YOUR_ACCCESS_TOKEN
+<pre><code>mintnet create -- --driver=digitalocean --digitalocean-image=docker --digitalocean-access-token=YOUR_ACCCESS_TOKEN
 </code></pre>
+
+<p>You can leave out the <code>--digitalocean-access-token</code> flag if you set your <code>DIGITALOCEAN_ACCESS_TOKEN</code> environment variable.</p>
 
 <p>By default this creates 4 new machines.  Check the help messages for more info, e.g. <code>mintnet create --help</code>.</p>
 
 <p>Next, create the testnet configuration folders.</p>
 
-<pre><code>mintnet init mytest_dir/
+<pre><code>mintnet init chain mytest_dir/
 </code></pre>
 
 <p>This creates directories in <code>mytest</code> for the application.</p>
 
 <pre><code>ls mytest_dir/
+  chain_config.json # list of validator pubkeys and ip:ports
   app   # Common configuration directory for your blockchain applicaiton
+  core  # Common configuration directory for Tendermint core
+  data  # Common configuration directory for the Merkleyes key-value store
   mach1 # Configuration directory for the Tendermint core daemon on machine 1
   mach2 # Configuration directory for the Tendermint core daemon on machine 2
   mach3 # Configuration directory for the Tendermint core daemon on machine 3
@@ -177,7 +182,8 @@ pay to start some new droplets to run your nodes. You can of course stop and des
 </code></pre>
 
 <p>You can change the files in the app folder to change which TMSP application run on your testnet.
-The default script app/init.sh gets run on each node to install the TMSP application straight from Github.</p>
+The default script app/init.sh gets run on each node to install the TMSP application straight from Github.
+Edit core/init.sh to change the Tendermint version being run.</p>
 
 <p>Now start the testnet service.</p>
 
@@ -193,6 +199,9 @@ The default script app/init.sh gets run on each node to install the TMSP applica
 
 <pre><code>mintnet destroy --machines=&quot;mach1,mach2,mach3,mach4&quot;
 </code></pre>
+
+<p>Note you can use the <code>--machines</code> flag on any command to specify machines,
+for instance <code>--machines mach[1-3],mach7</code> will apply to mach1, mach2, mach3, and mach7.</p>
 
 <p>TODO: Document tutorial on docker-machine ssh mach1, docker ps, etc, or at least link to good Docker tutorials.</p>
 

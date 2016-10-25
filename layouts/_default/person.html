@@ -1,0 +1,13 @@
+<div class="li-article">
+  <a class="li-article-link" href='{{ .Permalink }}'>
+    <header class="li-article-header">
+      <h2> {{ .Title }}</h2>
+    </header>
+    <div class="li-article-content">
+      {{ .Description }}
+    </div>
+  </a>
+  <div class="li-article-meta">
+    {{ partial "tags.html" . }}
+  </div>
+</div>

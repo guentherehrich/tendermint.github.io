@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tmsp on Tendermint</title>
-    <link>http://tendermint.com/categories/tmsp/</link>
-    <description>Recent content in Tmsp on Tendermint</description>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/tmsp/index.xml</link>
+    <description>Recent content on Tendermint</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 19 Dec 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tendermint.com/categories/tmsp/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -25,7 +24,7 @@
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;motivation:9ee5291616336eaccb53b94be2d99fab&#34;&gt;Motivation&lt;/h2&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
 
 &lt;p&gt;Thus far, all blockchains &amp;ldquo;stacks&amp;rdquo; (such as &lt;a href=&#34;https://github.com/bitcoin/bitcoin&#34;&gt;Bitcoin&lt;/a&gt;) have had a monolithic design.  That is, each blockchain stack is a single program that handles all the concerns of a decentralized ledger; this includes P2P connectivity, the &amp;ldquo;mempool&amp;rdquo; broadcasting of transactions, consensus on the most recent block, account balances, Turing-complete contracts, user-level permissions, etc.&lt;/p&gt;
 
@@ -35,7 +34,7 @@
 
 &lt;p&gt;In contrast, our approach is to decouple the consensus engine and P2P layers from the details of the application state of the particular blockchain application.&lt;/p&gt;
 
-&lt;h2 id=&#34;intro-to-tmsp:9ee5291616336eaccb53b94be2d99fab&#34;&gt;Intro to TMSP&lt;/h2&gt;
+&lt;h2 id=&#34;intro-to-tmsp&#34;&gt;Intro to TMSP&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/tendermint/tendermint&#34;&gt;Tendermint Core&lt;/a&gt; (the &amp;ldquo;consensus engine&amp;rdquo;) speaks to the application via a socket protocol called &lt;a href=&#34;https://github.com/tendermint/tmsp&#34;&gt;TMSP&lt;/a&gt;.&lt;/p&gt;
 
@@ -71,7 +70,7 @@
 
 &lt;p&gt;It&amp;rsquo;s probably evident that applications designers need to very carefully design their message handlers to create a blockchain that does anything useful but this architecture provides a place to start.&lt;/p&gt;
 
-&lt;h2 id=&#34;a-note-on-determinism:9ee5291616336eaccb53b94be2d99fab&#34;&gt;A Note on Determinism&lt;/h2&gt;
+&lt;h2 id=&#34;a-note-on-determinism&#34;&gt;A Note on Determinism&lt;/h2&gt;
 
 &lt;p&gt;The logic for blockchain transaction processing must be deterministic.  If the application logic weren&amp;rsquo;t deterministic, consensus would not be reached among the Tendermint Core replica nodes.&lt;/p&gt;
 
@@ -88,7 +87,7 @@
 
 &lt;p&gt;While programmers can avoid non-determinism by being careful, it is also possible to create a special linter or static analyzer for each language to check for determinism.  In the future we may work with partners to create such tools.&lt;/p&gt;
 
-&lt;h2 id=&#34;tutorials:9ee5291616336eaccb53b94be2d99fab&#34;&gt;Tutorials&lt;/h2&gt;
+&lt;h2 id=&#34;tutorials&#34;&gt;Tutorials&lt;/h2&gt;
 
 &lt;p&gt;Follow these tutorials to quickly get started developing your TMSP application.&lt;/p&gt;
 
@@ -97,7 +96,7 @@
 &lt;li&gt;&lt;a href=&#34;http://tendermint.com/tutorials/launch-a-tmsp-testnet/&#34;&gt;Launch a TMSP testnet&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;contributions:9ee5291616336eaccb53b94be2d99fab&#34;&gt;Contributions&lt;/h2&gt;
+&lt;h2 id=&#34;contributions&#34;&gt;Contributions&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;Many thanks to Zaki Manian for providing the &amp;ldquo;Intro to TMSP&amp;rdquo; section&lt;/em&gt;&lt;/p&gt;
 </description>
@@ -115,7 +114,7 @@
 &lt;p&gt;This tutorial is second in a series.  See &lt;a href=&#34;http://tendermint.com/posts/tendermint-socket-protocol/&#34;&gt;this post&lt;/a&gt; for links to all the tutorials in this series.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;tendermint-core:e6f6bbc740be2f7da0f93ab7574b2f68&#34;&gt;Tendermint Core&lt;/h2&gt;
+&lt;h2 id=&#34;tendermint-core&#34;&gt;Tendermint Core&lt;/h2&gt;
 
 &lt;p&gt;Now that we&amp;rsquo;ve seen how TMSP works, and even played with a few applications using the &lt;code&gt;tmsp-cli&lt;/code&gt; tool,
 let&amp;rsquo;s run an actual Tendermint node.&lt;/p&gt;
@@ -183,7 +182,7 @@ go install ./cmd/tendermint
 
 &lt;p&gt;visit &lt;a href=&#34;http://localhost:46657&#34;&gt;http://localhost:46657&lt;/a&gt; in your browser to see the other endpoints.&lt;/p&gt;
 
-&lt;h2 id=&#34;deploy-a-tendermint-testnet:e6f6bbc740be2f7da0f93ab7574b2f68&#34;&gt;Deploy a Tendermint Testnet&lt;/h2&gt;
+&lt;h2 id=&#34;deploy-a-tendermint-testnet&#34;&gt;Deploy a Tendermint Testnet&lt;/h2&gt;
 
 &lt;p&gt;Now that we&amp;rsquo;ve run a single Tendermint node with one validator and a couple applications,
 let&amp;rsquo;s deploy a testnet to run our application with four validators.&lt;/p&gt;
@@ -200,20 +199,25 @@ pay to start some new droplets to run your nodes. You can of course stop and des
 
 &lt;p&gt;To provision machines on DigitalOcean:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;mintnet create -- --driver=digitalocean --digitalocean-access-token=YOUR_ACCCESS_TOKEN
+&lt;pre&gt;&lt;code&gt;mintnet create -- --driver=digitalocean --digitalocean-image=docker --digitalocean-access-token=YOUR_ACCCESS_TOKEN
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can leave out the &lt;code&gt;--digitalocean-access-token&lt;/code&gt; flag if you set your &lt;code&gt;DIGITALOCEAN_ACCESS_TOKEN&lt;/code&gt; environment variable.&lt;/p&gt;
 
 &lt;p&gt;By default this creates 4 new machines.  Check the help messages for more info, e.g. &lt;code&gt;mintnet create --help&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Next, create the testnet configuration folders.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;mintnet init mytest_dir/
+&lt;pre&gt;&lt;code&gt;mintnet init chain mytest_dir/
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This creates directories in &lt;code&gt;mytest&lt;/code&gt; for the application.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;ls mytest_dir/
+  chain_config.json # list of validator pubkeys and ip:ports
   app   # Common configuration directory for your blockchain applicaiton
+  core  # Common configuration directory for Tendermint core
+  data  # Common configuration directory for the Merkleyes key-value store
   mach1 # Configuration directory for the Tendermint core daemon on machine 1
   mach2 # Configuration directory for the Tendermint core daemon on machine 2
   mach3 # Configuration directory for the Tendermint core daemon on machine 3
@@ -221,7 +225,8 @@ pay to start some new droplets to run your nodes. You can of course stop and des
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;You can change the files in the app folder to change which TMSP application run on your testnet.
-The default script app/init.sh gets run on each node to install the TMSP application straight from Github.&lt;/p&gt;
+The default script app/init.sh gets run on each node to install the TMSP application straight from Github.
+Edit core/init.sh to change the Tendermint version being run.&lt;/p&gt;
 
 &lt;p&gt;Now start the testnet service.&lt;/p&gt;
 
@@ -237,6 +242,9 @@ The default script app/init.sh gets run on each node to install the TMSP applica
 
 &lt;pre&gt;&lt;code&gt;mintnet destroy --machines=&amp;quot;mach1,mach2,mach3,mach4&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note you can use the &lt;code&gt;--machines&lt;/code&gt; flag on any command to specify machines,
+for instance &lt;code&gt;--machines mach[1-3],mach7&lt;/code&gt; will apply to mach1, mach2, mach3, and mach7.&lt;/p&gt;
 
 &lt;p&gt;TODO: Document tutorial on docker-machine ssh mach1, docker ps, etc, or at least link to good Docker tutorials.&lt;/p&gt;
 </description>
@@ -254,13 +262,13 @@ The default script app/init.sh gets run on each node to install the TMSP applica
 &lt;p&gt;This tutorial is first in a series.  See &lt;a href=&#34;http://tendermint.com/posts/tendermint-socket-protocol/&#34;&gt;this post&lt;/a&gt; for an overview of TMSP and links to all the tutorials in this series.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;a-first-example:639016e1af3277f51024e0a6d4712e42&#34;&gt;A First Example&lt;/h2&gt;
+&lt;h2 id=&#34;a-first-example&#34;&gt;A First Example&lt;/h2&gt;
 
 &lt;p&gt;Make sure you &lt;a href=&#34;https://golang.org/doc/install&#34;&gt;have Go installed&lt;/a&gt; and &lt;a href=&#34;https://github.com/tendermint/tendermint/wiki/Setting-GOPATH&#34;&gt;put &lt;code&gt;$GOPATH/bin&lt;/code&gt; in your &lt;code&gt;$PATH&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Next, install the &lt;code&gt;tmsp-cli&lt;/code&gt; tool and example applications:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;go get github.com/tendermint/tmsp/cmd/...
+&lt;pre&gt;&lt;code&gt;go get -u github.com/tendermint/tmsp/cmd/...
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Now run &lt;code&gt;tmsp-cli --help&lt;/code&gt; to see the list of commands:&lt;/p&gt;
@@ -311,7 +319,7 @@ tmsp-cli info
 send the given TMSP message, and wait for a response.&lt;/p&gt;
 
 &lt;p&gt;The server may be generic for a particular language, and we provide one for Go in &lt;code&gt;tmsp/server&lt;/code&gt;.
-There is one for Python in &lt;code&gt;example/python/tmsp/server.py&lt;/code&gt;, and one for Node JS in &lt;code&gt;example/js/server.js&lt;/code&gt;.&lt;/p&gt;
+There is one for Python in &lt;code&gt;example/python/tmsp/server.py&lt;/code&gt;, and one for Node JS in &lt;code&gt;github.com/tendermint/js-tmsp&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;The handler is specific to the application, and may be arbitrary,
 so long as it is deterministic and conforms to the TMSP interface specification.&lt;/p&gt;
@@ -335,16 +343,44 @@ to allow multiple TMSP messages to be sent over a single connection.&lt;/p&gt;
 &lt;p&gt;Try running these commands:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;&amp;gt; echo hello
-&amp;gt; info
-&amp;gt; commit
-&amp;gt; append_tx &amp;quot;abc&amp;quot;
-&amp;gt; info
-&amp;gt; commit
+-&amp;gt; data: {hello}
+
+&amp;gt; info 
+-&amp;gt; data: {size:0}
+
+&amp;gt; commit 
+
+&amp;gt; append_tx abc
+-&amp;gt; code: OK
+
+&amp;gt; info 
+-&amp;gt; data: {size:1}
+
+&amp;gt; commit 
+-&amp;gt; data: {750502FC7E84BBD788ED589624F06CFA871845D1}
+
+&amp;gt; query abc
+-&amp;gt; code: OK
+-&amp;gt; data: {Index=0 value=abc exists=true}
+
+&amp;gt; append_tx def=xyz
+-&amp;gt; code: OK
+
+&amp;gt; commit 
+-&amp;gt; data: {76393B8A182E450286B0694C629ECB51B286EFD5}
+
+&amp;gt; query def
+-&amp;gt; code: OK
+-&amp;gt; data: {Index=1 value=xyz exists=true}
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Similarly, you could put the commands in a file and run &lt;code&gt;tmsp-cli batch &amp;lt; myfile&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Note that if we do &lt;code&gt;append_tx abc&lt;/code&gt; it will store &lt;code&gt;(abc, abc)&lt;/code&gt;,
+but if we do &lt;code&gt;append_tx abc=efg&lt;/code&gt; it will store &lt;code&gt;(abc, efg)&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;another-example:639016e1af3277f51024e0a6d4712e42&#34;&gt;Another Example&lt;/h2&gt;
+&lt;p&gt;Similarly, you could put the commands in a file and run &lt;code&gt;tmsp-cli --verbose batch &amp;lt; myfile&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;another-example&#34;&gt;Another Example&lt;/h2&gt;
 
 &lt;p&gt;Now that we&amp;rsquo;ve got the hang of it, let&amp;rsquo;s try another application, the &amp;ldquo;counter&amp;rdquo; app.&lt;/p&gt;
 
@@ -385,29 +421,28 @@ before they are stored in memory or gossipped to other peers.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;gt; set_option serial on
 -&amp;gt; data: {serial=on}
 
-&amp;gt; check_tx x00
+&amp;gt; check_tx 0x00
 -&amp;gt; code: OK
 
-&amp;gt; check_tx xFF
+&amp;gt; check_tx 0xff
 -&amp;gt; code: OK
 
-&amp;gt; append_tx x00
+&amp;gt; append_tx 0x00
 -&amp;gt; code: OK
 
-&amp;gt; check_tx x00
+&amp;gt; check_tx 0x00
 -&amp;gt; code: BadNonce
 -&amp;gt; log: Invalid nonce. Expected &amp;gt;= 1, got 0
 
-&amp;gt; append_tx x01
+&amp;gt; append_tx 0x01
 -&amp;gt; code: OK
 
-&amp;gt; append_tx x04
+&amp;gt; append_tx 0x04
 -&amp;gt; code: BadNonce
 -&amp;gt; log: Invalid nonce. Expected 2, got 4
 
-&amp;gt; info
+&amp;gt; info 
 -&amp;gt; data: {hashes:0, txs:2}
-
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This is a very simple application, but between &lt;code&gt;counter&lt;/code&gt; and &lt;code&gt;dummy&lt;/code&gt;, its easy to see how you can build out arbitrary application states on top of the TMSP.
@@ -417,7 +452,7 @@ In the near future, &lt;code&gt;erisdb&lt;/code&gt; of Eris Industries will also
 
 &lt;p&gt;We have implemented the counter in a number of languages (see the example directory).&lt;/p&gt;
 
-&lt;p&gt;To run the Node JS version, &lt;code&gt;cd&lt;/code&gt; to &lt;code&gt;example/js&lt;/code&gt; and run&lt;/p&gt;
+&lt;p&gt;To run the Node JS version, checkout the &lt;code&gt;github.com/tendermint/js-tmsp&lt;/code&gt; repo, &lt;code&gt;cd&lt;/code&gt; to &lt;code&gt;example&lt;/code&gt; and run&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;node app.js
 &lt;/code&gt;&lt;/pre&gt;
@@ -428,7 +463,7 @@ You should get the same results as for the Go version.&lt;/p&gt;
 
 &lt;p&gt;Want to write the counter app in your favorite language?! We&amp;rsquo;d be happy to accept the pull request!&lt;/p&gt;
 
-&lt;h2 id=&#34;next-steps:639016e1af3277f51024e0a6d4712e42&#34;&gt;Next steps&lt;/h2&gt;
+&lt;h2 id=&#34;next-steps&#34;&gt;Next steps&lt;/h2&gt;
 
 &lt;p&gt;In the next tutorial, we will show how to &lt;a href=&#34;http://tendermint.com/tutorials/launch-a-tmsp-testnet&#34;&gt;launch a TMSP testnet&lt;/a&gt;.&lt;/p&gt;
 </description>

@@ -47,7 +47,7 @@
   <a id="nav-media" href="/media">Media</a>
   <a id="nav-code" href="/code">Code</a>
   <a id="nav-guide" href="/guide">Guide</a>
-  <a id="nav-forum" href="http://forum.tendermint.com">Forum</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
   <a id="nav-about" href="/about">About</a>
 </nav>
 </header>
@@ -113,13 +113,13 @@
 
 <p><em>terminology comparison between Tendermint and PBFT</em></p>
 
-<h2 id="byzantine-fault-tolerance:e7e7efb14f67469318954b6d027907a0">Byzantine fault tolerance</h2>
+<h2 id="byzantine-fault-tolerance">Byzantine fault tolerance</h2>
 
 <p>Both PBFT and Tendermint are Byzantine fault-tolerant transaction systems.  Both can handle up to ⅓ of malicious Byzantine validators/replicas.  Both require three steps/phases;  the first for broadcasting the block, and the last two for broadcasting signatures.  Finally, both require two quorums of signatures to commit a block.</p>
 
 <p>Where the two differ is in what happens when more than ⅓ of validators are Byzantine.  In PBFT, when there are between ⅓ and ⅔ of Byzantine validators, no guarantees are provided whatsoever; the attackers can return arbitrary results to the client (<a href="https://www.usenix.org/conference/nsdi-07/beyond-one-third-faulty-replicas-byzantine-fault-tolerant-systems">source</a>).  Tendermint’s consensus model considers a block to be committed when there are more than ⅔ of precommit signatures for the blockhash, which mitigates this issue.   Thus if ½ of the validators are Byzantine they can prevent future blocks from being committed; however, they cannot commit new blocks like they can in PBFT.</p>
 
-<h2 id="round-robin-vs-sticky-leaders:e7e7efb14f67469318954b6d027907a0">Round-robin vs sticky leaders</h2>
+<h2 id="round-robin-vs-sticky-leaders">Round-robin vs sticky leaders</h2>
 
 <p>PBFT&rsquo;s whitepaper, which was the inspiration for Hyperledger, illustrates a &ldquo;sticky&rdquo; leader (a.k.a. primary/proposer) system.  Tendermint&rsquo;s specification describes a round-robin scheme for selecting new leaders for every block.</p>
 
@@ -127,27 +127,27 @@
 
 <p>We don&rsquo;t have to pick one solution; we can combine the two approaches into a hybrid scheme.  Fortunately, making this change is straightforward in Tendermint, so it&rsquo;s easy to configure it for any purpose.</p>
 
-<h2 id="dynamic-membership:e7e7efb14f67469318954b6d027907a0">Dynamic membership</h2>
+<h2 id="dynamic-membership">Dynamic membership</h2>
 
 <p>The PBFT algorithm assumes a fixed set of replicas/validators in the network.  This may work for internal systems, but it doesn&rsquo;t work for &ldquo;consortium&rdquo; or &ldquo;public&rdquo; blockchains where the participants are expected to change over time.  Tendermint supports dynamic membership safely by requiring a +⅔ quorum of validators to approve of membership changes.  The reference implementation allows anyone to post a bond collateral (with intrinsic coins), but other variations are possible (especially when combined with our permissions framework).  For example, Tendermint could be easily modified to reject new members by default, and only approve new members that have been whitelisted (perhaps by an independent third party).</p>
 
-<h2 id="epidemic-gossip-vs-point-to-point:e7e7efb14f67469318954b6d027907a0">Epidemic gossip vs point-to-point</h2>
+<h2 id="epidemic-gossip-vs-point-to-point">Epidemic gossip vs point-to-point</h2>
 
 <p>The PBFT algorithm illustrates a point-to-point consensus algorithm, which is simpler but is less robust to disruptions in the network.  Tendermint&rsquo;s implementation uses an epidemic gossip protocol to ensure that consensus can be reached as long as the network is connected, no matter how many point-to-point edge connections have been broken.</p>
 
-<h2 id="block-propagation-optimizations:e7e7efb14f67469318954b6d027907a0">Block propagation optimizations</h2>
+<h2 id="block-propagation-optimizations">Block propagation optimizations</h2>
 
 <p>Tendermint goes a step further than PBFT and implements a BitTorrent/LibSwift-inspired algorithm to quickly broadcast transaction blocks.  This makes the most out of limited available bandwidth to commit transactions sooner.</p>
 
 <p>See <a href="http://www.ict.kth.se/courses/ID2210/presentation-papers/2012%20-%20Performance%20Analysis%20of%20Libswift.pdf"><em>Performance Analysis of the Libswift P2P Streaming Protocol</em></a> for details on how LibSwift fares in “flashcrowd” scenarios, which is similar to new block propagations in Tendermint.</p>
 
-<h2 id="self-balancing-merkle-trees:e7e7efb14f67469318954b6d027907a0">Self-balancing Merkle trees</h2>
+<h2 id="self-balancing-merkle-trees">Self-balancing Merkle trees</h2>
 
 <p>PBFT and its implementation (the BFS filesystem) doesn&rsquo;t provide much by way of useful data structures.  Tendermint ships with a self-balancing Merkle tree library which can be used to keep track of application data (e.g. account balances) and prove any part of the application state to a client (with a Merkle proof and quorum of signatures).  Of course, it&rsquo;s not necessary to use such a data structure if you need to build a blockchain that can handle a million transactions per second &ndash; for that, you should combine Tendermint with an LMAX &ldquo;disruptor&rdquo; (<a href="http://martinfowler.com/articles/lmax.html">source</a>) to process all transactions in memory.</p>
 
 <p>The self-balancing Merkle tree data structure also comes in handy when implementing a parallel-blockchain architecture.  Since the logic for light-client verification of application state is so cheap, efficient, and safe<sup>*</sup>, the same logic can be used for nodes and validators to keep track of the application state in foreign blockchains.</p>
 
-<h2 id="fin:e7e7efb14f67469318954b6d027907a0">Fin</h2>
+<h2 id="fin">Fin</h2>
 
 <p>Though Tendermint was developed independently from PBFT, both algorithms share more than a few similarities. Both algorithms attempt to approach optimality in fault tolerance and performance.  Given the similarities, developers wishing to build BFT systems should consider building on Tendermint, which is furthest ahead at meeting the requirements laid out in this paper about PBFT:</p>
 

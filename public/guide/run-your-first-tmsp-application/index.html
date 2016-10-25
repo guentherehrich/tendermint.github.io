@@ -47,7 +47,7 @@
   <a id="nav-media" href="/media">Media</a>
   <a id="nav-code" href="/code">Code</a>
   <a id="nav-guide" href="/guide">Guide</a>
-  <a id="nav-forum" href="http://forum.tendermint.com">Forum</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
   <a id="nav-about" href="/about">About</a>
 </nav>
 </header>
@@ -71,13 +71,13 @@
 <p>This tutorial is first in a series.  See <a href="/posts/tendermint-socket-protocol/">this post</a> for an overview of TMSP and links to all the tutorials in this series.</p>
 </blockquote>
 
-<h2 id="a-first-example:639016e1af3277f51024e0a6d4712e42">A First Example</h2>
+<h2 id="a-first-example">A First Example</h2>
 
 <p>Make sure you <a href="https://golang.org/doc/install">have Go installed</a> and <a href="https://github.com/tendermint/tendermint/wiki/Setting-GOPATH">put <code>$GOPATH/bin</code> in your <code>$PATH</code></a>.</p>
 
 <p>Next, install the <code>tmsp-cli</code> tool and example applications:</p>
 
-<pre><code>go get github.com/tendermint/tmsp/cmd/...
+<pre><code>go get -u github.com/tendermint/tmsp/cmd/...
 </code></pre>
 
 <p>Now run <code>tmsp-cli --help</code> to see the list of commands:</p>
@@ -128,7 +128,7 @@ tmsp-cli info
 send the given TMSP message, and wait for a response.</p>
 
 <p>The server may be generic for a particular language, and we provide one for Go in <code>tmsp/server</code>.
-There is one for Python in <code>example/python/tmsp/server.py</code>, and one for Node JS in <code>example/js/server.js</code>.</p>
+There is one for Python in <code>example/python/tmsp/server.py</code>, and one for Node JS in <code>github.com/tendermint/js-tmsp</code>.</p>
 
 <p>The handler is specific to the application, and may be arbitrary,
 so long as it is deterministic and conforms to the TMSP interface specification.</p>
@@ -152,16 +152,44 @@ to allow multiple TMSP messages to be sent over a single connection.</p>
 <p>Try running these commands:</p>
 
 <pre><code>&gt; echo hello
-&gt; info
-&gt; commit
-&gt; append_tx &quot;abc&quot;
-&gt; info
-&gt; commit
+-&gt; data: {hello}
+
+&gt; info 
+-&gt; data: {size:0}
+
+&gt; commit 
+
+&gt; append_tx abc
+-&gt; code: OK
+
+&gt; info 
+-&gt; data: {size:1}
+
+&gt; commit 
+-&gt; data: {750502FC7E84BBD788ED589624F06CFA871845D1}
+
+&gt; query abc
+-&gt; code: OK
+-&gt; data: {Index=0 value=abc exists=true}
+
+&gt; append_tx def=xyz
+-&gt; code: OK
+
+&gt; commit 
+-&gt; data: {76393B8A182E450286B0694C629ECB51B286EFD5}
+
+&gt; query def
+-&gt; code: OK
+-&gt; data: {Index=1 value=xyz exists=true}
+
 </code></pre>
 
-<p>Similarly, you could put the commands in a file and run <code>tmsp-cli batch &lt; myfile</code>.</p>
+<p>Note that if we do <code>append_tx abc</code> it will store <code>(abc, abc)</code>,
+but if we do <code>append_tx abc=efg</code> it will store <code>(abc, efg)</code>.</p>
 
-<h2 id="another-example:639016e1af3277f51024e0a6d4712e42">Another Example</h2>
+<p>Similarly, you could put the commands in a file and run <code>tmsp-cli --verbose batch &lt; myfile</code>.</p>
+
+<h2 id="another-example">Another Example</h2>
 
 <p>Now that we&rsquo;ve got the hang of it, let&rsquo;s try another application, the &ldquo;counter&rdquo; app.</p>
 
@@ -202,29 +230,28 @@ before they are stored in memory or gossipped to other peers.</p>
 <pre><code>&gt; set_option serial on
 -&gt; data: {serial=on}
 
-&gt; check_tx x00
+&gt; check_tx 0x00
 -&gt; code: OK
 
-&gt; check_tx xFF
+&gt; check_tx 0xff
 -&gt; code: OK
 
-&gt; append_tx x00
+&gt; append_tx 0x00
 -&gt; code: OK
 
-&gt; check_tx x00
+&gt; check_tx 0x00
 -&gt; code: BadNonce
 -&gt; log: Invalid nonce. Expected &gt;= 1, got 0
 
-&gt; append_tx x01
+&gt; append_tx 0x01
 -&gt; code: OK
 
-&gt; append_tx x04
+&gt; append_tx 0x04
 -&gt; code: BadNonce
 -&gt; log: Invalid nonce. Expected 2, got 4
 
-&gt; info
+&gt; info 
 -&gt; data: {hashes:0, txs:2}
-
 </code></pre>
 
 <p>This is a very simple application, but between <code>counter</code> and <code>dummy</code>, its easy to see how you can build out arbitrary application states on top of the TMSP.
@@ -234,7 +261,7 @@ In the near future, <code>erisdb</code> of Eris Industries will also run atop TM
 
 <p>We have implemented the counter in a number of languages (see the example directory).</p>
 
-<p>To run the Node JS version, <code>cd</code> to <code>example/js</code> and run</p>
+<p>To run the Node JS version, checkout the <code>github.com/tendermint/js-tmsp</code> repo, <code>cd</code> to <code>example</code> and run</p>
 
 <pre><code>node app.js
 </code></pre>
@@ -245,7 +272,7 @@ You should get the same results as for the Go version.</p>
 
 <p>Want to write the counter app in your favorite language?! We&rsquo;d be happy to accept the pull request!</p>
 
-<h2 id="next-steps:639016e1af3277f51024e0a6d4712e42">Next steps</h2>
+<h2 id="next-steps">Next steps</h2>
 
 <p>In the next tutorial, we will show how to <a href="/tutorials/launch-a-tmsp-testnet">launch a TMSP testnet</a>.</p>
 

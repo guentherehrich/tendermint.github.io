@@ -12,8 +12,23 @@
   <section class="section-default">
     <div class="section-container">
       <div class="section-content">
-        {{ range .Data.Pages }}
-        {{ .Render "summary"}}
+        <ul>
+          <li><a href="https://github.com/tendermint/tendermint/issues">Open Issues</a><li>
+          <li><a href="https://github.com/tendermint/tendermint/issues">Software Ecosystem </a><li>
+          <li><a href="https://github.com/tendermint/tendermint/issues">Videos</a><li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-default">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>People</h2>
+      </div>
+      <div class="section-content">
+        {{ range .Data.Pages  }}
+        {{ .Render "person"}}
         {{ end }}
       </div>
     </div>

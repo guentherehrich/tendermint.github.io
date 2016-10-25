@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tendermint: from Then to Now &ndash; Tendermint</title>
+  <base href="http://tendermint.com">
+<link rel="canonical" href="http://tendermint.com/blog/tendermint-then-to-now/">
+<link href="" rel="alternate" type="application/rss+xml" title="Tendermint">
+
+<meta content="on" http-equiv="cleartype" />
+<meta name="viewport" content="width=device-width, user-scalable=0, minimal-ui" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/images/favicon/manifest.json">
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" type="text/css" media="screen" href="/styles/screen.css">
+
+
+
+</head>
+
+
+<body id="body-blog">
+  <header id="site-header">
+<a href="/" id="nav-home">
+  <img src="/images/home/tendermint-logo-88-green.jpg" alt="Tendermint logo"/>
+</a>
+<nav>
+  <a id="nav-blog" href="/blog">Blog</a>
+  <a id="nav-media" href="/media">Media</a>
+  <a id="nav-code" href="/code">Code</a>
+  <a id="nav-guide" href="/guide">Guide</a>
+  <a id="nav-jobs" href="/jobs">Jobs</a>
+  <a id="nav-about" href="/about">About</a>
+</nav>
+</header>
+
+
+  <section id="section-top">
+    <div class="section-container">
+      <h1>Tendermint: from Then to Now</h1>
+      
+      <p>September 17, 2016</p>
+      
+    </div>
+  </section>
+
+  <section class="section-default">
+    <div class="section-container">
+      <div class="section-content">
+        <div class="article-body">
+          
+
+<h2 id="tendermint-from-then-to-now">Tendermint: from Then to Now</h2>
+
+<p>Some of you have asked about the history of <a href="http://tendermint.com/">Tendermint</a>, so here it is. Back in the day, we had some serious concerns about Bitcoin as a global currency, mainly because it is incredibly <a href="http://motherboard.vice.com/read/bitcoin-could-consume-as-much-electricity-as-denmark-by-2020">energy intensive</a>. So we started Tendermint to develop a more environmentally friendly cryptocurrency.</p>
+
+<p>But what started as a simple cryptocurrency based on an adaptation of a <a href="http://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf">1980’s consensus algorithm called DLS</a> eventually evolved into what it is today: a general purpose Byzantine fault tolerant (BFT) consensus algorithm for running replicated state machines over the internet in possibly adversarial conditions.</p>
+
+<p>Replicated state machines are a staple of modern Internet technology. They permit a consistent and fault-tolerant view of some set of data. Popular open-source implementations of replicated state machines include <a href="http://bookkeeper.apache.org/">Apache ZooKeeper</a>, <a href="https://coreos.com/etcd/">CoreOS&rsquo; etcd</a>, and <a href="https://www.consul.io/">Hashicorp&rsquo;s Consul</a>.</p>
+
+<p>In each of these, the state machine is a simple key-value store, and the underlying consensus algorithm is either Paxos or <a href="https://raft.github.io/">Raft</a>. Neither of these algorithms tolerate even a single malicious node in the system. You can see an animation of the Paxos algorithm <a href="http://harry.me/blog/2014/12/27/neat-algorithms-paxos/">here</a>.</p>
+
+<p>In contrast, Tendermint lets you build arbitrary state machines in any programming language, whether that is a key-value store in Go, a voting system in C++, or a cryptocurrency in OCaml. In each case, the application implements a simple interface, and Tendermint handles the rest, including connecting to peers, syncing the latest state, gossipping transactions, and maintaining a consistent log of transactions.</p>
+
+<h2 id="who-is-using-tendermint">Who is using Tendermint?</h2>
+
+<p>It’s been an exciting journey, and over the past few months people have been putting Tendermint to work in several applications.</p>
+
+<p>Probably the most complicated implementation of Tendermint so far is by Eris Industries. Eris is using Tendermint to power its <a href="https://erisindustries.com/components/erisdb/">eris:db</a> blockchain client. Eris:db includes a fully compatible Ethereum virtual machine and other features that make it a full-fledged blockchain.</p>
+
+<p>But there are other implementations. <a href="http://www.cloudsoft.io/">CloudSoft</a> published a <a href="http://www.cloudsoft.io/tendermint-and-clocker/">deployment strategy</a> for Apache Brooklyn that uses Tendermint and Clocker. Martin Dyring wrote an <a href="https://github.com/mdyring/cpp-tmsp">implementation of Tendermint TMSP in C++</a>, and wolfposd wrote a <a href="https://github.com/wolfposd/TMChat">chatroom app in Java</a> that uses Tendermint to broadcast messages from one user to another. Yes, that’s right, a chatroom.</p>
+
+<p>While it might sound crazy to run a chat application on a blockchain, this is simply an example of the flexibility of Tendermint. This sort of implementation might even come in handy in instances where you have several actors who are malicious and maintaining the total order of the system matters, for instance, in p2p gaming.</p>
+
+<p>Other companies building on Tendermint include <a href="https://blockfreight.com/">Blockfreight</a>, <a href="http://www.vidroll.com/">Vidroll</a>, and <a href="https://stratumn.com/">Stratumn</a> to name a few. Of course, we use Tendermint too. Our first product built on Tendermint is <a href="http://cosmos.network/">Cosmos, the internet of blockchains</a>.</p>
+
+<h2 id="what-s-new">What’s new?</h2>
+
+<p>In August 2016, we released Tendermint v0.7.0, the first stable release of our middleware. It featured a weakly-synchronous BFT consensus algorithm, which can process thousands of transactions per second with latencies on the order of a second and cluster sizes ranging from 4 to 64 nodes.</p>
+
+<p>Recently we released <a href="https://github.com/tendermint/tendermint">Tendermint v0.7.1</a>, which includes a variety of fixes, as well as the ability for applications to determine what peers Tendermint can connect to and filtering either by IP address, or by public key.</p>
+
+<p>In the next major release, Tendermint v0.8.0, which should be in October, we plan to introduce a handshake between Tendermint and whatever application is using it, ensuring the two stay synced even after crashes and restarts.</p>
+
+<p>Additionally, we’ll include some important fixes to the BFT consensus module. While testing Tendermint in adversarial conditions, we discovered a Byzantine node could potentially halt the system in some circumstances—this fix will prevent that from happening.</p>
+
+<p>This is critical because even though the Tendermint consensus algorithm guarantees your blockchain won&rsquo;t fork, all of the subcomponents need to work perfectly to ensure liveness.</p>
+
+<p>Stay tuned for more updates. We are continuing to test Tendermint extensively in a push to provide a production ready offering in early 2017. And, if you are using Tendermint in a project, <a href="https://docs.google.com/a/tendermint.com/forms/d/e/1FAIpQLSclH87WiZrer8aUzO5oNWoSCqcbn4mwQ3sDJJX44E9rhdVJFw/viewform?c=0&amp;w=1">let us know</a>! We want to hear how you’re using it and what your feedback is.</p>
+
+        </div>
+
+        <div class="disqus">
+          <div id="disqus_thread"></div>
+<script>
+
+
+
+
+(function() { 
+var d = document, s = d.createElement('script');
+
+s.src = '//tendermint.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a
+href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by
+Disqus.</a></noscript>
+
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+        <div id="article-prev-next">
+  <div class="article-prev-next article-prev">
+    
+      <a  href="http://tendermint.com/blog/on-thedao-and-blockchain-governance/">
+        <div class="label"><i class="fa fa-angle-left"></i> Prev</div>
+        <div class="title">On TheDAO and Proof-of-Stake Governance</div>
+      </a>
+    
+  </div>
+
+  <div class="article-prev-next article-next">
+    
+      <div class="end">
+        <div class="label">Next <i class="fa fa-angle-right"></i></div>
+        <div class="title">No newer entries in this section.</div>
+      </div>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+  </section>
+
+<section id="section-connections" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Learn more by joining the&nbsp;discussion</h2>
+    </header>
+    <div class="section-content">
+      <ul class="ul-connections">
+        <li>
+          <a href="http://forum.tendermint.com:3000">
+            <h3><i class="fa fa-slick"></i> Slack</h3>
+            <div class="content">
+              <p>Get an invitation to join the discussion on our Slack.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/tendermint_team">
+            <h3><i class="fa fa-twatter"></i> Twitter</h3>
+            <div class="content">
+              <p>Follow <strong>@tendermint_team</strong> on Twitter for our latest updates.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/tendermint/">
+            <h3><i class="fa fa-footbook"></i> Facebook</h3>
+            <div class="content">
+              <p>Like and follow Tendermint on Facebook.</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/tendermint">
+            <h3><i class="fa fa-linkedout"></i> LinkedIn</h3>
+            <div class="content">
+              <p>View our profile and connect with us on LinkedIn.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="section-cta" class="section-default section-dark">
+  <div class="section-container">
+    <header class="section-header">
+      <h2>Stay updated on Tendermint&nbsp;news</h2>
+    </header>
+    <div class="section-content">
+      
+<form action="http://tendermint.us8.list-manage1.com/subscribe/post?u=89d5a312be95ee3f0c9cf7ecd&amp;id=4af1217bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+  <div class="input-group">
+    <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email">
+  </div>
+
+  <div class="input-group">
+    <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+      <i class="fa fa-newspaper-o"></i> Subscribe
+    </button>
+  </div>
+
+  
+  <div style="position: absolute; left: -5000px;"><input type="text" name="b_89d5a312be95ee3f0c9cf7ecd_4af1217bca" tabindex="-1" value=""></div>
+</form>
+
+  </div>
+  </div>
+</section>
+
+<footer id="site-footer">
+  <p class="left">&copy; 2016 Tendermint</p>
+  <p class="right">
+    <a href="mailto:hello@tendermint.com">
+      <i class="fa fa-envelope-o"></i>
+      Contact
+    </a>
+  </p>
+</footer>
+
+<script src="scripts/bundle.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51029217-1', 'tendermint.com');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>
+

@@ -155,7 +155,6 @@ a {
   margin-bottom: 24px;
 }
 .article-body p code {
-  -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 .article-body p code:before,
@@ -743,7 +742,6 @@ a.footer-large-button:hover {
   }
   #article-prev-next .article-prev-next.article-prev a,
   #article-prev-next .article-prev-next.article-prev .end {
-    -webkit-border-radius: 0 64px 64px 0;
     border-radius: 0 64px 64px 0;
     padding-right: 32px;
   }
@@ -758,7 +756,6 @@ a.footer-large-button:hover {
   #article-prev-next .article-prev-next.article-next a,
   #article-prev-next .article-prev-next.article-next .end {
     text-align: right;
-    -webkit-border-radius: 64px 0 0 64px;
     border-radius: 64px 0 0 64px;
     padding-left: 32px;
   }
@@ -1016,7 +1013,6 @@ a.footer-large-button:hover {
 .section-default .section-container .section-header i.fa {
   background: #1466b8;
   width: 24px;
-  -webkit-border-radius: 12px;
   border-radius: 12px;
   font-size: 10.656px;
   line-height: 24px;
@@ -1076,7 +1072,6 @@ a.footer-large-button:hover {
     width: 30px;
     line-height: 30px;
     font-size: 13.3328px;
-    -webkit-border-radius: 15px;
     border-radius: 15px;
   }
   .section-default .section-container .section-header h2 {
@@ -1256,7 +1251,7 @@ a.footer-large-button:hover {
   color: #65a9ee;
   line-height: 1.25;
   text-align: center;
-  max-width: 24em;
+  max-width: 20em;
 }
 #section-hero .connections {
   display: none;
@@ -1309,11 +1304,6 @@ a.footer-large-button:hover {
   #section-hero #home-arrow-down {
     font-size: 24px;
     line-height: 32px;
-  }
-}
-@media screen and (min-width: 320px) and (min-height: 480px) {
-  #section-hero .introduction {
-    max-width: 16em;
   }
 }
 @media screen and (min-width: 360px) and (min-height: 480px) {
@@ -1485,7 +1475,7 @@ a.footer-large-button:hover {
 }
 #section-top .section-container {
   width: 100vw;
-  height: 160px;
+  min-height: 160px;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -1545,6 +1535,11 @@ a.footer-large-button:hover {
   line-height: 20px;
   text-align: center;
   max-width: 22em;
+  margin-bottom: 1em;
+}
+#section-top p strong {
+  font-weight: 500;
+  color: #7eb8f1;
 }
 #section-top p a {
   color: #a3ccf5;
@@ -1554,6 +1549,12 @@ a.footer-large-button:hover {
 #section-top p a:hover {
   color: #fff;
 }
+#section-top.section-top-tall {
+  padding: 3em 0 2em;
+}
+#section-top.section-top-tall p {
+  max-width: 23em;
+}
 @media screen and (min-height: 400px) {
   #section-top {
     margin-top: 48px;
@@ -1561,7 +1562,7 @@ a.footer-large-button:hover {
 }
 @media screen and (min-width: 400px) and (min-height: 400px) {
   #section-top .section-container {
-    height: 192px;
+    min-height: 192px;
   }
   #section-top h1 {
     font-size: 40px;
@@ -1574,7 +1575,7 @@ a.footer-large-button:hover {
 }
 @media screen and (min-width: 720px) and (min-height: 480px) {
   #section-top .section-container {
-    height: 256px;
+    min-height: 256px;
   }
   #section-top h1 {
     font-size: 40px;
@@ -1696,12 +1697,11 @@ a.footer-large-button:hover {
 #body-home #nav-home {
   border-top-color: #093 !important;
 }
+#body-intro #nav-intro,
+#body-docs #nav-docs,
+#body-community #nav-community,
 #body-blog #nav-blog,
-#body-media #nav-media,
-#body-forum #nav-forum,
-#body-guide #nav-guide,
-#body-about #nav-about,
-#body-code #nav-code {
+#body-forum #nav-forum {
   border-top-color: #1876d5 !important;
 }
 @media screen and (min-height: 400px) {
@@ -1794,7 +1794,6 @@ div.youtube:before {
   width: 96px;
   display: block;
   margin: -32px 0 0 -48px;
-  -webkit-border-radius: 16px;
   border-radius: 16px;
   position: absolute;
   top: 50%;
@@ -2424,7 +2423,6 @@ select {
   -webkit-box-shadow: inset 1px 1px 1px #eee;
   box-shadow: inset 1px 1px 1px #eee;
   display: block;
-  -webkit-border-radius: 0;
   border-radius: 0;
 }
 .input:disabled,
@@ -2495,7 +2493,6 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  -webkit-border-radius: 0;
   border-radius: 0;
   width: 100%;
   background: #fff;
@@ -2769,7 +2766,6 @@ select {
 .fa-border {
   padding: 0.2em 0.25em 0.15em;
   border: solid 0.08em #eee;
-  -webkit-border-radius: 0.1em;
   border-radius: 0.1em;
 }
 .fa-pull-left {

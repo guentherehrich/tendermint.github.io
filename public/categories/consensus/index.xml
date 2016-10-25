@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Consensus on Tendermint</title>
-    <link>http://tendermint.com/categories/consensus/</link>
-    <description>Recent content in Consensus on Tendermint</description>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/consensus/index.xml</link>
+    <description>Recent content on Tendermint</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 21 Jun 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tendermint.com/categories/consensus/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -16,14 +15,14 @@
       <guid>http://tendermint.com/blog/on-thedao-and-blockchain-governance/</guid>
       <description>
 
-&lt;h2 id=&#34;introduction:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Introduction&lt;/h2&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;This post will describe some of the discussions surrounding TheDAO hack, how
 Ethereum might soft-fork in a relatively safe manner, and how it relates to
 Gnuclear, a novel proof-of-stake cryptocurrency with built-in governance to
 address issues related to bugs and theft.&lt;/p&gt;
 
-&lt;h2 id=&#34;thedao-hack:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;TheDAO Hack&lt;/h2&gt;
+&lt;h2 id=&#34;thedao-hack&#34;&gt;TheDAO Hack&lt;/h2&gt;
 
 &lt;p&gt;An attacker (the hacker) has stolen more than 3.5mm ether (around $45mm) from
 the DAO yesterday.  The attack &lt;a href=&#34;http://vessenes.com/deconstructing-thedao-attack-a-brief-code-tour/&#34;&gt;is described
@@ -68,7 +67,7 @@ action to reverse the attack or freeze the stolen funds is to undermine
 Ethereum&amp;rsquo;s stated premise.  Some argue that to do so would destroy the very
 purpose and value of Ethereum.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-ethereum-could-do:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;What Ethereum Could Do&lt;/h2&gt;
+&lt;h2 id=&#34;what-ethereum-could-do&#34;&gt;What Ethereum Could Do&lt;/h2&gt;
 
 &lt;p&gt;There are four parties involved in TheDAO attack.&lt;/p&gt;
 
@@ -88,7 +87,7 @@ though theoretically they are incentivized to follow the will of the community.
 &lt;em&gt;Everyone else&lt;/em&gt; is composed of the greater cryptocurrency community, including
 those who are actively attempting to harm the system.&lt;/p&gt;
 
-&lt;h3 id=&#34;the-dao-wars:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;The DAO Wars&lt;/h3&gt;
+&lt;h3 id=&#34;the-dao-wars&#34;&gt;The DAO Wars&lt;/h3&gt;
 
 &lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34;
 dir=&#34;ltr&#34;&gt;&amp;quot;The future is happening fast. Hacker wars around the largest
@@ -115,7 +114,7 @@ community should be done via cryptographic signatures from current ether
 holders.  Any polling of the Ethereum miners should be done via the mining
 process.&lt;/p&gt;
 
-&lt;h3 id=&#34;the-intention-of-thedao-investors:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;The Intention of TheDAO Investors&lt;/h3&gt;
+&lt;h3 id=&#34;the-intention-of-thedao-investors&#34;&gt;The Intention of TheDAO Investors&lt;/h3&gt;
 
 &lt;p&gt;It&amp;rsquo;s pretty obvious that the &amp;ldquo;feature&amp;rdquo; that enabled the hacker to abscond with
 TheDAO&amp;rsquo;s ether was indeed a bug.  Arguments that it isn&amp;rsquo;t a bug generally point
@@ -138,7 +137,7 @@ course).  However, noone is actually challenging the assumption that the DTH
 would vote in favor of a statement that claims that they were victims of grand
 theft token.&lt;/p&gt;
 
-&lt;h3 id=&#34;too-big-to-fail:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Too Big to Fail&lt;/h3&gt;
+&lt;h3 id=&#34;too-big-to-fail&#34;&gt;Too Big to Fail&lt;/h3&gt;
 
 &lt;p&gt;Some say that TheDAO should not be rescued for the same reasons why we shouldn&amp;rsquo;t
 bail out banks.&lt;/p&gt;
@@ -151,7 +150,7 @@ unexpectedly used against them.  If any bank (or the Fed) were to roll back
 their database after getting hacked in a singular event, as long as it could do
 so and recover cleanly, nobody would complain that the bank were rescued.&lt;/p&gt;
 
-&lt;h3 id=&#34;moral-hazard-tyrrany-of-the-majority:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Moral Hazard - Tyrrany of the Majority&lt;/h3&gt;
+&lt;h3 id=&#34;moral-hazard-tyrrany-of-the-majority&#34;&gt;Moral Hazard - Tyrrany of the Majority&lt;/h3&gt;
 
 &lt;p&gt;Some argue that a soft-fork or hard-fork would bring about dangerous moral
 hazard, that rolling back the hacker&amp;rsquo;s stolen ether is a case of the majority
@@ -167,7 +166,7 @@ theft, the might of society is likewise justified.&lt;/p&gt;
 &lt;p&gt;In this light, not returning the stolen funds might be a case of a minority
 expropriating a majority.&lt;/p&gt;
 
-&lt;h3 id=&#34;moral-hazard-slippery-slope:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Moral Hazard - Slippery Slope&lt;/h3&gt;
+&lt;h3 id=&#34;moral-hazard-slippery-slope&#34;&gt;Moral Hazard - Slippery Slope&lt;/h3&gt;
 
 &lt;p&gt;Some argue that once you allow one contract to be rolled back, you open
 Pandora&amp;rsquo;s box to allow anything to be rolled back. For example, a nation-state
@@ -189,7 +188,7 @@ representative of the community of ether holders.&lt;/p&gt;
 &lt;p&gt;While not perfect, here&amp;rsquo;s a sketch of what could be done for this issue and for
 future issues in Ethereum 1.0:&lt;/p&gt;
 
-&lt;h4 id=&#34;polling-the-ether-holders:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Polling the Ether Holders&lt;/h4&gt;
+&lt;h4 id=&#34;polling-the-ether-holders&#34;&gt;Polling the Ether Holders&lt;/h4&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;First, construct a well written proposal that proposes a soft-fork to freeze
@@ -217,7 +216,7 @@ is a super-majority (e.g. more than 67% in favor of a soft-fork, of those who
 voted), then it seems prudent to consider that to be a vote by the Ethereum
 community in favor of a soft-fork.&lt;/p&gt;
 
-&lt;h4 id=&#34;coordinating-the-ethereum-miners:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Coordinating the Ethereum Miners&lt;/h4&gt;
+&lt;h4 id=&#34;coordinating-the-ethereum-miners&#34;&gt;Coordinating the Ethereum Miners&lt;/h4&gt;
 
 &lt;p&gt;Next, the miners should follow the will of the Ethereum community and prepare
 for a soft-fork.  Miners could be required to announce their readiness for a
@@ -227,7 +226,7 @@ soft-fork logic.  For safety, it&amp;rsquo;s important that all the miners agree
 exact behavior of this soft-fork, and that they only soft-fork once a
 supermajority quorum has been reached.&lt;/p&gt;
 
-&lt;h4 id=&#34;preventing-spam:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Preventing Spam&lt;/h4&gt;
+&lt;h4 id=&#34;preventing-spam&#34;&gt;Preventing Spam&lt;/h4&gt;
 
 &lt;p&gt;There is still the question of why TheDAO should get special attention while
 lesser contracts with much less value at stake might get ignored.  Ideally there
@@ -237,7 +236,7 @@ could calculate how many man-hours are necessary to evaluate each proposal &amp;
 maybe there ought to be a market or fee mechanism to determine what deserves the
 chance of a soft-fork freeze or a hard-fork roll-back.&lt;/p&gt;
 
-&lt;h3 id=&#34;after-the-soft-fork:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;After the Soft-Fork&lt;/h3&gt;
+&lt;h3 id=&#34;after-the-soft-fork&#34;&gt;After the Soft-Fork&lt;/h3&gt;
 
 &lt;p&gt;After a soft-fork, if there is one, I would argue that the community should
 negotiate with the hacker to get back most of the funds, and let the hacker keep
@@ -259,7 +258,7 @@ that we have a cryptocurrency whose premise is based on extreme crypto-anarchy
 the same technocratic bias, we deserve what we get.  On the other hand, if we
 don&amp;rsquo;t reward hackers sufficiently, we risk creating a fragile house of cards.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-about-the-premise:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;What About the Premise?&lt;/h2&gt;
+&lt;h2 id=&#34;what-about-the-premise&#34;&gt;What About the Premise?&lt;/h2&gt;
 
 &lt;p&gt;Ethereum&amp;rsquo;s original premise was destined to change.&lt;/p&gt;
 
@@ -288,14 +287,14 @@ contrary, it would strengthen the Ethereum community.&lt;/p&gt;
 &lt;a href=&#34;https://medium.com/@lemurvanstar/immutability-of-any-blockchain-is-an-unrealistic-attempt-at-perfection-that-will-never-be-possible-4e4fcae59804&#34;&gt;not
 desirable anyways.&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;an-alternative-system:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;An Alternative System&lt;/h2&gt;
+&lt;h2 id=&#34;an-alternative-system&#34;&gt;An Alternative System&lt;/h2&gt;
 
 &lt;p&gt;Here we describe &lt;a href=&#34;https://github.com/gnuclear/gnuclear-whitepaper&#34;&gt;Gnuclear&lt;/a&gt;,
 alternative cryptocurrency with a governance system baked in that can address
 issues of theft or bugs in a more streamlined and defined way.  Gnuclear is a
 proof-of-stake cryptocurrency powered by Tendermint BFT consensus.&lt;/p&gt;
 
-&lt;h3 id=&#34;a-different-premise:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;A Different Premise&lt;/h3&gt;
+&lt;h3 id=&#34;a-different-premise&#34;&gt;A Different Premise&lt;/h3&gt;
 
 &lt;p&gt;First, we start with a different premise.&lt;/p&gt;
 
@@ -313,7 +312,7 @@ principle of transparency and accountability.&lt;/p&gt;
 create distributed autonomous organizations built on accountable BFT blockchain
 systems that are self-incentivized and antifragile.&lt;/p&gt;
 
-&lt;h3 id=&#34;the-freedom-to-be-permissioned:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;The Freedom to be Permissioned&lt;/h3&gt;
+&lt;h3 id=&#34;the-freedom-to-be-permissioned&#34;&gt;The Freedom to be Permissioned&lt;/h3&gt;
 
 &lt;p&gt;Centralized (non-blockchain) organizations usually function in a permissioned
 way.  With a few exceptions, corporations get to select who they want to allow
@@ -351,7 +350,7 @@ of a blockchain as independent entities that are self-incentivized to make that
 blockchain succeed, in a sea of competing ledgers.  Permissioning may be a
 superior strategy for winning market-share in certain niches.&lt;/p&gt;
 
-&lt;h3 id=&#34;proof-of-stake-on-tendermint:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Proof-of-Stake on Tendermint&lt;/h3&gt;
+&lt;h3 id=&#34;proof-of-stake-on-tendermint&#34;&gt;Proof-of-Stake on Tendermint&lt;/h3&gt;
 
 &lt;p&gt;Gnuclear is powered by Tendermint&amp;rsquo;s BFT consensus algorithm, and is thus is
 specially designed for classical BFT consensus.&lt;/p&gt;
@@ -370,7 +369,7 @@ you want a distributed ledger that can commit transactions to finality quickly
 forking problem are documented in the &lt;a href=&#34;https://github.com/gnuclear/gnuclear-whitepaper#preventing-long-range-attacks&#34;&gt;gnuclear
 whitepaper&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h4 id=&#34;gnuclear-governance:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Gnuclear Governance&lt;/h4&gt;
+&lt;h4 id=&#34;gnuclear-governance&#34;&gt;Gnuclear Governance&lt;/h4&gt;
 
 &lt;p&gt;That a &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;3&lt;/sub&gt; coalition of Byzantine voting power can halt the network in
 Tendermint necessitates an interesting governance model in Gnuclear in order to
@@ -416,7 +415,7 @@ types of proposals in various existing governance systems.  In Gnuclear, it&amp;
 unified system &amp;ndash; a simple majority is sufficient to pass any measure, unless
 there is a simultaneous veto by a &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;3&lt;/sub&gt; minority.&lt;/p&gt;
 
-&lt;h4 id=&#34;need-for-a-constitution:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Need for a Constitution&lt;/h4&gt;
+&lt;h4 id=&#34;need-for-a-constitution&#34;&gt;Need for a Constitution&lt;/h4&gt;
 
 &lt;p&gt;Some things can&amp;rsquo;t be easily automated as code.  For example, determining:&lt;/p&gt;
 
@@ -455,7 +454,7 @@ soft-forks or roll-backs.  It won&amp;rsquo;t guarantee that the validators won&
 soft-fork the ledger, but it does allow the ledger to specialize and attract
 stakeholders with compatible interests.&lt;/p&gt;
 
-&lt;h4 id=&#34;stake-delegation:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Stake Delegation&lt;/h4&gt;
+&lt;h4 id=&#34;stake-delegation&#34;&gt;Stake Delegation&lt;/h4&gt;
 
 &lt;p&gt;In Gnuclear proof-of-stake, there are three groups to consider: the validators,
 the staked delegators, and the non-staked token holders. The validators get to
@@ -467,7 +466,7 @@ delegators can override the vote manually.&lt;/p&gt;
 not participating in the consensus process) do not get to vote on proposals.  In
 a future post we&amp;rsquo;ll discuss the pros and cons of this design decision.&lt;/p&gt;
 
-&lt;h4 id=&#34;accountability-and-reputation:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Accountability and Reputation&lt;/h4&gt;
+&lt;h4 id=&#34;accountability-and-reputation&#34;&gt;Accountability and Reputation&lt;/h4&gt;
 
 &lt;p&gt;A major benefit of the Gnuclear proof-of-stake system over any proof-of-work
 system is about accountability and reputation.&lt;/p&gt;
@@ -498,7 +497,7 @@ can result in increased security for both child blockchains.&lt;/p&gt;
 Gnuclear whitepaper section on &lt;a href=&#34;https://github.com/gnuclear/gnuclear-whitepaper#consensus&#34;&gt;Tendermint
 consensus&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;conclusion:f0e38eb4136149a5f18af07afd523b2a&#34;&gt;Conclusion&lt;/h3&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;It&amp;rsquo;s people all the way down.&lt;/li&gt;
@@ -519,7 +518,7 @@ the discussionsi&lt;/a&gt;!&lt;/li&gt;
       <guid>http://tendermint.com/blog/critique-merkle-dao-democracy/</guid>
       <description>
 
-&lt;h2 id=&#34;merkle-s-new-dao-paper:b6d05f8ed6e228f546325f0fbad28100&#34;&gt;Merkle&amp;rsquo;s New DAO Paper&lt;/h2&gt;
+&lt;h2 id=&#34;merkle-s-new-dao-paper&#34;&gt;Merkle&amp;rsquo;s New DAO Paper&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve been looking for a paper that criticizes futarchy that specifically
 addresses the thin-market and corresponding manipulation and feedback problems
@@ -644,7 +643,7 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;This short post will address these statements and paint a different picture.&lt;/p&gt;
 
-&lt;h3 id=&#34;clearing-and-settlement-woes:c70e654fcbeba9e734c64c9df590bef4&#34;&gt;Clearing and settlement woes&lt;/h3&gt;
+&lt;h3 id=&#34;clearing-and-settlement-woes&#34;&gt;Clearing and settlement woes&lt;/h3&gt;
 
 &lt;p&gt;Clearing and settlement are separate but related terms.  The source of the differences stems from the significant duration of time (on the order of days) for the delivery of assets (e.g. paper certificates used to take over a week to deliver by courier).  A clearinghouse provides faster settlement between two trading parties by acting as the counterparty for both.&lt;/p&gt;
 
@@ -652,7 +651,7 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;Once we have a common ledger, we can think about tradeoffs between security and settlement speed.  When settlement becomes fast on the order of seconds, human intermediation becomes difficult, which in turn means that we need the system to be as fault tolerant as possible.&lt;/p&gt;
 
-&lt;h3 id=&#34;the-source-of-bitcoin-s-security:c70e654fcbeba9e734c64c9df590bef4&#34;&gt;The source of Bitcoin’s security&lt;/h3&gt;
+&lt;h3 id=&#34;the-source-of-bitcoin-s-security&#34;&gt;The source of Bitcoin’s security&lt;/h3&gt;
 
 &lt;p&gt;Bitcoin and Bitcoin’s proof-of-work (PoW) mining, or Nakamoto consensus, provides something that until 2008 had never existed before.  Bitcoin was the first open decentralized application to provide Byzantine fault-tolerant (BFT) consensus on a global currency ledger.  Nakamoto consensus is a novel BFT consensus algorithm that utilizes computational power as a proxy for membership.&lt;/p&gt;
 
@@ -660,7 +659,7 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;The Bitcoin blockchain does help with settlement in that it provides a BFT ledger.  The problem is that Nakamoto consensus is slow and expensive, as its security is only proportional to the cumulative sum of energy burned over time.&lt;/p&gt;
 
-&lt;h3 id=&#34;classical-bft-enables-additive-security:c70e654fcbeba9e734c64c9df590bef4&#34;&gt;Classical BFT enables additive security&lt;/h3&gt;
+&lt;h3 id=&#34;classical-bft-enables-additive-security&#34;&gt;Classical BFT enables additive security&lt;/h3&gt;
 
 &lt;p&gt;Classical BFT consensus algorithms don’t rely on the opportunity cost of energy expenditure for security.  They use pseudonymous identities and cryptographic signatures to ensure that a sufficient quorum of participants approve of new transactions before they are committed.  These algorithms had been around since the 70’s and 80’s, and culminated in 1999 with the renowned PBFT algorithm.  Existing PBFT solutions are difficult to use or incomplete (&lt;a href=&#34;http://arxiv.org/abs/1110.4854&#34;&gt;source&lt;/a&gt;), so there is a need for a new free and open-source implementation.  Tendermint is such an open-source implementation of the PBFT consensus protocol (see &lt;a href=&#34;http://tendermint.com/posts/tendermint-vs-pbft/&#34;&gt;explanation&lt;/a&gt;).  Tendermint can commit blocks to finality on a global ledger with hundreds of validators on the order of seconds.&lt;/p&gt;
 
@@ -670,7 +669,7 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;For public permissionless blockchains, Nielsen&amp;rsquo;s law of internet bandwidth is at play.  If we naively assume that doubling the number of validators requires four times the bandwidth, and that bandwidth doubles every two years, every four years a public blockchain can support twice as many validators (thus naively twice as much collateral) and still commit blocks at the same speed.  I bet we can do better.&lt;/p&gt;
 
-&lt;h2 id=&#34;fin:c70e654fcbeba9e734c64c9df590bef4&#34;&gt;Fin&lt;/h2&gt;
+&lt;h2 id=&#34;fin&#34;&gt;Fin&lt;/h2&gt;
 
 &lt;p&gt;With publicly identified Tendermint validators with collateral at risk, we can have a shared decentralized ledger that offers fast settlement.  This is a novel concept and one that has the potential to change the nature of banking itself.&lt;/p&gt;
 </description>
@@ -729,13 +728,13 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;terminology comparison between Tendermint and PBFT&lt;/em&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;byzantine-fault-tolerance:e7e7efb14f67469318954b6d027907a0&#34;&gt;Byzantine fault tolerance&lt;/h2&gt;
+&lt;h2 id=&#34;byzantine-fault-tolerance&#34;&gt;Byzantine fault tolerance&lt;/h2&gt;
 
 &lt;p&gt;Both PBFT and Tendermint are Byzantine fault-tolerant transaction systems.  Both can handle up to ⅓ of malicious Byzantine validators/replicas.  Both require three steps/phases;  the first for broadcasting the block, and the last two for broadcasting signatures.  Finally, both require two quorums of signatures to commit a block.&lt;/p&gt;
 
 &lt;p&gt;Where the two differ is in what happens when more than ⅓ of validators are Byzantine.  In PBFT, when there are between ⅓ and ⅔ of Byzantine validators, no guarantees are provided whatsoever; the attackers can return arbitrary results to the client (&lt;a href=&#34;https://www.usenix.org/conference/nsdi-07/beyond-one-third-faulty-replicas-byzantine-fault-tolerant-systems&#34;&gt;source&lt;/a&gt;).  Tendermint’s consensus model considers a block to be committed when there are more than ⅔ of precommit signatures for the blockhash, which mitigates this issue.   Thus if ½ of the validators are Byzantine they can prevent future blocks from being committed; however, they cannot commit new blocks like they can in PBFT.&lt;/p&gt;
 
-&lt;h2 id=&#34;round-robin-vs-sticky-leaders:e7e7efb14f67469318954b6d027907a0&#34;&gt;Round-robin vs sticky leaders&lt;/h2&gt;
+&lt;h2 id=&#34;round-robin-vs-sticky-leaders&#34;&gt;Round-robin vs sticky leaders&lt;/h2&gt;
 
 &lt;p&gt;PBFT&amp;rsquo;s whitepaper, which was the inspiration for Hyperledger, illustrates a &amp;ldquo;sticky&amp;rdquo; leader (a.k.a. primary/proposer) system.  Tendermint&amp;rsquo;s specification describes a round-robin scheme for selecting new leaders for every block.&lt;/p&gt;
 
@@ -743,27 +742,27 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;We don&amp;rsquo;t have to pick one solution; we can combine the two approaches into a hybrid scheme.  Fortunately, making this change is straightforward in Tendermint, so it&amp;rsquo;s easy to configure it for any purpose.&lt;/p&gt;
 
-&lt;h2 id=&#34;dynamic-membership:e7e7efb14f67469318954b6d027907a0&#34;&gt;Dynamic membership&lt;/h2&gt;
+&lt;h2 id=&#34;dynamic-membership&#34;&gt;Dynamic membership&lt;/h2&gt;
 
 &lt;p&gt;The PBFT algorithm assumes a fixed set of replicas/validators in the network.  This may work for internal systems, but it doesn&amp;rsquo;t work for &amp;ldquo;consortium&amp;rdquo; or &amp;ldquo;public&amp;rdquo; blockchains where the participants are expected to change over time.  Tendermint supports dynamic membership safely by requiring a +⅔ quorum of validators to approve of membership changes.  The reference implementation allows anyone to post a bond collateral (with intrinsic coins), but other variations are possible (especially when combined with our permissions framework).  For example, Tendermint could be easily modified to reject new members by default, and only approve new members that have been whitelisted (perhaps by an independent third party).&lt;/p&gt;
 
-&lt;h2 id=&#34;epidemic-gossip-vs-point-to-point:e7e7efb14f67469318954b6d027907a0&#34;&gt;Epidemic gossip vs point-to-point&lt;/h2&gt;
+&lt;h2 id=&#34;epidemic-gossip-vs-point-to-point&#34;&gt;Epidemic gossip vs point-to-point&lt;/h2&gt;
 
 &lt;p&gt;The PBFT algorithm illustrates a point-to-point consensus algorithm, which is simpler but is less robust to disruptions in the network.  Tendermint&amp;rsquo;s implementation uses an epidemic gossip protocol to ensure that consensus can be reached as long as the network is connected, no matter how many point-to-point edge connections have been broken.&lt;/p&gt;
 
-&lt;h2 id=&#34;block-propagation-optimizations:e7e7efb14f67469318954b6d027907a0&#34;&gt;Block propagation optimizations&lt;/h2&gt;
+&lt;h2 id=&#34;block-propagation-optimizations&#34;&gt;Block propagation optimizations&lt;/h2&gt;
 
 &lt;p&gt;Tendermint goes a step further than PBFT and implements a BitTorrent/LibSwift-inspired algorithm to quickly broadcast transaction blocks.  This makes the most out of limited available bandwidth to commit transactions sooner.&lt;/p&gt;
 
 &lt;p&gt;See &lt;a href=&#34;http://www.ict.kth.se/courses/ID2210/presentation-papers/2012%20-%20Performance%20Analysis%20of%20Libswift.pdf&#34;&gt;&lt;em&gt;Performance Analysis of the Libswift P2P Streaming Protocol&lt;/em&gt;&lt;/a&gt; for details on how LibSwift fares in “flashcrowd” scenarios, which is similar to new block propagations in Tendermint.&lt;/p&gt;
 
-&lt;h2 id=&#34;self-balancing-merkle-trees:e7e7efb14f67469318954b6d027907a0&#34;&gt;Self-balancing Merkle trees&lt;/h2&gt;
+&lt;h2 id=&#34;self-balancing-merkle-trees&#34;&gt;Self-balancing Merkle trees&lt;/h2&gt;
 
 &lt;p&gt;PBFT and its implementation (the BFS filesystem) doesn&amp;rsquo;t provide much by way of useful data structures.  Tendermint ships with a self-balancing Merkle tree library which can be used to keep track of application data (e.g. account balances) and prove any part of the application state to a client (with a Merkle proof and quorum of signatures).  Of course, it&amp;rsquo;s not necessary to use such a data structure if you need to build a blockchain that can handle a million transactions per second &amp;ndash; for that, you should combine Tendermint with an LMAX &amp;ldquo;disruptor&amp;rdquo; (&lt;a href=&#34;http://martinfowler.com/articles/lmax.html&#34;&gt;source&lt;/a&gt;) to process all transactions in memory.&lt;/p&gt;
 
 &lt;p&gt;The self-balancing Merkle tree data structure also comes in handy when implementing a parallel-blockchain architecture.  Since the logic for light-client verification of application state is so cheap, efficient, and safe&lt;sup&gt;*&lt;/sup&gt;, the same logic can be used for nodes and validators to keep track of the application state in foreign blockchains.&lt;/p&gt;
 
-&lt;h2 id=&#34;fin:e7e7efb14f67469318954b6d027907a0&#34;&gt;Fin&lt;/h2&gt;
+&lt;h2 id=&#34;fin&#34;&gt;Fin&lt;/h2&gt;
 
 &lt;p&gt;Though Tendermint was developed independently from PBFT, both algorithms share more than a few similarities. Both algorithms attempt to approach optimality in fault tolerance and performance.  Given the similarities, developers wishing to build BFT systems should consider building on Tendermint, which is furthest ahead at meeting the requirements laid out in this paper about PBFT:&lt;/p&gt;
 
@@ -787,7 +786,7 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;You may have an application that benefits from blockchain technology, and you may be trying to figure out whether to build that on Bitcoin, some meta-coin protocol like Counterparty, with Solidity/Serpent on the Ethereum virtual machine, or on a new blockchain stack altogether.  Actually, you should seriously consider building on Tendermint.&lt;/p&gt;
 
-&lt;h2 id=&#34;a-little-background-on-tendermint:1825e1740a61156b2d6c2c2a5daacec7&#34;&gt;A little background on Tendermint&lt;/h2&gt;
+&lt;h2 id=&#34;a-little-background-on-tendermint&#34;&gt;A little background on Tendermint&lt;/h2&gt;
 
 &lt;p&gt;Tendermint is not a fork of Bitcoin, NXT, Ripple, or Ethereum.  Tendermint is its own blockchain stack written from the ground up.  It was built to be the base blockchain stack from which to fork off of for a wide variety of decentralized applications.  It started back in 2014 as an ambitious project to solve the Bitcoin mining problem and bring real Byzantine fault-tolerant consensus to cryptocurrencies.  First we adapted an existing BGA consensus algorithm to make it suitable for blockchains.  For the actual implementation we considered forking Bitcoin, NXT, BitShares, and other projects, but none could easily accommodate the desired project architecture.  So, a brand spanking new blockchain stack was born.&lt;/p&gt;
 
@@ -809,11 +808,11 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;We&amp;rsquo;re going to build more exciting features going forward, except this time we&amp;rsquo;ll blog about it while we do it, so hang on to your metaphorical horses.&lt;/p&gt;
 
-&lt;h2 id=&#34;on-tendermint-consensus:1825e1740a61156b2d6c2c2a5daacec7&#34;&gt;On Tendermint consensus&lt;/h2&gt;
+&lt;h2 id=&#34;on-tendermint-consensus&#34;&gt;On Tendermint consensus&lt;/h2&gt;
 
 &lt;p&gt;The consensus system is the foundational layer of any blockchain stack. It is the process by which all of the transaction validators (equivalent to miners in Bitcoin) agree on the state of the network.  Improvements in speed, security, and cost of a consensus system ripple up and improve the performance of any network or application built on top of it.  Let&amp;rsquo;s dive into some examples to get a sense of how it works.&lt;/p&gt;
 
-&lt;h3 id=&#34;case-1-payment-verification:1825e1740a61156b2d6c2c2a5daacec7&#34;&gt;Case 1: Payment verification&lt;/h3&gt;
+&lt;h3 id=&#34;case-1-payment-verification&#34;&gt;Case 1: Payment verification&lt;/h3&gt;
 
 &lt;p&gt;Say that your mobile phone is connected to untrusted wifi, and you&amp;rsquo;re making a business deal with Satoshi.  Satoshi just sent you a large payment, and you need to verify that this payment was committed onto the blockchain network irreversibly.&lt;/p&gt;
 
@@ -821,7 +820,7 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;With Tendermint, a global network of 1000 independent validators can commit a transaction in less than 60 seconds.  The time required to commit only gets shorter with increased bandwidth and computational capacity of the nodes of the network.  In the near future we&amp;rsquo;ll be able to commit transactions on a global Tendermint blockchain with more than 1000 validators in a matter of seconds &amp;ndash; the only real limitation is the time it takes for light to travel around the globe.&lt;/p&gt;
 
-&lt;h3 id=&#34;case-2-name-registry-lookup:1825e1740a61156b2d6c2c2a5daacec7&#34;&gt;Case 2: Name registry lookup&lt;/h3&gt;
+&lt;h3 id=&#34;case-2-name-registry-lookup&#34;&gt;Case 2: Name registry lookup&lt;/h3&gt;
 
 &lt;p&gt;Similar to case 1, but instead of verifying a payment, you need to verify Satoshi&amp;rsquo;s public key as registered under the name &amp;ldquo;@satoshi&amp;rdquo; on a name-registry blockchain.  The difference here as compared to case 1 is that instead of verifying a new transaction, you&amp;rsquo;re verifying the current value of a pre-registered key that may have been changed by other transactions.&lt;/p&gt;
 
@@ -831,7 +830,7 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;In future posts I&amp;rsquo;ll go into detail about the consensus algorithm and how it can provide these unique speed &amp;amp; security guarantees without proof-of-work mining.  For now, you can check the most recent Tendermint spec on the github wiki &lt;a href=&#34;https://github.com/tendermint/tendermint/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;tendermint-architecture:1825e1740a61156b2d6c2c2a5daacec7&#34;&gt;Tendermint architecture&lt;/h2&gt;
+&lt;h2 id=&#34;tendermint-architecture&#34;&gt;Tendermint architecture&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://tendermint.com/images/tm_architecture.png&#34;&gt;&lt;/p&gt;
 
@@ -846,7 +845,7 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;If you have a blockchain application in mind, on Tendermint there are two options to consider &amp;ndash; a smart contract on the Ethereum VM (and in the future, other VMs as well), or, a native transaction type (like SendTx or NameTx above).&lt;/p&gt;
 
-&lt;h2 id=&#34;whether-to-develop-a-vm-smart-contract-or-develop-a-native-tendermint-contract:1825e1740a61156b2d6c2c2a5daacec7&#34;&gt;Whether to develop a VM smart contract or develop a native Tendermint contract&lt;/h2&gt;
+&lt;h2 id=&#34;whether-to-develop-a-vm-smart-contract-or-develop-a-native-tendermint-contract&#34;&gt;Whether to develop a VM smart contract or develop a native Tendermint contract&lt;/h2&gt;
 
 &lt;p&gt;The main benefit of a Turing-complete VM on a blockchain is that anyone can upload new contract logic onto the blockchain.  This is especially true on big-bad-public-blockchains (BBPB) like Bitcoin or Ethereum which were designed to allow anyone to upload new contract logic.  On the other hand, private blockchains and consortium blockchains that are more tightly managed may not need or even want arbitrary user-defined logic.&lt;/p&gt;
 
@@ -854,7 +853,7 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;For other applications where the former exceptions don&amp;rsquo;t apply, you probably want to write native code on Tendermint for a variety of reasons &amp;ndash; Golang&amp;rsquo;s language tooling is better so debugging is easier, it&amp;rsquo;s computationally more efficient by far, and it removes two complex layers (one for the bytecode compiled language, and one for the VM itself).  If you want full control over your Merkle-ized data structures (e.g. without the 32-by-32-byte restriction of the EVM&amp;rsquo;s Patricia-trie) then you have to write your contract logic at the native level.  Tendermint provides you with the right tools to make this as easy as possible.&lt;/p&gt;
 
-&lt;h2 id=&#34;fin:1825e1740a61156b2d6c2c2a5daacec7&#34;&gt;Fin&lt;/h2&gt;
+&lt;h2 id=&#34;fin&#34;&gt;Fin&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Go to &lt;a href=&#34;http://tendermint.com&#34;&gt;http://tendermint.com&lt;/a&gt; and sign up for the newsletter.&lt;/li&gt;
@@ -885,13 +884,28 @@ self-incentivized blockchains.&lt;/p&gt;
 
 &lt;p&gt;The above proposed protocol is secured by completely intrinsic means; it does not require a massive expenditure of energy to secure.  The total intrinsic penalty for successfully launching a double-spend attack (which is at least one third of all bonded coins as mentioned previously) can be adjusted by judiciously setting the incentives given to validators by way of fees or inflationary rewards.  The block-chain does not fork at all except in extraordinary circumstances, making it ideally suited for side-chain extensions.  It is to the my best knowledge the only completely decentralized cryptocurrency protocol that could be proven to be intrinsically incentive aligned.  Perhaps it is time to consider this kind of algorithm.&lt;/p&gt;
 
-&lt;h2 id=&#34;links:332834bd1d2a52cc97bf52e097939cbf&#34;&gt;Links&lt;/h2&gt;
+&lt;h2 id=&#34;links&#34;&gt;Links&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Eyal and Sirer.  The Majority is Not Enough. 2014, &lt;a href=&#34;http://fc14.ifca.ai/papers/fc14_submission_82.pdf&#34;&gt;http://fc14.ifca.ai/papers/fc14_submission_82.pdf&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Kroll et al.  The Economics of Bitcoin Mining, or Bitcoin in the Presence of Adversaries. 2013, &lt;a href=&#34;https://www.cs.princeton.edu/~kroll/papers/weis13_bitcoin.pdf&#34;&gt;https://www.cs.princeton.edu/~kroll/papers/weis13_bitcoin.pdf&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Dwork, Lynch, and Stockmeyer.  Consensus in the Presence of Partial Synchrony. 1988, &lt;a href=&#34;http://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf&#34;&gt;http://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Software Engineer: Networking and Consensus</title>
+      <link>http://tendermint.com/jobs/consensus_engineer/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/consensus_engineer/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Improve the implementation of the core Tendermint consensus algorithm&lt;/li&gt;
+&lt;li&gt;Develop a compatible implementation in another programming language&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pbft on Tendermint</title>
-    <link>http://tendermint.com/categories/pbft/</link>
-    <description>Recent content in Pbft on Tendermint</description>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/pbft/index.xml</link>
+    <description>Recent content on Tendermint</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 03 Oct 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tendermint.com/categories/pbft/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -61,13 +60,13 @@
 
 &lt;p&gt;&lt;em&gt;terminology comparison between Tendermint and PBFT&lt;/em&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;byzantine-fault-tolerance:e7e7efb14f67469318954b6d027907a0&#34;&gt;Byzantine fault tolerance&lt;/h2&gt;
+&lt;h2 id=&#34;byzantine-fault-tolerance&#34;&gt;Byzantine fault tolerance&lt;/h2&gt;
 
 &lt;p&gt;Both PBFT and Tendermint are Byzantine fault-tolerant transaction systems.  Both can handle up to ⅓ of malicious Byzantine validators/replicas.  Both require three steps/phases;  the first for broadcasting the block, and the last two for broadcasting signatures.  Finally, both require two quorums of signatures to commit a block.&lt;/p&gt;
 
 &lt;p&gt;Where the two differ is in what happens when more than ⅓ of validators are Byzantine.  In PBFT, when there are between ⅓ and ⅔ of Byzantine validators, no guarantees are provided whatsoever; the attackers can return arbitrary results to the client (&lt;a href=&#34;https://www.usenix.org/conference/nsdi-07/beyond-one-third-faulty-replicas-byzantine-fault-tolerant-systems&#34;&gt;source&lt;/a&gt;).  Tendermint’s consensus model considers a block to be committed when there are more than ⅔ of precommit signatures for the blockhash, which mitigates this issue.   Thus if ½ of the validators are Byzantine they can prevent future blocks from being committed; however, they cannot commit new blocks like they can in PBFT.&lt;/p&gt;
 
-&lt;h2 id=&#34;round-robin-vs-sticky-leaders:e7e7efb14f67469318954b6d027907a0&#34;&gt;Round-robin vs sticky leaders&lt;/h2&gt;
+&lt;h2 id=&#34;round-robin-vs-sticky-leaders&#34;&gt;Round-robin vs sticky leaders&lt;/h2&gt;
 
 &lt;p&gt;PBFT&amp;rsquo;s whitepaper, which was the inspiration for Hyperledger, illustrates a &amp;ldquo;sticky&amp;rdquo; leader (a.k.a. primary/proposer) system.  Tendermint&amp;rsquo;s specification describes a round-robin scheme for selecting new leaders for every block.&lt;/p&gt;
 
@@ -75,27 +74,27 @@
 
 &lt;p&gt;We don&amp;rsquo;t have to pick one solution; we can combine the two approaches into a hybrid scheme.  Fortunately, making this change is straightforward in Tendermint, so it&amp;rsquo;s easy to configure it for any purpose.&lt;/p&gt;
 
-&lt;h2 id=&#34;dynamic-membership:e7e7efb14f67469318954b6d027907a0&#34;&gt;Dynamic membership&lt;/h2&gt;
+&lt;h2 id=&#34;dynamic-membership&#34;&gt;Dynamic membership&lt;/h2&gt;
 
 &lt;p&gt;The PBFT algorithm assumes a fixed set of replicas/validators in the network.  This may work for internal systems, but it doesn&amp;rsquo;t work for &amp;ldquo;consortium&amp;rdquo; or &amp;ldquo;public&amp;rdquo; blockchains where the participants are expected to change over time.  Tendermint supports dynamic membership safely by requiring a +⅔ quorum of validators to approve of membership changes.  The reference implementation allows anyone to post a bond collateral (with intrinsic coins), but other variations are possible (especially when combined with our permissions framework).  For example, Tendermint could be easily modified to reject new members by default, and only approve new members that have been whitelisted (perhaps by an independent third party).&lt;/p&gt;
 
-&lt;h2 id=&#34;epidemic-gossip-vs-point-to-point:e7e7efb14f67469318954b6d027907a0&#34;&gt;Epidemic gossip vs point-to-point&lt;/h2&gt;
+&lt;h2 id=&#34;epidemic-gossip-vs-point-to-point&#34;&gt;Epidemic gossip vs point-to-point&lt;/h2&gt;
 
 &lt;p&gt;The PBFT algorithm illustrates a point-to-point consensus algorithm, which is simpler but is less robust to disruptions in the network.  Tendermint&amp;rsquo;s implementation uses an epidemic gossip protocol to ensure that consensus can be reached as long as the network is connected, no matter how many point-to-point edge connections have been broken.&lt;/p&gt;
 
-&lt;h2 id=&#34;block-propagation-optimizations:e7e7efb14f67469318954b6d027907a0&#34;&gt;Block propagation optimizations&lt;/h2&gt;
+&lt;h2 id=&#34;block-propagation-optimizations&#34;&gt;Block propagation optimizations&lt;/h2&gt;
 
 &lt;p&gt;Tendermint goes a step further than PBFT and implements a BitTorrent/LibSwift-inspired algorithm to quickly broadcast transaction blocks.  This makes the most out of limited available bandwidth to commit transactions sooner.&lt;/p&gt;
 
 &lt;p&gt;See &lt;a href=&#34;http://www.ict.kth.se/courses/ID2210/presentation-papers/2012%20-%20Performance%20Analysis%20of%20Libswift.pdf&#34;&gt;&lt;em&gt;Performance Analysis of the Libswift P2P Streaming Protocol&lt;/em&gt;&lt;/a&gt; for details on how LibSwift fares in “flashcrowd” scenarios, which is similar to new block propagations in Tendermint.&lt;/p&gt;
 
-&lt;h2 id=&#34;self-balancing-merkle-trees:e7e7efb14f67469318954b6d027907a0&#34;&gt;Self-balancing Merkle trees&lt;/h2&gt;
+&lt;h2 id=&#34;self-balancing-merkle-trees&#34;&gt;Self-balancing Merkle trees&lt;/h2&gt;
 
 &lt;p&gt;PBFT and its implementation (the BFS filesystem) doesn&amp;rsquo;t provide much by way of useful data structures.  Tendermint ships with a self-balancing Merkle tree library which can be used to keep track of application data (e.g. account balances) and prove any part of the application state to a client (with a Merkle proof and quorum of signatures).  Of course, it&amp;rsquo;s not necessary to use such a data structure if you need to build a blockchain that can handle a million transactions per second &amp;ndash; for that, you should combine Tendermint with an LMAX &amp;ldquo;disruptor&amp;rdquo; (&lt;a href=&#34;http://martinfowler.com/articles/lmax.html&#34;&gt;source&lt;/a&gt;) to process all transactions in memory.&lt;/p&gt;
 
 &lt;p&gt;The self-balancing Merkle tree data structure also comes in handy when implementing a parallel-blockchain architecture.  Since the logic for light-client verification of application state is so cheap, efficient, and safe&lt;sup&gt;*&lt;/sup&gt;, the same logic can be used for nodes and validators to keep track of the application state in foreign blockchains.&lt;/p&gt;
 
-&lt;h2 id=&#34;fin:e7e7efb14f67469318954b6d027907a0&#34;&gt;Fin&lt;/h2&gt;
+&lt;h2 id=&#34;fin&#34;&gt;Fin&lt;/h2&gt;
 
 &lt;p&gt;Though Tendermint was developed independently from PBFT, both algorithms share more than a few similarities. Both algorithms attempt to approach optimality in fault tolerance and performance.  Given the similarities, developers wishing to build BFT systems should consider building on Tendermint, which is furthest ahead at meeting the requirements laid out in this paper about PBFT:&lt;/p&gt;
 

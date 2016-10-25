@@ -187,7 +187,7 @@ But the ultimate flexibility comes from being able to write the application easi
 
 We have implemented the counter in a number of languages (see the example directory).
 
-To run the Node JS version, `cd` to `example/js` and run 
+To run the Node JS version, checkout the `github.com/tendermint/js-tmsp` repo, `cd` to `example` and run 
 
 ```
 node app.js

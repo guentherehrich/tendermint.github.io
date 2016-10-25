@@ -6,7 +6,7 @@
 
   .section-container
     width 100vw
-    height 10*x
+    min-height 10*x
 
     display flex
     flex-flow column no-wrap
@@ -36,12 +36,23 @@
     line-height 1.25*x
     text-align center
     max-width 22em
+    margin-bottom 1em
+
+    strong
+      font-weight 500
+      color lighten(mcolor,65%)
+
     a
       color lighten(mcolor,75%)
       background hsla(0,0,0,0.2)
       padding 0 0.25*x
       &:hover
         color #fff
+
+  &.section-top-tall
+    padding 3em 0 2em
+    p
+      max-width 23em
 
 @media screen and (min-height: 400px)
   #section-top
@@ -50,7 +61,7 @@
 @media screen and (min-width: 400px) and (min-height: 400px)
   #section-top
     .section-container
-      height 12*x
+      min-height 12*x
 
     h1
       font-size 2.5*x
@@ -63,7 +74,7 @@
 @media screen and (min-width: 720px) and (min-height: 480px)
   #section-top
     .section-container
-      height 16*x
+      min-height 16*x
 
     h1
       font-size 2.5*x

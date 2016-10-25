@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Prediction Market on Tendermint</title>
-    <link>http://tendermint.com/categories/prediction-market/</link>
-    <description>Recent content in Prediction Market on Tendermint</description>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/prediction-market/index.xml</link>
+    <description>Recent content on Tendermint</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Jun 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tendermint.com/categories/prediction-market/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -16,7 +15,7 @@
       <guid>http://tendermint.com/blog/critique-merkle-dao-democracy/</guid>
       <description>
 
-&lt;h2 id=&#34;merkle-s-new-dao-paper:b6d05f8ed6e228f546325f0fbad28100&#34;&gt;Merkle&amp;rsquo;s New DAO Paper&lt;/h2&gt;
+&lt;h2 id=&#34;merkle-s-new-dao-paper&#34;&gt;Merkle&amp;rsquo;s New DAO Paper&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve been looking for a paper that criticizes futarchy that specifically
 addresses the thin-market and corresponding manipulation and feedback problems

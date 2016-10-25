@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/cloud/index.xml</link>
+    <description>Recent content on Tendermint</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://tendermint.com/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Master of Automation</title>
+      <link>http://tendermint.com/jobs/master_of_automation/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://tendermint.com/jobs/master_of_automation/</guid>
+      <description>&lt;p&gt;Responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Automate more elements of building, testing, and deploying the software via Continuous Integration&lt;/li&gt;
+&lt;li&gt;Implement infrastructure-as-code policies and manage infrastructure&lt;/li&gt;
+&lt;li&gt;Quality Assurance&lt;/li&gt;
+&lt;li&gt;Improve Go unit-test coverage across repositories&lt;/li&gt;
+&lt;li&gt;Documentation and Tutorials&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

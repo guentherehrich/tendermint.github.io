@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Settlement on Tendermint</title>
-    <link>http://tendermint.com/categories/settlement/</link>
-    <description>Recent content in Settlement on Tendermint</description>
+    <title>Tendermint</title>
+    <link>http://tendermint.com/categories/settlement/index.xml</link>
+    <description>Recent content on Tendermint</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 03 Oct 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://tendermint.com/categories/settlement/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -27,7 +26,7 @@
 
 &lt;p&gt;This short post will address these statements and paint a different picture.&lt;/p&gt;
 
-&lt;h3 id=&#34;clearing-and-settlement-woes:c70e654fcbeba9e734c64c9df590bef4&#34;&gt;Clearing and settlement woes&lt;/h3&gt;
+&lt;h3 id=&#34;clearing-and-settlement-woes&#34;&gt;Clearing and settlement woes&lt;/h3&gt;
 
 &lt;p&gt;Clearing and settlement are separate but related terms.  The source of the differences stems from the significant duration of time (on the order of days) for the delivery of assets (e.g. paper certificates used to take over a week to deliver by courier).  A clearinghouse provides faster settlement between two trading parties by acting as the counterparty for both.&lt;/p&gt;
 
@@ -35,7 +34,7 @@
 
 &lt;p&gt;Once we have a common ledger, we can think about tradeoffs between security and settlement speed.  When settlement becomes fast on the order of seconds, human intermediation becomes difficult, which in turn means that we need the system to be as fault tolerant as possible.&lt;/p&gt;
 
-&lt;h3 id=&#34;the-source-of-bitcoin-s-security:c70e654fcbeba9e734c64c9df590bef4&#34;&gt;The source of Bitcoin’s security&lt;/h3&gt;
+&lt;h3 id=&#34;the-source-of-bitcoin-s-security&#34;&gt;The source of Bitcoin’s security&lt;/h3&gt;
 
 &lt;p&gt;Bitcoin and Bitcoin’s proof-of-work (PoW) mining, or Nakamoto consensus, provides something that until 2008 had never existed before.  Bitcoin was the first open decentralized application to provide Byzantine fault-tolerant (BFT) consensus on a global currency ledger.  Nakamoto consensus is a novel BFT consensus algorithm that utilizes computational power as a proxy for membership.&lt;/p&gt;
 
@@ -43,7 +42,7 @@
 
 &lt;p&gt;The Bitcoin blockchain does help with settlement in that it provides a BFT ledger.  The problem is that Nakamoto consensus is slow and expensive, as its security is only proportional to the cumulative sum of energy burned over time.&lt;/p&gt;
 
-&lt;h3 id=&#34;classical-bft-enables-additive-security:c70e654fcbeba9e734c64c9df590bef4&#34;&gt;Classical BFT enables additive security&lt;/h3&gt;
+&lt;h3 id=&#34;classical-bft-enables-additive-security&#34;&gt;Classical BFT enables additive security&lt;/h3&gt;
 
 &lt;p&gt;Classical BFT consensus algorithms don’t rely on the opportunity cost of energy expenditure for security.  They use pseudonymous identities and cryptographic signatures to ensure that a sufficient quorum of participants approve of new transactions before they are committed.  These algorithms had been around since the 70’s and 80’s, and culminated in 1999 with the renowned PBFT algorithm.  Existing PBFT solutions are difficult to use or incomplete (&lt;a href=&#34;http://arxiv.org/abs/1110.4854&#34;&gt;source&lt;/a&gt;), so there is a need for a new free and open-source implementation.  Tendermint is such an open-source implementation of the PBFT consensus protocol (see &lt;a href=&#34;http://tendermint.com/posts/tendermint-vs-pbft/&#34;&gt;explanation&lt;/a&gt;).  Tendermint can commit blocks to finality on a global ledger with hundreds of validators on the order of seconds.&lt;/p&gt;
 
@@ -53,7 +52,7 @@
 
 &lt;p&gt;For public permissionless blockchains, Nielsen&amp;rsquo;s law of internet bandwidth is at play.  If we naively assume that doubling the number of validators requires four times the bandwidth, and that bandwidth doubles every two years, every four years a public blockchain can support twice as many validators (thus naively twice as much collateral) and still commit blocks at the same speed.  I bet we can do better.&lt;/p&gt;
 
-&lt;h2 id=&#34;fin:c70e654fcbeba9e734c64c9df590bef4&#34;&gt;Fin&lt;/h2&gt;
+&lt;h2 id=&#34;fin&#34;&gt;Fin&lt;/h2&gt;
 
 &lt;p&gt;With publicly identified Tendermint validators with collateral at risk, we can have a shared decentralized ledger that offers fast settlement.  This is a novel concept and one that has the potential to change the nature of banking itself.&lt;/p&gt;
 </description>

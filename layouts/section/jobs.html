@@ -1,19 +1,24 @@
 {{ partial "header.html" . }}
 
-<body id="body-blog">
+<body id="body-jobs">
   {{ partial "site-header.html" . }}
 
-  <section id="section-top">
+  <section id="section-top" class="section-top-tall">
     <div class="section-container">
-      <h1><i class="fa fa-rss"></i> Jobs</h1>
-      <p>Test</p>
+      <h1><i class="fa fa-rocket"></i> Tendermint Jobs</h1>
+      <p>
+        Available positions:
+        <strong>
+          Golang, Javascript, Security, Distributed Consenus, Bitcoin, Ethereum
+        </strong>
+        <p><a href="mailto:hello@tendermint.com">hello@tendermint.com</a></p>
     </div>
   </section>
 
   <section class="section-default section-flush">
     <div class="section-container">
       <div class="section-content">
-        {{ range .Data.Pages }}
+	      {{ range sort .Data.Pages "Weight" }}
         {{ .Render "summary"}}
         {{ end }}
       </div>
